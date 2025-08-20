@@ -1,6 +1,6 @@
-# Storyblok Solutions Engineers Demo
+# Storyblok Solution Engineers Demo
 
-This frontend is used when you [create a new demo space (for **Solutions Engineers**) in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
+This frontend is used when you [create a new demo space (for **Solution Engineers**) in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
 > The original repository was https://github.com/storyblok/storyblok-demo-default-v2
 
