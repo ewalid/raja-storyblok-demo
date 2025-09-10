@@ -9,6 +9,9 @@ export default function (cols = '3') {
     case '2':
       gridClasses += ' lg:grid-cols-2';
       break;
+    case '1':
+      gridClasses += ' lg:grid-cols-1';
+      break;
     case '3':
     default:
       gridClasses += ' lg:grid-cols-3';
