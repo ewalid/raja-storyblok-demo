@@ -13,7 +13,7 @@ const optimizedImage = computed(() => {
   if (isSvg.value) {
     return props.blok.background_image?.filename;
   }
-  return getOptimizedImage(props.blok.background_image, 1600);
+  return getOptimizedImage(props.blok.background_image, 1600, 1200);
 });
 
 const showVideo = computed(() => {
@@ -30,7 +30,7 @@ const showVideo = computed(() => {
 });
 
 const imageClasses = computed(() => {
-  let output = 'absolute bottom-0 z-0';
+  let output = 'absolute top-1/2 z-0 -translate-y-1/2';
   if (props.blok.background_image_cover) {
     output += ' left-0 size-full object-cover';
     return output;
