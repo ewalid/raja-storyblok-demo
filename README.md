@@ -10,7 +10,7 @@ Feel free to explore and reuse the code, but please be aware of the [demo-specif
 
 You can easily showcase a demo by creating a new space at this URL: <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo> and selecting the `Solutions Demo Environment`.
 
-> If yuo want to customize the PReview URL you can use: <https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=>. Yuo can replace `YOURSPACEPREVIEWACCESSTOKEN` with your Preview access token.
+> If you want to customize the Preview URL you can use: `https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=`. You can replace `YOURSPACEPREVIEWACCESSTOKEN` with your Preview access token.
 
 If you need to **customize/implement new components** for a specific demo, you can also run the project locally.
 
@@ -44,9 +44,7 @@ npm run devs
 
 > Note: if you want to use Bun or some other runtime/packagemanager you can replace `npm` with the proper command, for example `bun install` and `bun run devs`
 
-In your Storyblok space, go to **Settings** > **Visual Editor** and set `https://localhost:3000/` as the default environment.
-
-> Note: if you didn't set the access token in your localhost (for example you want to swtich your localhost code quickly across different spaces, you can set the access token -and the path- in the Preview URL: ``https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`). Replace `YOURSPACEPREVIEWTOKEN` with your Space **Preview** access token.
+In your Storyblok space, go to `Settings` > `Visual Editor` and set `https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`. Replace `YOURSPACEPREVIEWTOKEN` with your Space Preview access token.
 
 Finally, open your **Home** story and see the demo space running locally. Happy building!
 
