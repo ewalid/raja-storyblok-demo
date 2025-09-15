@@ -11,6 +11,9 @@
     "lint:debug": "eslint . --debug",
     "prepare": "husky"
   },
+  "dependencies": {
+    "vwo-fme-node-sdk": "^1.28.0"
+  },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@storyblok/eslint-config": "^0.4.0",
