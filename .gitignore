@@ -12,3 +12,5 @@ localhost.pem
 .DS_Store
 .prettierignore
 .vscode
+install-key.pem
+install.pem
