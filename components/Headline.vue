@@ -32,11 +32,16 @@ const tag = computed(() => {
 
 <template>
   <component :is="tag" :class="classes">
-    <HeadlineSegment
-      v-for="headlineSegment in headline"
-      :key="headlineSegment._uid"
-      :headline-segment="headlineSegment"
-    />
+    <template v-if="Array.isArray(headline)">
+      <HeadlineSegment
+        v-for="headlineSegment in headline"
+        :key="headlineSegment._uid"
+        :headline-segment="headlineSegment"
+      />
+    </template>
+
+    <!-- Case: headline is a string -->
+    <h1 v-else>{{ headline }}</h1>
   </component>
 </template>
 
