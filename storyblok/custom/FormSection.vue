@@ -45,7 +45,7 @@ const selectedForm = computed(() => {
       <div class="w-full max-w-md">
         <component
           :is="selectedForm"
-          :textColor="textColor"
+          :text-color="textColor"
           :button="blok?.button && blok?.button[0]"
         />
       </div>

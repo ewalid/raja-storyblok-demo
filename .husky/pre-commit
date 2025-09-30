@@ -1,1 +1,13 @@
-npm run lint
+#!/bin/sh
+
+
+if command -v npm >/dev/null 2>&1; then
+  echo "🔍 Running lint with npm..."
+  npm run lint
+elif command -v bun >/dev/null 2>&1; then
+  echo "🔍 Running lint with bun..."
+  bun run lint
+else
+  echo "❌ Neither npm nor bun found. Skipping lint."
+  exit 1
+fi

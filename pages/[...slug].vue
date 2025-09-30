@@ -42,9 +42,10 @@ try {
 
   onMounted(() => {
     useStoryblokBridge(story.value?.id, evStory => (story.value = evStory), {
+      preventClicks: true,
       resolveRelations,
       customParent,
-      preventClicks: true,
+
     });
   });
 }

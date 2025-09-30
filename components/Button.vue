@@ -1,5 +1,9 @@
 <script setup>
 const props = defineProps({ button: Object, link: String });
+const { query } = useRoute();
+const inEditor = computed(() => {
+  return !!query._storyblok;
+});
 
 const url = computed(() => {
   if (props.button.link.url !== '') {
@@ -61,7 +65,7 @@ const classes = computed(() => {
 <template>
   <NuxtLink
     v-editable="button"
-    :to="url"
+    :to="inEditor ? '' : url"
     :class="classes"
   >
     {{ button.label }}
