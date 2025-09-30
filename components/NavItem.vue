@@ -1,6 +1,11 @@
 <script setup>
 const props = defineProps({ item: Object, reducedFontWeight: Boolean });
 
+const { query } = useRoute();
+const inEditor = computed(() => {
+  return !!query._storyblok;
+});
+
 const url = computed(() => {
   if (props.item.link.url !== '') {
     return '';
@@ -21,7 +26,7 @@ const url = computed(() => {
 <template>
   <NuxtLink
     v-editable="item"
-    :to="url"
+    :to="inEditor ? '' : url"
     class="focus-ring relative flex h-full cursor-pointer items-center text-base transition-colors"
     :class="props.reducedFontWeight ? 'font-normal' : 'font-medium'"
   >

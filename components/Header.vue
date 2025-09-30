@@ -10,6 +10,11 @@ defineEmits(['toggleMobileNav']);
 
 const headerScrollClass = ref('');
 
+const { query } = useRoute();
+const inEditor = computed(() => {
+  return !!query._storyblok;
+});
+
 onMounted(() => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 200) {
@@ -30,7 +35,7 @@ onMounted(() => {
     <div
       class="mx-auto flex size-full max-w-screen-2xl items-center justify-between px-4 lg:justify-start lg:px-8"
     >
-      <NuxtLink v-if="logo?.filename" to="/" class="focus-ring flex shrink-0" aria-label="Return to homepage">
+      <NuxtLink v-if="logo?.filename" :to="inEditor ? '' : '/'" class="focus-ring flex shrink-0" aria-label="Return to homepage">
         <img
           :src="logo.filename"
           :alt="logo.alt"
