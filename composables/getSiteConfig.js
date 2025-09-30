@@ -1,4 +1,7 @@
 export default async function () {
+  const slug = await getSlug();
+  // const processedSlug = await getProcessedSlug();
+  const language = await getLanguage(slug);
   const folderPathTest = await getFolderPath();
   const releaseId = await getReleaseId();
   const siteConfig = ref();
@@ -6,6 +9,7 @@ export default async function () {
   const nestedSiteConfig = ref(false);
   const apiParams = {
     version: getVersion(),
+    language,
     resolve_links: 'url',
     from_release: releaseId,
   };
