@@ -8,7 +8,16 @@ const textColor = computed(() => {
 // Adjustment to include Bynder and not using the Storyblok Image Service
 const optimizedImage = computed(() => {
   // return props.blok.background_image[0].files.transformBaseUrl.url
-  return props.blok?.background_image?.[0]?.files?.transformBaseUrl?.url || '';
+  let filter = '';
+  if (props.blok.opacity?.value > 0) {
+    filter = `?io=overlay:box,color:auto,opacity:${props.blok.opacity?.value}`;
+  }
+  let url = props.blok?.background_image?.[0]?.files?.transformBaseUrl?.url || '';
+  if (url !== '' && filter !== '') {
+    url = url + filter;
+  }
+
+  return url;
 });
 </script>
 
