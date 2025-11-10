@@ -1,6 +1,6 @@
 # Storyblok Solution Engineers Demo
 
-This frontend is used when you [create a new demo space (for **Solution Engineers**) in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 4](https://nuxt.com/) and [TailwindCSS](https://tailwindcss.com/).
+This frontend is used when you [create a new demo space (for **Solution Engineers**) in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 3](https://v3.nuxtjs.org/) and [TailwindCSS](https://tailwindcss.com/).
 
 > The repository is <https://github.com/storyblok/storyblok-demo-default-se> . It is a forked repository from the JoyFul Demo <https://github.com/storyblok/storyblok-demo-default-v2>
 
@@ -36,32 +36,11 @@ STORYBLOK_TOKEN=your-preview-access-token
 npm run dev
 ```
 
-To run the development server with HTTPS (required for Storyblok Visual Editor):
+If you have `mkcert` installed and you already have your `localhost.pem` files generated with the command `mkcert localhost` you can run:
 
-1. Install `mkcert` if you haven't already:
-   ```bash
-   brew install mkcert
-   ```
-
-2. Install the local CA certificate in your system trust store:
-   ```bash
-   mkcert -install
-   ```
-
-3. Generate SSL certificates for localhost:
-   ```bash
-   mkcert localhost
-   ```
-   This creates two files in your project root:
-   - `localhost.pem` (certificate)
-   - `localhost-key.pem` (private key)
-
-4. Run the development server with HTTPS:
-   ```bash
-   npm run devs
-   ```
-
-The HTTPS configuration is set up in `nuxt.config.js` using the generated certificate files. The server will be available at `https://localhost:3000`.
+```bash
+npm run devs
+```
 
 > Note: if you want to use Bun or some other runtime/packagemanager you can replace `npm` with the proper command, for example `bun install` and `bun run devs`
 
