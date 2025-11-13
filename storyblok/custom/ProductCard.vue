@@ -16,11 +16,11 @@ const optimizedImage = computed(() => props.product?.image);
     :to="inEditor ? '' : `/${slug}`"
     class="group flex size-full max-w-md flex-col overflow-hidden rounded-lg shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg lg:max-w-full"
   >
-    <div class="w-full overflow-hidden xl:h-[300px]">
+    <div class="flex h-64 w-full items-center justify-center bg-gray-100">
       <img
         :src="optimizedImage"
         :alt="product.image && product.image.alt"
-        class="pointer-events-none size-full object-cover transition-all duration-700 group-hover:scale-110"
+        class="pointer-events-none h-full object-contain transition-all duration-700 group-hover:scale-105"
       />
     </div>
     <div class="grow p-6 text-left">
@@ -39,10 +39,18 @@ const optimizedImage = computed(() => props.product?.image);
       </div>
     </div>
 
-    <div class="focus-ring inline-flex w-full cursor-pointer items-center justify-center rounded-md border-2 border-primary-dark font-semibold tracking-wider transition-all duration-300 sm:w-auto">
-      <span v-if="blok.label === 'custom'" class="font-medium">{{ blok.label_custom_value }}</span>
-      <span v-if="blok.label === 'name'" class="font-medium">{{ product.title }}</span>
-      <span v-if="blok.label === 'price'" class="font-medium">{{ product.price }}</span>
+    <div
+      class="focus-ring inline-flex w-full cursor-pointer items-center justify-center rounded-md border-2 border-primary-dark font-semibold tracking-wider transition-all duration-300 sm:w-auto"
+    >
+      <span v-if="blok.label === 'custom'" class="font-medium">{{
+        blok.label_custom_value
+      }}</span>
+      <span v-if="blok.label === 'name'" class="font-medium">{{
+        product.title
+      }}</span>
+      <span v-if="blok.label === 'price'" class="font-medium">{{
+        product.price
+      }}</span>
     </div>
   </NuxtLink>
 </template>
