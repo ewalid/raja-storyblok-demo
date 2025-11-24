@@ -3,9 +3,7 @@ const props = defineProps({ blok: Object, index: Number });
 
 const headConfig = computed(() => ({
   style: [
-    {
-      children: props.blok.background_color !== 'white' ? `:root { --nav-background-color: var(--${props.blok.background_color})};` : '',
-    },
+    props.blok.background_color !== 'white' ? `:root { --nav-background-color: var(--${props.blok.background_color})};` : '',
   ],
 }));
 

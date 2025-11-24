@@ -130,9 +130,7 @@ onMounted(() => {
 
 const headConfig = computed(() => ({
   style: [
-    {
-      children: cssVariables.value,
-    },
+    cssVariables.value,
   ],
   htmlAttrs: {
     lang: 'en',
