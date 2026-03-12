@@ -12,6 +12,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "axe-core": "^4.11.1",
     "vwo-fme-node-sdk": "^1.28.0"
   },
   "devDependencies": {
