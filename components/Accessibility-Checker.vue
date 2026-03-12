@@ -26,11 +26,14 @@ const emit = defineEmits<{
 
 const violations = ref<AccessibilityReport[]>([]);
 const showPopup = ref(false);
+const isLoading = ref(true);
 
 onMounted(() => {
   if (!props.enabled) {
     return;
   }
+
+  isLoading.value = true;
 
   const runAccessibilityCheck = async () => {
     console.log('Running accessibility check...');
@@ -45,6 +48,7 @@ onMounted(() => {
 
     violations.value = allViolations.violations as AccessibilityReport[];
     emit('results', violations.value);
+    isLoading.value = false;
   };
 
   setTimeout(runAccessibilityCheck, 2000);
@@ -70,17 +74,22 @@ onMounted(() => {
         style="background-color: #222; border-radius: 8px; max-width: 600px; margin: 0 auto; padding: 1rem 2rem; color: white; box-shadow: 0 0 10px rgba(0,0,0,0.5);"
       >
         <h2>Accessibility Checker</h2>
-        <ul v-if="violations.length > 0">
-          <li v-for="violation in violations" :key="violation.id">
-            <strong>{{ violation.impact }}</strong> - {{ violation.description }}
-            <ul>
-              <li v-for="(node, index) in violation.nodes" :key="index">
-                <p>⚠️{{ node.failureSummary }}</p>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <p v-else>✅ All accessibility checks passed!</p>
+        <div v-if="isLoading">
+          <p>Running accessibility check...</p>
+        </div>
+        <div v-else>
+          <ul v-if="violations.length > 0">
+            <li v-for="violation in violations" :key="violation.id">
+              <strong>{{ violation.impact }}</strong> - {{ violation.description }}
+              <ul>
+                <li v-for="(node, index) in violation.nodes" :key="index">
+                  <p>⚠️{{ node.failureSummary }}</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <p v-else>✅ All accessibility checks passed!</p>
+        </div>
         <button
           @click="showPopup = false"
           style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #0070f3; color: white; border: none; border-radius: 4px; cursor: pointer;"
