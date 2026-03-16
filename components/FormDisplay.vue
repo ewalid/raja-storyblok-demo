@@ -5,6 +5,7 @@ defineProps({
     type: String,
     default: 'Submit',
   },
+  editable: Boolean,
 });
 
 const formStatus = ref('idle');
@@ -38,7 +39,7 @@ onBeforeUnmount(() => {
     class="flex flex-col gap-4"
     @submit.prevent="submit"
   >
-    <FormFields :fields="fields" />
+    <FormFields :fields="fields" :editable="editable" />
 
     <p class="text-xs text-neutral-500">
       * indicates a required field

@@ -1,11 +1,12 @@
 <script setup>
-defineProps({ fields: Array });
+defineProps({ fields: Array, editable: Boolean });
 </script>
 
 <template>
   <div
     v-for="(field, fieldIndex) in fields"
     :key="field._uid || `field-${fieldIndex}`"
+    v-editable="editable ? field : undefined"
   >
     <!-- Text / Email / Tel — floating label -->
     <template v-if="['text', 'email', 'tel'].includes(field.field_type)">
