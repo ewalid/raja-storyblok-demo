@@ -83,3 +83,4 @@ For the demo, it has to be possible for any language to be added to the internat
 ### Setting a real path for stories
 
 The main drawback of handling internationalization as described above is that field-level translation will not work when setting a real path for certain stories (e.g., `/` instead of `home`). When setting a real path, the language code is no longer part of the route, thus making it impossible to detect.
+# storyblok-demo-default-se
