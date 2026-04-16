@@ -26,6 +26,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    akeneo: {
+      baseUrl: process.env.AKENEO_BASE_URL,
+      clientId: process.env.AKENEO_CLIENT_ID,
+      clientSecret: process.env.AKENEO_CLIENT_SECRET,
+      username: process.env.AKENEO_USERNAME,
+      password: process.env.AKENEO_PASSWORD,
+    },
     public: {
       templateToken: process.env.STORYBLOK_TOKEN,
       customParent: process.env.STORYBLOK_CUSTOM_PARENT,
