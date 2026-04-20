@@ -7,36 +7,6 @@ const props = defineProps({
 
 const product = computed(() => props.product);
 
-/** Akeneo plugin text fields: string or `{ data, locale }[]`. */
-function akeneoText(attr) {
-  if (attr == null) {
-    return '';
-  }
-  if (typeof attr === 'string') {
-    return attr;
-  }
-  if (!Array.isArray(attr)) {
-    return '';
-  }
-  const row = attr.find(e => e?.data != null);
-  return row?.data != null ? String(row.data) : '';
-}
-
-function toTitleCase(text) {
-  if (!text) {
-    return '';
-  }
-  return text
-    .trim()
-    .split(/\s+/)
-    .map(word =>
-      word ? word.charAt(0).toLocaleUpperCase() + word.slice(1).toLocaleLowerCase() : '',
-    )
-    .join(' ');
-}
-
-const displayName = computed(() => toTitleCase(akeneoText(product.value?.name)));
-
 const priceLine = computed(() => {
   const row = product.value?.price?.[0]?.data?.[0];
   if (!row?.amount) {
@@ -67,14 +37,14 @@ const proxiedImageSrc = computed(() => {
       <img
         v-if="proxiedImageSrc"
         :src="proxiedImageSrc"
-        :alt="displayName || 'Product'"
+        :alt="product.name?.[0]?.data || 'Product'"
         class="size-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
       />
     </div>
 
     <div class="flex flex-col justify-between space-y-2 p-5">
       <h3 class="text-center text-lg font-semibold leading-snug text-gray-800">
-        {{ displayName || '—' }}
+        {{ product.name?.[0]?.data || '—' }}
       </h3>
 
       <span
