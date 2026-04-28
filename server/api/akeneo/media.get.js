@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const config = useRuntimeConfig();
+  console.log('Give me all the Runtime config: ', config);
   const baseUrl = String(config.akeneo?.baseUrl || '').replace(/\/$/, '');
   if (!baseUrl) {
     throw createError({ statusCode: 503, statusMessage: 'Akeneo is not configured' });
