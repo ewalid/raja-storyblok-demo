@@ -58,20 +58,20 @@ onMounted(() => {
 <template>
   <template v-if="showResults">
     <button
-      @click="showPopup = true"
       style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 0.5rem 1rem; background-color: #0070f3; color: white; border: none; border-radius: 4px; cursor: pointer;"
+      @click="showPopup = true"
     >
       Show Accessibility Report
     </button>
 
     <div
       v-if="showPopup"
-      @click="showPopup = false"
       style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.6); z-index: 10000; overflow-y: auto; padding: 2rem; color: white;"
+      @click="showPopup = false"
     >
       <div
-        @click.stop
         style="background-color: #222; border-radius: 8px; max-width: 600px; margin: 0 auto; padding: 1rem 2rem; color: white; box-shadow: 0 0 10px rgba(0,0,0,0.5);"
+        @click.stop
       >
         <h2>Accessibility Checker</h2>
         <div v-if="isLoading">
@@ -91,8 +91,8 @@ onMounted(() => {
           <p v-else>✅ All accessibility checks passed!</p>
         </div>
         <button
-          @click="showPopup = false"
           style="margin-top: 1rem; padding: 0.5rem 1rem; background-color: #0070f3; color: white; border: none; border-radius: 4px; cursor: pointer;"
+          @click="showPopup = false"
         >
           Close
         </button>
