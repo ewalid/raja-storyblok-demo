@@ -14,3 +14,5 @@ localhost.pem
 .vscode
 install-key.pem
 install.pem
+.storyblok/
+.mcp.json

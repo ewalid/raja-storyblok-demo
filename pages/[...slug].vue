@@ -134,7 +134,7 @@ if (story.value?.content?.component === 'article-page') {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: story.value?.content?.headline,
+    'headline': story.value?.content?.headline,
   };
 
   if (story.value?.content?.image?.filename) {
@@ -155,7 +155,7 @@ if (story.value?.content?.component === 'article-page') {
 
   if (story.value?.content?.categories?.length) {
     articleSchema.articleSection = story.value.content.categories
-      .map((cat) => cat.content?.name || cat.name)
+      .map(cat => cat.content?.name || cat.name)
       .filter(Boolean);
   }
 
