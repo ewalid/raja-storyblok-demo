@@ -8,11 +8,14 @@ if (slug) {
   language = await getLanguage(slug);
 }
 
+const sectionRoot = await getSectionRoot();
+const articlesPath = sectionRoot ? `${sectionRoot}/articles` : 'articles';
+
 const articles = ref(null);
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get(`cdn/stories/`, {
   version: getVersion(),
-  starts_with: 'articles',
+  starts_with: articlesPath,
   filter_query: {
     categories: {
       in_array: props.uuid,
