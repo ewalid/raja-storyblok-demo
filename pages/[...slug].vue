@@ -10,6 +10,7 @@ const resolveRelations = [
   'article-page.author',
   'article-page.call_to_action',
   'testimonials-section.testimonials',
+  'form-reference.forms',
 ];
 const story = ref(null);
 const storyblokApi = useStoryblokApi();
