@@ -8,6 +8,10 @@ if (slug) {
   language = await getLanguage(slug);
 }
 
+const sectionRoot = await getSectionRoot();
+const articlesPath = sectionRoot ? `${sectionRoot}/articles` : 'articles';
+const categoriesPath = sectionRoot ? `${sectionRoot}/categories` : 'categories';
+
 const searchTerm = ref('');
 const checkedCategory = ref('');
 
@@ -34,7 +38,7 @@ const fetchArticles = async () => {
   articles.value = null;
   const { data } = await storyblokApi.get('cdn/stories/', {
     version: getVersion(),
-    starts_with: 'articles',
+    starts_with: articlesPath,
     language,
     fallback_lang: 'default',
     search_term: searchTerm.value,
@@ -52,7 +56,7 @@ const categories = ref(null);
 const getCategories = async () => {
   const { data } = await storyblokApi.get('cdn/stories/', {
     version: getVersion(),
-    starts_with: 'categories',
+    starts_with: categoriesPath,
   });
   categories.value = data.stories.filter(story => story.is_startpage !== true);
 };

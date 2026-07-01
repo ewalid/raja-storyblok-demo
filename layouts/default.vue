@@ -142,6 +142,20 @@ useHead(headConfig);
 const mobileNavOpen = ref(false);
 
 const route = useRoute();
+const currentSection = computed(() =>
+  route.params.slug?.[0] || route.query.path?.split('/')[0] || '',
+);
+
+/**
+ * The layout persists across client-side navigation, so re-resolve the
+ * site-config (theme + nav) whenever the top-level section changes. Reuses
+ * getSiteConfig so the nearest-ancestor walk, language, and release handling
+ * stay identical to the initial load.
+ */
+watch(currentSection, async () => {
+  siteConfig.value = (await getSiteConfig()).value;
+});
+
 watch(route, () => {
   mobileNavOpen.value = false;
 });

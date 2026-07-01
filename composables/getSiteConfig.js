@@ -1,12 +1,23 @@
 export default async function () {
+  const route = useRoute();
+
+  /**
+   * Resolution depends entirely on the route and its query (path, language,
+   * version, release), so cache the resolved config per route. This dedupes the
+   * lookup across the layout, the page components, and the section watcher
+   * within a single navigation, so the folder walk below runs at most once.
+   */
+  const cacheKey = `siteConfig:${route.fullPath}`;
+  const cached = useState(cacheKey, () => undefined);
+  if (cached.value !== undefined) {
+    return ref(cached.value);
+  }
+
   const slug = await getSlug();
-  // const processedSlug = await getProcessedSlug();
   const language = await getLanguage(slug);
-  const folderPathTest = await getFolderPath();
+  const folderPath = await getFolderPath();
   const releaseId = await getReleaseId();
-  const siteConfig = ref();
   const storyblokApi = useStoryblokApi();
-  const nestedSiteConfig = ref(false);
   const apiParams = {
     version: getVersion(),
     language,
@@ -14,29 +25,57 @@ export default async function () {
     from_release: releaseId,
   };
 
-  if (folderPathTest) {
+  const resolve = (story) => {
+    cached.value = story;
+    return ref(story);
+  };
+
+  /**
+   * Walk up the folder path, trying each level for a site-config, so a story
+   * inherits the nearest ancestor config. Each miss is an expected 404.
+   */
+  if (folderPath) {
+    const segments = folderPath.split('/');
+    for (let i = segments.length; i > 0; i--) {
+      const tryPath = segments.slice(0, i).join('/');
+      try {
+        const { data } = await storyblokApi.get(
+          `cdn/stories/${tryPath}/site-config`,
+          apiParams,
+        );
+        return resolve(data.story);
+      }
+      catch {
+        // Not found at this level, try the parent.
+      }
+    }
+  }
+
+  /**
+   * Startpages (e.g. /uk): folderPath is empty but the slug itself is the
+   * folder that may hold a site-config.
+   */
+  const processedSlug = await getProcessedSlug();
+  if (processedSlug && processedSlug !== 'home') {
     try {
-      // Check whether there is a site-config in the current folder
       const { data } = await storyblokApi.get(
-        `cdn/stories/${folderPathTest}/site-config`,
+        `cdn/stories/${processedSlug}/site-config`,
         apiParams,
       );
-      siteConfig.value = data.story;
-      nestedSiteConfig.value = true;
+      return resolve(data.story);
     }
     catch {
-      nestedSiteConfig.value = false;
+      // Not a folder with its own config, fall through to the root.
     }
   }
 
-  if (!nestedSiteConfig.value) {
-    // Otherwise load the default site-config
-    const { data } = await storyblokApi.get(
-      'cdn/stories/site-config',
-      apiParams,
-    );
-    siteConfig.value = data.story;
+  // Final fallback: root site-config.
+  try {
+    const { data } = await storyblokApi.get('cdn/stories/site-config', apiParams);
+    return resolve(data.story);
   }
-
-  return siteConfig;
+  catch {
+    console.warn('No site-config found at any level');
+    return resolve(null);
+  }
 }
