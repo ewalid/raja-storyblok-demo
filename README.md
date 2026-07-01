@@ -68,7 +68,7 @@ The HTTPS configuration is set up in `nuxt.config.js` using the generated certif
 In your Storyblok space, go to `Settings` > `Visual Editor` and set `https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`. Replace `YOURSPACEPREVIEWTOKEN` with your Space Preview access token.
 Next go to `Settings` > `Maintenance Mode` and disable `Example Mode`. This will ensure that the preview URL you just set can be used in the visual editor.
 
-Finally, open your **Home** story and see the demo space running locally. Happy building!
+Finally, open your **Home** story and see the demo space running locally. Happy building!!
 
 ## Demo-Specific implementation notes
 
