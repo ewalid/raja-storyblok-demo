@@ -7,7 +7,8 @@
  *     page (edit once in `products/default` → appears on all product pages).
  *   - `specificBloks` — the current hero story's `bloks_below`, per-product.
  *
- * The "Add to cart" button is intentionally decorative (display-only demo).
+ * "Add to cart" is functional only when the cart is enabled in site-config
+ * (`enable_cart`); otherwise the button stays decorative (catalog mode).
  */
 const props = defineProps({
   blok: Object,
@@ -27,6 +28,22 @@ catch (error) {
   console.log(error);
   pending.value = false;
 }
+
+const siteConfig = await getSiteConfig();
+const cartEnabled = computed(() => !!siteConfig.value?.content?.enable_cart);
+
+const { addToCart } = useCart();
+const justAdded = ref(false);
+const onAddToCart = () => {
+  if (!cartEnabled.value || !product.value?.variantId) {
+    return;
+  }
+  addToCart(product.value.variantId);
+  justAdded.value = true;
+  setTimeout(() => {
+    justAdded.value = false;
+  }, 2500);
+};
 </script>
 
 <template>
@@ -72,8 +89,9 @@ catch (error) {
         <button
           type="button"
           class="focus-ring mt-8 inline-flex w-full cursor-pointer items-center justify-center rounded-md border-2 border-primary-dark bg-primary-dark px-8 py-3 font-semibold tracking-wider text-white transition-all duration-300 hover:scale-105 sm:w-auto"
+          @click="onAddToCart"
         >
-          Add to cart
+          {{ justAdded ? 'Added to cart ✓' : 'Add to cart' }}
         </button>
       </div>
     </div>

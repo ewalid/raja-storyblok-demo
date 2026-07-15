@@ -4,6 +4,7 @@ defineProps({
   nav: Object,
   buttons: Object,
   light: Boolean,
+  enableCart: Boolean,
 });
 
 defineEmits(['toggleMobileNav']);
@@ -62,6 +63,11 @@ onMounted(() => {
           </li>
         </ul>
       </nav>
+      <!-- Cart lives in the header on desktop; it moves into the mobile drawer
+           below lg. Kept mounted (hidden) so cart state initialises once. -->
+      <div v-if="enableCart" class="ml-6 hidden h-full lg:block">
+        <EcommerceHeaderCart :light="light" />
+      </div>
       <MobileNavToggle
         :color="light ? 'bg-primary-dark' : 'bg-primary-background'"
         @click="$emit('toggleMobileNav')"

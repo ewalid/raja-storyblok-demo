@@ -2,6 +2,7 @@
 defineProps({
   mobileNav: Object,
   mobileNavOpen: Boolean,
+  enableCart: Boolean,
 });
 </script>
 
@@ -19,6 +20,12 @@ defineProps({
           <NavItem :item="item" />
         </li>
       </ul>
+      <div v-if="enableCart" class="border-primary-dark/20 mt-8 border-t pt-6">
+        <h2 class="mb-4 font-display text-2xl font-black">
+          Cart
+        </h2>
+        <EcommerceCartPanel />
+      </div>
     </nav>
   </Transition>
 </template>
