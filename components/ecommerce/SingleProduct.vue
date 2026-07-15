@@ -1,13 +1,20 @@
 <script setup>
 /**
- * Single-product detail view. Renders both `product-page-hero` and
- * `product-page-default` stories: the Shopify product is resolved from the URL
- * handle (`productSlug`), while the story supplies optional editorial wrapper
- * content (`bloks_above` / `bloks_below`, `headline`, `description`).
+ * Single-product detail view for both `product-page-hero` and
+ * `product-page-default`. The Shopify product is resolved from the URL handle
+ * (`productSlug`). Blocks come from two sources:
+ *   - `sharedBloks` — the default template's `body`, shown on EVERY product
+ *     page (edit once in `products/default` → appears on all product pages).
+ *   - `specificBloks` — the current hero story's `bloks_below`, per-product.
  *
  * The "Add to cart" button is intentionally decorative (display-only demo).
  */
-const props = defineProps({ blok: Object, productSlug: String });
+const props = defineProps({
+  blok: Object,
+  productSlug: String,
+  sharedBloks: { type: Array, default: () => [] },
+  specificBloks: { type: Array, default: () => [] },
+});
 
 const product = ref(null);
 const pending = ref(true);
@@ -23,11 +30,6 @@ catch (error) {
 </script>
 
 <template>
-  <StoryblokComponent
-    v-for="nestedBlok in blok.bloks_above || []"
-    :key="nestedBlok._uid"
-    :blok="nestedBlok"
-  />
   <section
     v-editable="blok"
     class="page-section single-product bg-primary-background"
@@ -46,16 +48,7 @@ catch (error) {
         />
       </div>
       <div class="text-left">
-        <h2
-          v-if="blok.headline"
-          class="mb-3 font-display text-3xl font-black text-primary-dark sm:text-4xl md:mb-6 lg:text-5xl"
-        >
-          {{ blok.headline }}
-        </h2>
-        <div v-if="blok.description" class="prose prose-lg mb-6">
-          <StoryblokRichText :doc="blok.description" />
-        </div>
-        <div class="mt-8">
+        <div>
           <h1 class="mb-3 font-display text-2xl font-black text-primary-dark sm:text-3xl">
             {{ product.title }}
           </h1>
@@ -90,8 +83,15 @@ catch (error) {
       </h1>
     </div>
   </section>
+  <!-- Per-product blocks (from this product's hero story). -->
   <StoryblokComponent
-    v-for="nestedBlok in blok.bloks_below || []"
+    v-for="nestedBlok in specificBloks"
+    :key="nestedBlok._uid"
+    :blok="nestedBlok"
+  />
+  <!-- Shared blocks from the default template — rendered on every product page. -->
+  <StoryblokComponent
+    v-for="nestedBlok in sharedBloks"
     :key="nestedBlok._uid"
     :blok="nestedBlok"
   />
