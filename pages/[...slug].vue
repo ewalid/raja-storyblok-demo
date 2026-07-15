@@ -26,13 +26,28 @@ const apiParams = {
 
 const { customParent } = useRuntimeConfig().public;
 
+/**
+ * Single-product routing: `/products/<handle>` renders a Shopify product via
+ * <EcommerceSingleProduct> instead of a normal story. The backing "hero" story
+ * (`products/<handle>`) is optional — getHero falls back to `products/default`,
+ * and if neither exists the product still renders from Shopify alone.
+ */
+const viewingSingleProduct = await isSingleProduct();
+const productSlug = viewingSingleProduct ? await getSingleProductSlug() : '';
+
 try {
   try {
-    const { data } = await storyblokApi.get(
-      `cdn/stories/${processedSlug}`,
-      apiParams,
-    );
-    story.value = data.story;
+    if (viewingSingleProduct) {
+      const heroData = await getHero(productSlug, 'default', 'products', apiParams);
+      story.value = heroData ? heroData.story : { content: {} };
+    }
+    else {
+      const { data } = await storyblokApi.get(
+        `cdn/stories/${processedSlug}`,
+        apiParams,
+      );
+      story.value = data.story;
+    }
   }
   catch (error) {
     if (error.status === 404) {
@@ -55,7 +70,7 @@ catch (error) {
 }
 
 const viewingSiteConfig = ref(
-  story.value.content.component === 'site-config',
+  story.value?.content?.component === 'site-config',
 );
 const _viewingSiteConfigState = useState(
   'viewingSiteConfig',
@@ -63,13 +78,22 @@ const _viewingSiteConfigState = useState(
 );
 
 useHead({
-  title: story.value.content.meta_title ?? 'Brand New Day',
+  title: story.value?.content?.meta_title ?? 'Brand New Day',
   meta: [
-    { name: 'description', content: story.value.content.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
+    { name: 'description', content: story.value?.content?.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
   ],
 });
 </script>
 
 <template>
-  <StoryblokComponent v-if="story && !viewingSiteConfig" :blok="story.content" :uuid="story.uuid" />
+  <StoryblokComponent
+    v-if="story && !viewingSiteConfig && !viewingSingleProduct"
+    :blok="story.content"
+    :uuid="story.uuid"
+  />
+  <EcommerceSingleProduct
+    v-else-if="story && viewingSingleProduct"
+    :blok="story.content"
+    :product-slug="productSlug"
+  />
 </template>

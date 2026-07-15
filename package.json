@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axe-core": "^4.11.1",
+    "shopify-buy": "^2.22.0",
     "vwo-fme-node-sdk": "^1.28.0"
   },
   "devDependencies": {
