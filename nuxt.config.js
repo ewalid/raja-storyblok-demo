@@ -17,6 +17,10 @@ export default defineNuxtConfig({
   ssr: false,
   css: ['@/assets/css/fonts.css'],
 
+  imports: {
+    dirs: ['composables/ecommerce'],
+  },
+
   app: {
     head: {
       link: [
@@ -36,6 +40,8 @@ export default defineNuxtConfig({
     public: {
       templateToken: process.env.STORYBLOK_TOKEN,
       customParent: process.env.STORYBLOK_CUSTOM_PARENT,
+      shopifyDomain: process.env.SHOPIFY_DOMAIN,
+      shopifyToken: process.env.SHOPIFY_TOKEN,
     },
   },
 

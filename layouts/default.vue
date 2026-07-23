@@ -168,9 +168,14 @@ watch(route, () => {
       :nav="siteConfig.content.header_nav"
       :buttons="siteConfig.content.header_buttons"
       :light="siteConfig.content.header_light"
+      :enable-cart="siteConfig.content.enable_cart"
       @toggle-mobile-nav="mobileNavOpen = !mobileNavOpen"
     />
-    <MobileNav :mobile-nav="siteConfig.content.header_nav" :mobile-nav-open="mobileNavOpen" />
+    <MobileNav
+      :mobile-nav="siteConfig.content.header_nav"
+      :mobile-nav-open="mobileNavOpen"
+      :enable-cart="siteConfig.content.enable_cart"
+    />
     <div
       v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"

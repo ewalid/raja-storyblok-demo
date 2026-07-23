@@ -26,13 +26,52 @@ const apiParams = {
 
 const { customParent } = useRuntimeConfig().public;
 
+/**
+ * Single-product routing: `/products/<handle>` renders a Shopify product via
+ * <EcommerceSingleProduct> instead of a normal story. Blocks come from two
+ * places:
+ *   - the `products/default` template's `body` → shared blocks shown on EVERY
+ *     product page (auto-generated and per-product alike);
+ *   - the per-product `products/<handle>` hero story's `bloks_below`.
+ * The hero story is optional; any Shopify handle still renders via `default`.
+ * Opening `products/default` itself in the editor (rawSlug === 'default')
+ * previews a representative product while editing the shared template.
+ */
+const viewingSingleProduct = await isSingleProduct();
+const rawSlug = viewingSingleProduct
+  ? (await getSlug()).filter(Boolean).slice(-1)[0]
+  : '';
+const editingDefaultTemplate = rawSlug === 'default';
+const productSlug = viewingSingleProduct ? await getSingleProductSlug() : '';
+const sharedBloks = ref([]);
+const specificBloks = ref([]);
+
 try {
   try {
-    const { data } = await storyblokApi.get(
-      `cdn/stories/${processedSlug}`,
-      apiParams,
-    );
-    story.value = data.story;
+    if (viewingSingleProduct) {
+      const [heroData, defaultData] = await Promise.all([
+        editingDefaultTemplate
+          ? Promise.resolve(false)
+          : getStory(`products/${productSlug}`, apiParams),
+        getStory('products/default', apiParams),
+      ]);
+      const heroStory = heroData ? heroData.story : null;
+      const defaultStory = defaultData ? defaultData.story : null;
+
+      sharedBloks.value = defaultStory?.content?.body ?? [];
+      specificBloks.value = heroStory?.content?.bloks_below ?? [];
+      // Bridge to whichever story is actually being edited.
+      story.value
+        = (editingDefaultTemplate ? defaultStory : heroStory ?? defaultStory)
+          ?? { content: {} };
+    }
+    else {
+      const { data } = await storyblokApi.get(
+        `cdn/stories/${processedSlug}`,
+        apiParams,
+      );
+      story.value = data.story;
+    }
   }
   catch (error) {
     if (error.status === 404) {
@@ -42,12 +81,26 @@ try {
   }
 
   onMounted(() => {
-    useStoryblokBridge(story.value?.id, evStory => (story.value = evStory), {
-      preventClicks: true,
-      resolveRelations,
-      customParent,
-
-    });
+    useStoryblokBridge(
+      story.value?.id,
+      (evStory) => {
+        story.value = evStory;
+        // Keep the rendered blocks in sync with live Visual Editor edits.
+        if (viewingSingleProduct) {
+          if (editingDefaultTemplate) {
+            sharedBloks.value = evStory.content?.body ?? [];
+          }
+          else {
+            specificBloks.value = evStory.content?.bloks_below ?? [];
+          }
+        }
+      },
+      {
+        preventClicks: true,
+        resolveRelations,
+        customParent,
+      },
+    );
   });
 }
 catch (error) {
@@ -55,7 +108,7 @@ catch (error) {
 }
 
 const viewingSiteConfig = ref(
-  story.value.content.component === 'site-config',
+  story.value?.content?.component === 'site-config',
 );
 const _viewingSiteConfigState = useState(
   'viewingSiteConfig',
@@ -63,13 +116,24 @@ const _viewingSiteConfigState = useState(
 );
 
 useHead({
-  title: story.value.content.meta_title ?? 'Brand New Day',
+  title: story.value?.content?.meta_title ?? 'Brand New Day',
   meta: [
-    { name: 'description', content: story.value.content.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
+    { name: 'description', content: story.value?.content?.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
   ],
 });
 </script>
 
 <template>
-  <StoryblokComponent v-if="story && !viewingSiteConfig" :blok="story.content" :uuid="story.uuid" />
+  <StoryblokComponent
+    v-if="story && !viewingSiteConfig && !viewingSingleProduct"
+    :blok="story.content"
+    :uuid="story.uuid"
+  />
+  <EcommerceSingleProduct
+    v-else-if="viewingSingleProduct"
+    :blok="story?.content || {}"
+    :product-slug="productSlug"
+    :shared-bloks="sharedBloks"
+    :specific-bloks="specificBloks"
+  />
 </template>
