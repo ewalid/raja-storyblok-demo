@@ -6,6 +6,8 @@
  */
 const props = defineProps({ blok: Object });
 
+const { urlPath } = await getProductsPath();
+
 const productId = computed(() => props.blok?.product?.items?.[0]?.id);
 const product = ref(null);
 const pending = ref(true);
@@ -30,7 +32,9 @@ const shopNowButton = computed(() => ({
   link: {
     linktype: 'story',
     url: '',
-    story: { full_slug: product.value ? `products/${product.value.slug}` : '' },
+    story: {
+      full_slug: product.value ? `${urlPath}/${product.value.slug}` : '',
+    },
   },
 }));
 </script>

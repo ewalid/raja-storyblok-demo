@@ -1,10 +1,13 @@
 <script setup>
 /**
  * Product preview card. Takes a Shopify product ID, hydrates live catalog data
- * (title / image / price) and links to the product detail page at
- * `/products/<handle>`.
+ * (title / image / price) and links to the product detail page inside the
+ * current section's products folder (`/products/<handle>` at the root,
+ * `/uk/products/<handle>` in a market folder).
  */
 const props = defineProps({ productId: String, sectionBgColor: String });
+
+const { urlPath } = await getProductsPath();
 
 const product = ref(null);
 const pending = ref(true);
@@ -27,7 +30,7 @@ const darkBg = computed(() => props.sectionBgColor === 'primary-dark');
   <EcommerceLoadingSpinner v-if="pending && !product" />
   <NuxtLink
     v-else-if="product"
-    :to="`/products/${product.slug}`"
+    :to="`/${urlPath}/${product.slug}`"
     class="group flex size-full max-w-md flex-col overflow-hidden rounded-lg transition-all duration-300"
   >
     <div class="aspect-square w-full overflow-hidden">
