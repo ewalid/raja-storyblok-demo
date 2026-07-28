@@ -27,15 +27,20 @@ const apiParams = {
 const { customParent } = useRuntimeConfig().public;
 
 /**
- * Single-product routing: `/products/<handle>` renders a Shopify product via
- * <EcommerceSingleProduct> instead of a normal story. Blocks come from two
+ * Single-product routing: `<products folder>/<handle>` renders a Shopify product
+ * via <EcommerceSingleProduct> instead of a normal story. Blocks come from two
  * places:
- *   - the `products/default` template's `body` → shared blocks shown on EVERY
- *     product page (auto-generated and per-product alike);
- *   - the per-product `products/<handle>` hero story's `bloks_below`.
+ *   - the `<products folder>/default` template's `body` → shared blocks shown on
+ *     EVERY product page (auto-generated and per-product alike);
+ *   - the per-product `<products folder>/<handle>` hero story's `bloks_below`.
  * The hero story is optional; any Shopify handle still renders via `default`.
- * Opening `products/default` itself in the editor (rawSlug === 'default')
- * previews a representative product while editing the shared template.
+ * Opening `<products folder>/default` itself in the editor (rawSlug ===
+ * 'default') previews a representative product while editing the shared
+ * template.
+ *
+ * The products folder is resolved from the route rather than assumed to sit at
+ * the root, so a market/language folder structure (`uk/products/<handle>`,
+ * `us/products/<handle>`) resolves its own template and hero stories.
  */
 const viewingSingleProduct = await isSingleProduct();
 const rawSlug = viewingSingleProduct
@@ -43,6 +48,9 @@ const rawSlug = viewingSingleProduct
   : '';
 const editingDefaultTemplate = rawSlug === 'default';
 const productSlug = viewingSingleProduct ? await getSingleProductSlug() : '';
+const productsPath = viewingSingleProduct
+  ? (await getProductsPath()).storyPath
+  : '';
 const sharedBloks = ref([]);
 const specificBloks = ref([]);
 
@@ -52,8 +60,8 @@ try {
       const [heroData, defaultData] = await Promise.all([
         editingDefaultTemplate
           ? Promise.resolve(false)
-          : getStory(`products/${productSlug}`, apiParams),
-        getStory('products/default', apiParams),
+          : getStory(`${productsPath}/${productSlug}`, apiParams),
+        getStory(`${productsPath}/default`, apiParams),
       ]);
       const heroStory = heroData ? heroData.story : null;
       const defaultStory = defaultData ? defaultData.story : null;
