@@ -6,9 +6,23 @@ This frontend is used when you [create a new demo space (for **Solution Engineer
 
 Feel free to explore and reuse the code, but please be aware of the [demo-specific implementation practices](#demo-specific-implementation-notes), which deviate from the most common implementation practices.
 
-## Showcasing a Demo
+## How to create a Demo instance for SEs
 
-You can easily showcase a demo by creating a new space at this URL: <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo> and selecting the `Solutions Demo Environment`.
+1. Go to <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>
+
+2. Under **Choose your demo theme**, select **Solutions Theme** (`Solutions Demo Environment`).
+
+3. Fill in the **Space name**, for example `My Demo`.
+
+4. For **Do you want to assign the space to your organization?** choose **Yes (visible to everyone in the organization)**, so colleagues can open and reuse the space. Pick **No** only if you deliberately want it private to you.
+
+5. Click **Explore Demo Space**.
+
+The filled-in form looks like this:
+
+![Creating a new Solutions demo space in Storyblok](docs/create-demo-space.png)
+
+The space is created with demo content already in place and pointing at the deployed frontend, so there is nothing else to configure.
 
 > If you want to customize the Preview URL you can use: `https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=`. You can replace `YOURSPACEPREVIEWACCESSTOKEN` with your Preview access token.
 
@@ -61,7 +75,7 @@ To run the development server with HTTPS (required for Storyblok Visual Editor):
    npm run devs
    ```
 
-The HTTPS configuration is set up in `nuxt.config.js` using the generated certificate files. The server will be available at `https://localhost:3000`.
+The HTTPS configuration is set up in `nuxt.config.ts` using the generated certificate files. The server will be available at `https://localhost:3000`.
 
 > Note: if you want to use Bun or some other runtime/packagemanager you can replace `npm` with the proper command, for example `bun install` and `bun run devs`
 
@@ -74,11 +88,11 @@ Finally, open your **Home** story and see the demo space running locally. Happy 
 
 ### Access token and path via URL parameters
 
-We needed one deployed environment that could be used to display a large number of demo spaces that are generated on the fly. Therefore, the access tokens of these spaces are passed via URL parameters. In a more typical scenario, you would probably want to manage the access token as an environment variable. See the note in `nuxt.config.js` and delete `plugins/storyblok.js` to remove the extra functionality for tokens as URL parameters altogether.
+We needed one deployed environment that could be used to display a large number of demo spaces that are generated on the fly. Therefore, the access tokens of these spaces are passed via URL parameters. In a more typical scenario, you would probably want to manage the access token as an environment variable. See the note in `nuxt.config.ts` and delete `app/plugins/storyblok.js` to remove the extra functionality for tokens as URL parameters altogether.
 
 ### Internationalization and language detection
 
-For the demo, it has to be possible for any language to be added to the internationalization settings in Storyblok and detected automatically on the front end. All currently active language codes are retrieved from the Storyblok space to ensure this. When fetching a particular story based on the current route, it is checked whether any of the currently active language codes matches the first part of the route. For example, if the current route was `https://localhost:3000/de/home` and German had been added as a language, `de` would get added as the language parameter in the API request for the home story. You can look at the [getLanguage composable](composables/getLanguage.js) to see how it works. In a real-world project, you would usually know which languages are used on the website, allowing you to choose a simpler approach.
+For the demo, it has to be possible for any language to be added to the internationalization settings in Storyblok and detected automatically on the front end. All currently active language codes are retrieved from the Storyblok space to ensure this. When fetching a particular story based on the current route, it is checked whether any of the currently active language codes matches the first part of the route. For example, if the current route was `https://localhost:3000/de/home` and German had been added as a language, `de` would get added as the language parameter in the API request for the home story. You can look at the [getLanguage composable](app/composables/getLanguage.js) to see how it works. In a real-world project, you would usually know which languages are used on the website, allowing you to choose a simpler approach.
 
 ### Setting a real path for stories
 
