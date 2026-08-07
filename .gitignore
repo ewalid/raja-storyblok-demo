@@ -1,5 +1,8 @@
 node_modules
 *.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 .nuxt
 .nitro
 .cache

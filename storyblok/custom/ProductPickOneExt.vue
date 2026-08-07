@@ -9,7 +9,7 @@ const pending = ref(true);
 async function fetchDatasourceEntries() {
   let accessToken = '';
   let version = 'draft';
-  const startsWith = 'default/';
+  let startsWith = 'default/';
 
   try {
     const apiParams = {

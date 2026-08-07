@@ -1,4 +1,8 @@
 export default defineNuxtConfig({
+  // Pins behaviour of Nitro presets and modules that can change without a major
+  // version bump. Lower this date if a future dependency update misbehaves.
+  compatibilityDate: '2026-08-07',
+
   modules: [
     [
       '@storyblok/nuxt',
