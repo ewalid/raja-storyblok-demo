@@ -14,7 +14,7 @@ Feel free to explore and reuse the code, but please be aware of the [demo-specif
 
 3. Fill in the **Space name**, for example `My Demo`.
 
-4. For **Do you want to assign the space to your organization?** choose **Yes (visible to everyone in the organization)**, so colleagues can open and reuse the space. Pick **No** only if you deliberately want it private to you.
+4. For **Do you want to assign the space to your organization?** choose **Yes (visible to everyone in the organization)**. This is the important one: it puts the space in the Storyblok demo Organization, which is on the **Elite plan**, so the space gets all Elite features. It also means colleagues can open and reuse it. Picking **No** creates a private space outside that organization, without the Elite plan.
 
 5. Click **Explore Demo Space**.
 
