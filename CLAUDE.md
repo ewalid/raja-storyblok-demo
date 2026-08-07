@@ -107,15 +107,35 @@ find node_modules -path "*/@storyblok/vue/package.json"
   the rules hit, so it has been left alone deliberately.
 - Eleven class names in components generate no CSS at all. See `TODO.md`.
 
+## Package manager and Node
+
+**`package-lock.json` is the single committed lockfile.** The team is mixed
+npm/bun, and Netlify's lockfile detection does not recognise bun's text-format
+`bun.lock` (it looks for the older binary `bun.lockb`). npm is the common
+denominator for both colleagues and CI.
+
+Using bun locally is fine, but `bun.lock` is gitignored: never commit it. If you
+change dependencies, regenerate the npm lockfile and verify it before pushing:
+
+```bash
+npm install          # updates package-lock.json
+npm ci               # must succeed; this is what Netlify runs
+```
+
+`npm ci` fails loudly when `package.json` and `package-lock.json` disagree,
+which is the drift that previously left this repo running Nuxt 3 while
+`package.json` asked for Nuxt 4.
+
+Node is pinned by `.nvmrc` (22.19.0) and declared in `engines`. Nuxt 4.5 needs
+Node >= 22.19 and Vite 8 needs >= 22.12, so older images fail to build.
+
 ## Commands
 
 ```bash
-bun install
-bun run dev          # http://localhost:3000
-bun run devs         # HTTPS, needs localhost*.pem
-bun run build
-bun run generate
-bun run lint
+npm install
+npm run dev          # http://localhost:3000
+npm run devs         # HTTPS, needs localhost*.pem
+npm run build
+npm run generate
+npm run lint
 ```
-
-Only `bun.lock` is committed.

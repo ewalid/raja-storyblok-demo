@@ -1,6 +1,10 @@
 node_modules
 *.log*
-package-lock.json
+# package-lock.json is the single committed lockfile: the team is mixed npm/bun
+# and Netlify's lockfile detection does not recognise bun's text-format
+# bun.lock. Use bun locally if you like, just never commit its lockfile.
+bun.lock
+bun.lockb
 yarn.lock
 pnpm-lock.yaml
 .nuxt

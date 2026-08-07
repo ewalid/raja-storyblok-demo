@@ -138,10 +138,10 @@ currently costs two workarounds in `tailwind.css`:
 
 ## 7. Fix the pre-commit tooling
 
-**The hook prefers npm over bun.** `.husky/pre-commit` tests `command -v npm`
-first, so it always takes the npm branch. It works today only because both read
-the same `node_modules`, and `package-lock.json` is now deleted and gitignored.
-Swap the two branches so it matches the project's package manager.
+**The hook's npm/bun branching is now redundant.** `.husky/pre-commit` tests
+`command -v npm` first and falls back to bun. Since `package-lock.json` is the
+committed lockfile and npm is the common denominator, the bun branch can simply
+go, leaving `npm run lint`.
 
 **`lint-staged` is installed but never runs.** It is in `devDependencies` with
 no config anywhere, and the hook does not call it. As a result every commit
@@ -174,8 +174,10 @@ linting everything on purpose.
       preset was built.
 - [ ] `main`'s committed `bun.lock` was stale: it pinned `nuxt@3.17.7` while
       `package.json` asked for `^4.2.0`, so `bun install` silently upgraded and
-      rewrote the lockfile. Worth checking that CI installs from a lockfile that
-      matches `package.json`.
+      rewrote the lockfile. This branch switches to a single committed
+      `package-lock.json` and `npm ci` now passes, which fails loudly on drift
+      instead of self-healing. Consider adding `npm ci` to CI so it stays that
+      way.
 - [ ] Optional: adopt TypeScript. Source files are `.js`, so Nuxt 4's split
       tsconfigs and `noUncheckedIndexedAccess` currently buy nothing.
 
