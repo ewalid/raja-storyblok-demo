@@ -30,6 +30,8 @@ defineProps({ blok: Object, index: Number });
 </template>
 
 <style scroped>
+@reference "~/assets/css/tailwind.css";
+
 details::after {
   content: '';
   @apply absolute top-0 right-0 inline-block w-8 h-8 bg-no-repeat bg-contain;

@@ -36,6 +36,8 @@ watch(route, () => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/tailwind.css";
+
 button.active .bar1 {
   @apply translate-y-[3px] rotate-45;
 }

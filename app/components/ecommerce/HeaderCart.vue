@@ -86,6 +86,8 @@ watchEffect(() => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/tailwind.css";
+
 .fade-enter-active,
 .fade-leave-active {
   @apply transition-all duration-300;

@@ -77,8 +77,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+@reference "~/assets/css/tailwind.css";
+
 header:not(.bg-primary-dark) {
-  @apply bg-[--nav-background-color];
+  @apply bg-(--nav-background-color);
 }
 header.scroll:not(.bg-primary-dark) {
   @apply bg-white;

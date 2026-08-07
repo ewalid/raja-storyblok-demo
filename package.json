@@ -17,19 +17,20 @@
     "vwo-fme-node-sdk": "^1.61.0"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.14.0",
     "@storyblok/eslint-config": "^0.4.2",
     "@storyblok/nuxt": "^11.1.3",
     "@storyblok/richtext": "5.2.0",
     "@storyblok/vue": "11.2.2",
-    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4",
     "clone-deep": "^4.0.1",
     "eslint": "^9.39.5",
-    "eslint-plugin-tailwindcss": "^3.18.2",
+    "eslint-plugin-tailwindcss": "^4",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "nuxt": "^4.5.2",
     "swiper": "^11.2.10",
+    "tailwindcss": "^4",
     "vite-plugin-mkcert": "^1.17.12"
   }
 }

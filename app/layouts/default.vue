@@ -180,7 +180,7 @@ watch(route, () => {
       v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
       class="container py-12"
     >
-      <h2 class="mb-8 text-4xl font-black text-[--headline-color]">Color Preview</h2>
+      <h2 class="mb-8 text-4xl font-black text-(--headline-color)">Color Preview</h2>
       <div
         class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
@@ -206,7 +206,7 @@ watch(route, () => {
       v-if="viewingSiteConfig && siteConfig.content.use_custom_fonts"
       class="container py-12 text-primary-dark"
     >
-      <h2 class="mb-4 text-4xl font-black text-[--headline-color]">Typography Preview</h2>
+      <h2 class="mb-4 text-4xl font-black text-(--headline-color)">Typography Preview</h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -240,6 +240,8 @@ watch(route, () => {
 </template>
 
 <style>
+@reference "~/assets/css/tailwind.css";
+
 :root {
   --nav-background-color: #ffffff;
 }
@@ -257,7 +259,8 @@ section.page-section.bg-primary-background + section.page-section.bg-primary-bac
   @apply pt-0;
 }
 section.page-section.contact-form-section:last-child {
-  @media not all and screen(lg) {
+  /* Tailwind 4 removed the screen() function; lg is 64rem. */
+  @media not all and (width >= 64rem) {
     @apply pb-0;
   }
 }

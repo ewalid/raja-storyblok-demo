@@ -30,6 +30,8 @@ const optimizedImage = computed(() =>
 </template>
 
 <style scoped>
+@reference "~/assets/css/tailwind.css";
+
 .article-card:nth-child(odd):nth-last-child(2),
 .article-card:last-child {
   @apply lg:border-none;

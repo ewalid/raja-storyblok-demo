@@ -1,3 +1,5 @@
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineNuxtConfig({
   // Pins behaviour of Nitro presets and modules that can change without a major
   // version bump. Lower this date if a future dependency update misbehaves.
@@ -15,19 +17,19 @@ export default defineNuxtConfig({
         usePlugin: false,
       },
     ],
-    [
-      '@nuxtjs/tailwindcss',
-      {
-        // The module resolves its default cssPath against rootDir, not srcDir,
-        // so with srcDir = app/ it silently falls back to a stock stylesheet
-        // and drops every @layer rule. Point it at the real file.
-        cssPath: '~/assets/css/tailwind.css',
-      },
-    ],
   ],
 
+  // Tailwind 4 ships as a Vite plugin. @nuxtjs/tailwindcss is not used: its
+  // stable line is pinned to Tailwind 3 and it resolves paths against rootDir
+  // rather than srcDir.
+  vite: {
+    plugins: [tailwindcss()],
+  },
+
   ssr: false,
-  css: ['@/assets/css/fonts.css'],
+
+  // tailwind.css must come first; the old module injected it ahead of the rest.
+  css: ['~/assets/css/tailwind.css', '@/assets/css/fonts.css'],
 
   imports: {
     dirs: ['composables/ecommerce'],
