@@ -1,6 +1,6 @@
 <script setup>
 import { computed, inject } from 'vue';
-import { getUserId } from '../utils/userContext.js';
+import { getUserId } from '~/utils/userContext.js';
 
 const props = defineProps({ blok: Object });
 const vwoClient = await inject('vwoClient');

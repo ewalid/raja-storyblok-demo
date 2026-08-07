@@ -1,5 +1,5 @@
 <script setup>
-import getGridClasses from '~~/composables/getGridClasses';
+import getGridClasses from '~/composables/getGridClasses';
 
 const props = defineProps({ blok: Object });
 

@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['storyblok/**/*.{vue,js}', 'pages/**/*.vue'],
+  content: ['app/storyblok/**/*.{vue,js}', 'app/pages/**/*.vue'],
   safelist: [
     'bg-primary-highlight',
     'bg-highlight-1',

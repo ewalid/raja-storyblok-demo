@@ -15,7 +15,15 @@ export default defineNuxtConfig({
         usePlugin: false,
       },
     ],
-    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/tailwindcss',
+      {
+        // The module resolves its default cssPath against rootDir, not srcDir,
+        // so with srcDir = app/ it silently falls back to a stock stylesheet
+        // and drops every @layer rule. Point it at the real file.
+        cssPath: '~/assets/css/tailwind.css',
+      },
+    ],
   ],
 
   ssr: false,
