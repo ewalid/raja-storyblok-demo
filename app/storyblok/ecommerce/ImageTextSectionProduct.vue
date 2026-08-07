@@ -59,7 +59,7 @@ const shopNowButton = computed(() => ({
           {{ blok.headline }}
         </h2>
         <div v-if="blok.text" class="prose prose-lg mb-6">
-          <StoryblokRichText :doc="blok.text" />
+          <StoryblokRichText :document="blok.text" />
         </div>
         <Button v-if="product" :button="shopNowButton" class="mt-4" />
       </div>

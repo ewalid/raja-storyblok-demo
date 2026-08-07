@@ -59,7 +59,7 @@ const selectedImage = ref(null);
 
       <!-- Description -->
       <div v-if="blok.description" class="prose prose-lg mb-6 text-justify text-xl text-gray-800">
-        <StoryblokRichText :doc="blok.description" />
+        <StoryblokRichText :document="blok.description" />
       </div>
 
       <!-- Price -->

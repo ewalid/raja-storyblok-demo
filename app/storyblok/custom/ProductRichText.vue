@@ -9,6 +9,6 @@ defineProps({
 
 <template>
   <div v-if="blok.text" v-editable="blok" class="prose prose-lg mb-6">
-    <StoryblokRichText :doc="blok.text" />
+    <StoryblokRichText :document="blok.text" />
   </div>
 </template>
