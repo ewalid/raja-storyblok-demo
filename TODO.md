@@ -204,6 +204,84 @@ linting everything on purpose.
 
 ---
 
+## 9. Architecture and maintainability
+
+Beyond the framework upgrade. Ranked by how much each reduces future risk, not
+by effort. Numbers below were measured on this branch.
+
+### 9.1 Add smoke tests for the block components — highest value
+
+```
+test files: 0     test script: none     block components: 57
+```
+
+Two regressions during this migration reached a human rather than CI: rich text
+rendering nothing after the `doc` → `document` rename, and `Button` losing its
+colour after the safelist removal. **Both passed build, lint and typecheck.**
+
+A test that mounts each block with fixture content and asserts it renders
+something non-empty would have caught both. Fixture data is one API call away
+from the Solutions Space Template. This converts every future upgrade from
+"manually click through 57 blocks" into one command.
+
+- [ ] Add `vitest` + `@nuxt/test-utils`
+- [ ] One parameterised test over `app/storyblok/**` using real story content
+- [ ] Assert rendered output is non-empty and console is clean
+
+### 9.2 Use Nuxt's data layer instead of hand-rolled fetching
+
+```
+useAsyncData: 0    useAsyncStoryblok: 0    useFetch: 1
+getSlug() resolved 8 times per render
+```
+
+`app/pages/[...slug].vue` calls `storyblokApi.get()` into a `ref` inside
+try/catch, which skips payload transfer, request dedup, caching and `refresh`.
+`@storyblok/nuxt` already ships `useAsyncStoryblok`, which wraps `useAsyncData`
+*and* the Visual Editor bridge — and it is currently unused.
+
+- [ ] Move the story fetch to `useAsyncStoryblok` / `useAsyncData`
+- [ ] Resolve the slug once per request instead of in each helper
+
+### 9.3 Real error handling
+
+```
+createError: 0    showError: 0    app/error.vue: absent
+```
+
+The 404 path depends on an `error-404` story existing in the space. When it does
+not, the failure is a blank page with no explanation — exactly what happened
+with a mismatched token, and what cost the most debugging time in this project.
+
+- [ ] `createError({ statusCode: 404 })` instead of the `error-404` story lookup
+- [ ] Add `app/error.vue`
+- [ ] Stop swallowing errors in `catch { console.log(error) }`
+
+### 9.4 Reconsider `ssr: false`
+
+This is a headless-CMS demo for content sites, served as a SPA, so crawlers
+receive an empty shell. The clearest evidence of the mismatch is in this repo:
+Article JSON-LD was added "for GEO optimization", and structured data in a SPA
+is largely inert.
+
+The SPA choice exists to support tokens passed via URL parameters, but a Nuxt
+server can read query parameters too. Worth deciding deliberately rather than
+inheriting.
+
+### 9.5 Type the CMS payload
+
+```
+blok: Object -> 57 components
+```
+
+Every component takes an untyped payload and reaches into it defensively, and
+inconsistently: `story.value.content.component` appears next to `?.` access of
+the same path. Storyblok can generate TypeScript types from the component
+schemas, which makes this close to free. Pairs with the TypeScript item in
+section 8.
+
+---
+
 ## Notes
 
 - `@theme inline` in `tailwind.css` is load-bearing: without `inline`, theme
