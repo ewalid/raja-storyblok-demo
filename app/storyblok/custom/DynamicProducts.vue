@@ -165,8 +165,8 @@ watch(
 <template>
   <section
     v-editable="blok"
-    class="page-section grid-section"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section grid-section bg-(--sb-bg)"
   >
     <div class="container text-center">
       <div v-if="blok.headline" class="text-4xl">{{ blok.headline }}</div>

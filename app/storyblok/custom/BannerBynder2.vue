@@ -1,9 +1,9 @@
 <script setup>
 const props = defineProps({ blok: Object, referenced: Boolean });
 
-const textColor = computed(() => {
-  return `text-${props.blok.text_color}`;
-});
+const textColorStyle = computed(() => ({
+  '--sb-text': getColorVar(props.blok.text_color),
+}));
 
 // Adjustment to include Bynder and not using the Storyblok Image Service
 const optimizedImage = computed(() => {
@@ -38,15 +38,15 @@ const optimizedImage = computed(() => {
       >
         <div class="relative z-30">
           <h2
-            class="mb-4 text-center font-display text-3xl font-bold leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight"
-            :class="[textColor]"
+            class="mb-4 text-center font-display text-3xl font-bold leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight text-(--sb-text)"
+            :style="textColorStyle"
           >
             {{ blok.headline }}
           </h2>
           <div class="mx-auto max-w-3xl">
             <h3
-              class="text-md text-center font-display font-light md:text-lg lg:text-xl"
-              :class="[textColor]"
+              class="text-md text-center font-display font-light md:text-lg lg:text-xl text-(--sb-text)"
+              :style="textColorStyle"
             >
               {{ blok.subheadline }}
             </h3>

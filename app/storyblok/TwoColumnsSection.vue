@@ -12,7 +12,7 @@ const optimizedImage = computed(() =>
     class="page-section two-columns-section bg-white"
   >
     <div class="container grid gap-12 lg:min-h-[600px] lg:grid-cols-3">
-      <div class="relative overflow-hidden rounded-xl lg:col-span-2" :class="`bg-${blok.column_1_background_color}`">
+      <div :style="{ '--sb-bg': getColorVar(blok.column_1_background_color) }" class="relative overflow-hidden rounded-xl lg:col-span-2 bg-(--sb-bg)">
         <div class="relative z-10 grid h-full md:grid-cols-2">
           <div class="flex flex-col justify-between p-10">
             <div>
@@ -45,7 +45,7 @@ const optimizedImage = computed(() =>
         </div>
         <Decoration1 class="absolute bottom-0 left-0 z-0" :fill="blok.column_1_decoration_color" />
       </div>
-      <div class="relative overflow-hidden rounded-xl" :class="`bg-${blok.column_2_background_color}`">
+      <div :style="{ '--sb-bg': getColorVar(blok.column_2_background_color) }" class="relative overflow-hidden rounded-xl bg-(--sb-bg)">
         <div class="relative z-10 flex h-full flex-col justify-between p-10">
           <Headline v-if="blok.column_2_headline" size="small" :headline="blok.column_2_headline" />
           <div>

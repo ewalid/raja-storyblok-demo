@@ -171,8 +171,8 @@ watch(
 <template>
   <section
     v-editable="blok"
-    class="page-section single-product-section"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section single-product-section bg-(--sb-bg)"
   >
     <div
       class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"

@@ -9,8 +9,8 @@ const gridClasses = computed(() => getGridClasses(props.blok.cols));
 <template>
   <section
     v-editable="blok"
-    class="page-section featured-products-section"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section featured-products-section bg-(--sb-bg)"
   >
     <div class="container text-left">
       <Headline v-if="blok.headline" size="small" :headline="blok.headline" :index="index" />

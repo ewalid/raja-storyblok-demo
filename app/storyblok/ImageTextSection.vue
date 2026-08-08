@@ -15,8 +15,8 @@ const blurredImage = computed(() => getOptimizedImage(props.blok.image, 1000, 0,
 <template>
   <section
     v-editable="blok"
-    class="page-section image-text-section"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section image-text-section bg-(--sb-bg)"
   >
     <div
       class="container grid items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"

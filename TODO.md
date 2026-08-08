@@ -5,21 +5,27 @@ Nothing here is blocking; the branch builds, lints and typechecks clean.
 
 ---
 
-## 1. Verify the app actually renders (blocked)
+## 1. Verify the app actually renders
 
-**Blocked on:** the local `.env` `STORYBLOK_TOKEN` points at space
-`290795251074288`, "AUDI AG - Demo Space (Author Stream)". Its components
-(`platform/page-flexible`, `falcon-test-teaser`, `feature-app-nemo-*`, ...) have
-**zero overlap** with this demo's components, so every block renders as
-unresolved.
+No longer blocked. The local `.env` now points at space `286863409930127`,
+"Solutions Space Template", whose components match this repo, and the app runs
+locally. All 33 of that space's rich text documents were confirmed to render
+through the v11 `document` prop.
 
-Check which space a token belongs to before assuming the app is broken:
+If blocks ever render as "component not found", check the token's space before
+anything else — a mismatched space fails opaquely, because `[...slug].vue` falls
+back to `error-404` and that story may not exist either:
 
 ```bash
 curl -s "https://api.storyblok.com/v2/cdn/spaces/me?token=$STORYBLOK_TOKEN"
 ```
 
-Once repointed at the demo space, confirm:
+`.env` is read at dev-server boot, so restart after changing it.
+
+The Solutions Space Template is shared and marked "PLEASE DON'T CHANGE IT" —
+fine to preview, but create your own space for Visual Editor testing.
+
+Still to confirm in a browser:
 
 - [ ] A page renders real blocks, not "component not found"
 - [ ] Rich text shows text. **Fails silently** if the `document` prop regresses:
@@ -36,31 +42,26 @@ Tailwind 3 baseline. No page has been rendered in a browser.
 
 ---
 
-## 2. Remove the colour safelist
+## 2. Remove the colour safelist — DONE
 
-`app/assets/css/tailwind.css` carries a ~110-entry `@source inline(...)` block
-purely because class names are built by string interpolation:
+Colours are now passed as values, not interpolated into class names. See
+`app/composables/getColorVar.js` and the `--sb-*` custom properties. 129 colour
+utilities dropped from the CSS with no other selector lost; new Storyblok
+colours no longer need a CSS change.
 
-```vue
-:class="`bg-${blok.background_color}`"
+Left in `@source inline(...)`: `items-*`, `text-center/left`, `prose-invert`,
+which are genuinely runtime-selected.
+
+**Watch out when adding dynamic classes.** The refactor initially missed
+`Button.vue`, because the interpolation sat mid-literal and spanned lines:
+
+```js
+`… rounded-md border border-2 border-${
+  props.button.background_color}`;
 ```
 
-Adding a new colour in Storyblok silently renders nothing until someone
-remembers to extend that block.
-
-Replace with a variable, so no class name is ever constructed:
-
-```vue
-<section :style="{ '--section-bg': `var(--${blok.background_color})` }" class="bg-(--section-bg)">
-```
-
-Then delete the colour lines from `@source inline(...)` (keep `items-*`,
-`text-center/left`, `prose-invert`).
-
-**Scope: 29 files, 57 call sites.**
-
-The `Decoration*` components interpolate `fill-${...}` inside inline SVG, which
-may want `fill="var(--...)"` on the SVG node instead of a utility class.
+A search for `` `bg-${ `` does not find that. Search for `-${` anywhere in a
+literal, and for `'bg-' +` concatenation, before assuming a sweep is complete.
 
 ---
 
@@ -90,7 +91,27 @@ Tailwind 3 and 4, so they predate the migration:
       `nav-item`, `main-nav`, `headline-color`, `fade-*`, `single-product`,
       `product-overview`, `campaign-main`, `campaign-override`
 
-Do this **after** item 2, or the interpolated class names will produce noise.
+Item 2 is done, so the interpolated class names no longer add noise here.
+
+### Two colour props that have never applied
+
+Found while tracing every dynamic class source during item 2. Both predate the
+migration — neither value was ever a valid class, in Tailwind 3 or 4.
+
+- [ ] **`app/storyblok/custom/FormSection.vue:39`** passes
+      `:color="blok.text_color === 'light' ? 'white' : 'dark'"` to `Headline`,
+      which appends `props.color` straight into its class list. `white` and
+      `dark` are not classes; the intended values are `text-white` and
+      `text-primary-dark`. That headline has never been coloured.
+
+      Note `Headline` falls back to `text-(--headline-color)` when `color` is
+      empty, so passing nothing may be the better fix.
+
+- [ ] **`app/layouts/default.vue:223`** passes
+      `:text-color="siteConfig.content.footer_text_color"` to `Footer`, but
+      `Footer` declares no `textColor` prop — it computes its own from
+      `footerLight`. The value falls through as a dead HTML attribute, so the
+      site-config field does nothing. Either wire the prop up or drop the field.
 
 ---
 

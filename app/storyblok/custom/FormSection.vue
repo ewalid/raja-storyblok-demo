@@ -8,9 +8,9 @@ const textColor = computed(() => {
   return props.blok.text_color === 'light' ? 'text-white' : 'text-dark';
 });
 
-const backgroundColor = computed(() => {
-  return `bg-${props.blok.backgroundColor}`;
-});
+const backgroundStyle = computed(() => ({
+  '--sb-bg': getColorVar(props.blok.backgroundColor),
+}));
 
 const selectedForm = computed(() => {
   switch (props.blok.form) {
@@ -26,8 +26,8 @@ const selectedForm = computed(() => {
 <template>
   <section
     v-editable="blok"
-    class="page-section form-section relative"
-    :class="backgroundColor"
+    class="page-section form-section relative bg-(--sb-bg)"
+    :style="backgroundStyle"
   >
     <div
       class="container relative z-10 grid place-items-center gap-6 sm:gap-10 md:gap-12 lg:grid-cols-2"

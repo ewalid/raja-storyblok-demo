@@ -47,9 +47,14 @@ Things in that file that are load-bearing and easy to break:
   `var(--primary-highlight)` directly, which is what Tailwind 3 did and what
   this project needs, since `app/layouts/default.vue` injects those values from
   the Storyblok site config.
-- `@source inline(...)` replaces the old `safelist`. Colour classes are built by
-  string interpolation from datasource values, so scanning cannot find them.
-  Adding a new `--background-N` colour means adding it there too.
+- `@source inline(...)` is only for genuinely runtime-selected classes
+  (`items-*`, `text-center/left`, `prose-invert`). Colours are **not** listed
+  there: they are passed as values via `getColorVar()` and the `--sb-*` custom
+  properties, so a new Storyblok colour needs no CSS change.
+- **Never build a class name from content**, e.g. `` `bg-${blok.background_color}` ``.
+  Tailwind cannot see it, so it will not be generated. Set a custom property and
+  use an arbitrary-property utility instead:
+  `:style="{ '--sb-bg': getColorVar(blok.background_color) }" class="bg-(--sb-bg)"`.
 - `--font-*: initial` and `--radius-*: initial` reproduce Tailwind 3 declaring
   those scales at the top level of `theme`, which replaced the defaults instead
   of extending them. Drop the `initial` lines and `font-sans` and the stock

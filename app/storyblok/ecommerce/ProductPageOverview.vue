@@ -49,8 +49,8 @@ const gridClasses = computed(() => getGridClasses('4'));
 <template>
   <section
     v-editable="blok"
-    class="page-section product-overview"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section product-overview bg-(--sb-bg)"
   >
     <div class="container">
       <h1

@@ -5,8 +5,8 @@ defineProps({ blok: Object, index: Number });
 <template>
   <section
     v-editable="blok"
-    class="page-section text-section"
-    :class="`bg-${blok.background_color}`"
+    :style="{ '--sb-bg': getColorVar(blok.background_color) }"
+    class="page-section text-section bg-(--sb-bg)"
   >
     <div class="container" :class="{ 'text-center': blok.text_alignment === 'center' }">
       <Eyebrow v-if="blok.eyebrow">

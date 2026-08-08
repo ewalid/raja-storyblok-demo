@@ -21,10 +21,21 @@ const url = computed(() => {
   }
 });
 
+/**
+ * The two colours come from Storyblok as token names. They are passed as CSS
+ * variables rather than interpolated into class names, so the utilities below
+ * remain literal and can be found by content scanning. `--sb-btn` is the accent
+ * (used for the border, the fill on a default button, and the text on a ghost
+ * one); `--sb-btn-text` is the contrasting label colour.
+ */
+const colorVars = computed(() => ({
+  '--sb-btn': getColorVar(props.button.background_color),
+  '--sb-btn-text': getColorVar(props.button.text_color),
+}));
+
 const classes = computed(() => {
   let classes
-    = `focus-ring font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-${
-      props.button.background_color}`;
+    = 'focus-ring font-semibold inline-flex w-full sm:w-auto items-center justify-center tracking-wider cursor-pointer transition-all duration-300 rounded-md border border-2 border-(--sb-btn)';
 
   switch (props.button.size) {
     case 'small':
@@ -41,21 +52,11 @@ const classes = computed(() => {
 
   switch (props.button.style) {
     case 'ghost':
-      classes
-        += ` bg-transparent text-${
-          props.button.background_color
-        } hover:bg-${
-          props.button.background_color
-        } hover:text-${
-          props.button.text_color}`;
+      classes += ' bg-transparent text-(--sb-btn) hover:bg-(--sb-btn) hover:text-(--sb-btn-text)';
       break;
     case 'default':
     default:
-      classes
-        += ` hover:scale-105 transform bg-${
-          props.button.background_color
-        } text-${
-          props.button.text_color}`;
+      classes += ' hover:scale-105 transform bg-(--sb-btn) text-(--sb-btn-text)';
   }
 
   return classes;
@@ -66,6 +67,7 @@ const classes = computed(() => {
   <NuxtLink
     v-editable="button"
     :to="inEditor ? '' : url"
+    :style="colorVars"
     :class="classes"
   >
     {{ button.label }}

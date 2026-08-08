@@ -22,6 +22,6 @@ const mobileImage = computed(() => getOptimizedImage(props.blok?.image, 672, pro
       <img v-if="desktopImage" class="invisible hidden h-auto w-full rounded-lg lg:visible lg:block" :src="desktopImage" :alt="blok.image.alt" />
       <img v-if="mobileImage" class="h-auto w-full rounded-lg lg:invisible lg:hidden" :src="mobileImage" :alt="blok.image.alt" />
     </div>
-    <div v-if="layout === 'split'" class="pointer-events-none absolute left-1/2 top-0 z-0 h-full w-[200%] -translate-x-1/2 content-[''] lg:invisible lg:hidden" :class="backgroundColor"></div>
+    <div v-if="layout === 'split'" :style="{ '--sb-bg': getColorVar(backgroundColor) }" class="pointer-events-none absolute left-1/2 top-0 z-0 h-full w-[200%] -translate-x-1/2 content-[''] bg-(--sb-bg) lg:invisible lg:hidden"></div>
   </div>
 </template>

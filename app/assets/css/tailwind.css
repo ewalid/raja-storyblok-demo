@@ -2,11 +2,13 @@
 @plugin "@tailwindcss/typography";
 
 /*
-  Was `safelist` in tailwind.config.js. These classes are chosen at runtime from
-  Storyblok datasource values, so they never appear literally in any source file
-  and content scanning cannot find them.
+  Classes that no source file contains literally.
+
+  The colour safelist that used to live here is gone: colours are now passed as
+  values (see `getColorVar` and the `--sb-*` custom properties) instead of being
+  interpolated into class names, so new Storyblok colours need no CSS change.
+  What remains is genuinely runtime-selected.
 */
-@source inline("{hover:,}{bg,text,border,fill}-{primary-highlight,highlight-1,highlight-2,highlight-3,primary-background,background-1,background-2,background-3,background-4,background-5,background-6,background-7,background-8,background-9,background-10,primary-dark,white}");
 @source inline("items-{start,center,end}");
 @source inline("text-{center,left}");
 @source inline("prose-invert");
