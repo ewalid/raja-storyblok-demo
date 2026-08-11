@@ -6,7 +6,22 @@ This frontend is used when you [create a new demo space (for **Solution Engineer
 
 Feel free to explore and reuse the code, but please be aware of the [demo-specific implementation practices](#demo-specific-implementation-notes), which deviate from the most common implementation practices.
 
-## How to create a Demo instance for SEs
+## Choose the right demo workflow
+
+There are three common workflows for this Base Demo:
+
+- Create a new Base Demo space when you only need to customize content and
+  Storyblok space configuration.
+- Create a new Base Demo space and run this frontend locally when you need
+  prospect-specific custom components.
+- Propose a new reusable component for the shared Base Demo so other developers
+  and SEs can use it in future spaces.
+
+## Create a new Base Demo space
+
+You do not need to clone, install, or deploy this repository to create a new SE
+demo instance. Storyblok creates a new demo space with demo content and points
+it at the shared deployed frontend.
 
 1. Go to <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>
 
@@ -22,15 +37,57 @@ The filled-in form looks like this:
 
 ![Creating a new Solutions demo space in Storyblok](docs/create-demo-space.png)
 
-The space is created with demo content already in place and pointing at the deployed frontend, so there is nothing else to configure.
+The space is created with demo content already in place and pointing at the
+deployed frontend, so there is nothing else to configure for the default demo
+flow. Open the generated space and start from the **Home** story.
 
-> If you want to customize the Preview URL you can use: `https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=`. You can replace `YOURSPACEPREVIEWACCESSTOKEN` with your Preview access token.
+Use this workflow when you need to customize content and space configuration
+only, for example:
 
-If you need to **customize/implement new components** for a specific demo, you can also run the project locally.
+- changing colors, fonts, header navigation, footer content, and other global
+  options in the `site-config` story;
+- creating roles and permissions;
+- configuring custom workflows;
+- uploading assets;
+- changing content, folders, datasources, languages, or Visual Editor settings.
+
+If you need to set or repair the Visual Editor preview URL manually, use:
+
+```text
+https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
+```
+
+Replace `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access token
+from `Settings > Access Tokens`, then add the URL in
+`Settings > Visual Editor > Location` or through **Add Preview URLs**.
+
+### Use a custom preview URL
+
+A small variation of the default workflow is creating a Base Demo space but
+pointing the Visual Editor at a different frontend URL. In that case, remove the
+default demo option from `Settings > Maintenance Mode > Enable example mode`
+and configure a new preview URL in `Settings > Visual Editor > Location` or
+through **Add Preview URLs**.
+
+Use the same query-parameter pattern:
+
+```text
+https://YOUR-FRONTEND-URL/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
+```
+
+Replace `YOUR-FRONTEND-URL` with your deployed or local frontend URL, and
+replace `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access token.
+
+## Create a Base Demo with custom components
+
+Use this workflow when a prospect demo needs frontend behavior or presentation
+that does not exist in the shared Base Demo yet. In this case, create the demo
+space first, then run this frontend locally while building and testing the
+custom component.
 
 ## Run locally
 
-To run the demo locally (e.g., when adding or testing custom components), follow these steps:
+To run the demo locally, follow these steps:
 
 1. Clone the repository and install dependencies:
 
@@ -79,10 +136,30 @@ The HTTPS configuration is set up in `nuxt.config.ts` using the generated certif
 
 > Note: if you want to use Bun or some other runtime/packagemanager you can replace `npm` with the proper command, for example `bun install` and `bun run devs`
 
-In your Storyblok space, go to `Settings` > `Visual Editor` and set `https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`. Replace `YOURSPACEPREVIEWTOKEN` with your Space Preview access token.
+In your Storyblok space, go to `Settings` > `Visual Editor > Location` or use
+**Add Preview URLs**, then set `https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`.
+Replace `YOURSPACEPREVIEWTOKEN` with your Space Preview access token.
 Next go to `Settings` > `Maintenance Mode` and disable `Example Mode`. This will ensure that the preview URL you just set can be used in the visual editor.
 
-Finally, open your **Home** story and see the demo space running locally. Happy building!!
+Finally, open your **Home** story and see the demo space running locally.
+
+## Propose a reusable Base Demo component
+
+If a custom component would be useful beyond one prospect demo, do not add it
+directly without alignment. Open a GitHub issue first and discuss the use case
+with the other SEs.
+
+The issue should describe:
+
+- the prospect or demo scenario it solves;
+- the expected Storyblok component schema and fields;
+- how content editors will use it;
+- design-token, responsive, and Visual Editor requirements;
+- whether it depends on external services or demo-space configuration.
+
+After the approach is agreed, implement the component in this repository, add or
+update the related Storyblok schema/configuration, test it locally with a demo
+space, and open a pull request so it can become part of the shared Base Demo.
 
 ## Demo-Specific implementation notes
 
