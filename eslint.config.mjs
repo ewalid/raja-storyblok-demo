@@ -3,6 +3,9 @@ import tailwind from 'eslint-plugin-tailwindcss';
 
 export default storyblokLintConfig(
   {
+    ignores: ['**/*.md'],
+  },
+  {
     rules: {
       'no-undef': 'off', // TODO: find a solution for Nuxt composables
       'no-console': 'off',
