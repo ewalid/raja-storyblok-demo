@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+/*
+  Classes that no source file contains literally.
+
+  The colour safelist that used to live here is gone: colours are now passed as
+  values (see `getColorVar` and the `--sb-*` custom properties) instead of being
+  interpolated into class names, so new Storyblok colours need no CSS change.
+  What remains is genuinely runtime-selected.
+*/
+@source inline("items-{start,center,end}");
+@source inline("text-{center,left}");
+@source inline("prose-invert");
+
+/*
+  `inline` matters here. Without it Tailwind emits
+  `:root { --color-primary-highlight: var(--primary-highlight) }` and utilities
+  reference `--color-primary-highlight`, so the theme variable is resolved once,
+  at `:root`. With `inline` the utility emits `var(--primary-highlight)`
+  directly, which is what Tailwind 3 did and what this project needs: the values
+  are injected at runtime from the Storyblok site config, and resolving at the
+  element keeps per-subtree overrides working.
+*/
+@theme inline {
+  --color-primary-highlight: var(--primary-highlight);
+  --color-highlight-1: var(--highlight-1);
+  --color-highlight-2: var(--highlight-2);
+  --color-highlight-3: var(--highlight-3);
+  --color-primary-background: var(--primary-background);
+  --color-background-1: var(--background-1);
+  --color-background-2: var(--background-2);
+  --color-background-3: var(--background-3);
+  --color-background-4: var(--background-4);
+  --color-background-5: var(--background-5);
+  --color-background-6: var(--background-6);
+  --color-background-7: var(--background-7);
+  --color-background-8: var(--background-8);
+  --color-background-9: var(--background-9);
+  --color-background-10: var(--background-10);
+  --color-primary-dark: var(--primary-dark);
+
+  /*
+    Tailwind 3 declared `fontFamily` at the top level of `theme`, which replaces
+    the default scale instead of extending it. `--font-*: initial` reproduces
+    that, so `font-sans` and friends stay undefined.
+  */
+  --font-*: initial;
+  --font-display: var(--font-family-display);
+  --font-body: var(--font-family-body);
+
+  /* Same story for `borderRadius`. */
+  --radius-*: initial;
+  --radius-none: 0;
+  --radius-sm: var(--rounded_sm);
+  --radius-md: var(--rounded_md);
+  --radius-lg: var(--rounded_lg);
+  --radius-xl: var(--rounded_xl);
+  --radius-2xl: var(--rounded_2xl);
+  --radius-3xl: var(--rounded_3xl);
+  --radius-full: var(--rounded_full);
+}
+
+/*
+  Tailwind 4 dropped `theme.container`, so centring and padding have to be
+  restored by extending the utility. Mirrors the old
+  `container: { center: true, padding: { DEFAULT: '1rem', lg: '2rem' } }`.
+*/
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 40rem) {
+    max-width: 40rem;
+  }
+  @media (width >= 48rem) {
+    max-width: 48rem;
+  }
+  @media (width >= 64rem) {
+    max-width: 64rem;
+    padding-inline: 2rem;
+  }
+  @media (width >= 80rem) {
+    max-width: 80rem;
+  }
+  @media (width >= 96rem) {
+    max-width: 96rem;
+  }
+}
+
+/*
+  Was `theme.extend.typography.DEFAULT.css.lineHeight` in Tailwind 3. There the
+  plugin merged the value into `.prose` before emitting the size modifiers, so
+  `prose-lg` still overrode it. Tailwind 4 has no config hook for this, and an
+  override here is unlayered, so it would otherwise beat every size modifier.
+  `revert-layer` hands those elements back to the plugin's own value rather than
+  hardcoding it. The md rule stays inside its media query so that below `md` an
+  element marked `prose md:prose-lg` still gets 1.625, as it did in v3.
+*/
+.prose {
+  line-height: 1.625;
+}
+
+.prose-lg {
+  line-height: revert-layer;
+}
+
+@media (width >= 48rem) {
+  .md\:prose-lg {
+    line-height: revert-layer;
+  }
+}
+
+/*
+  Custom prose bullets. These must stay OUTSIDE any @layer.
+
+  In Tailwind 3 these lived in `@layer base` and still won, because v3 flattened
+  layers at build time and `.prose ul` (0,1,1) simply outranked the typography
+  plugin's `.prose :where(ul):not(...)` (0,1,0) on specificity. Tailwind 4 emits
+  real CSS cascade layers, and layer order beats specificity, so from `base`
+  these lose to the plugin in `utilities`: the default discs come back and the
+  `pl-10` that makes room for the arrow is dropped.
+*/
+.prose ul {
+  @apply list-none pl-0; /* Remove default bullets */
+}
+
+.prose ul li {
+  @apply pl-10 relative;
+}
+
+.prose ul li::before {
+  @apply content-[''] absolute top-1/2 -translate-y-1/2 left-0 bg-no-repeat bg-contain w-6 h-6 block;
+  background-image: url('~/assets/images/circle-arrow-right.svg');
+}
+
+.prose ul li p {
+  @apply m-0 p-0;
+}
+
+@layer components {
+  .focus-ring {
+    /*
+      Tailwind 4 redefined `outline-none` to mean `outline-style: none`.
+      `outline-hidden` is what now carries the old behaviour, which keeps the
+      focus indicator visible in forced-colors mode.
+    */
+    @apply focus:outline-hidden focus:ring-2 focus:ring-black focus:ring-offset-2;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
