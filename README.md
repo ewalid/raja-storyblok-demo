@@ -17,6 +17,29 @@ There are three common workflows for this Base Demo:
 - Propose a new reusable component for the shared Base Demo so other developers
   and SEs can use it in future spaces.
 
+Use the smallest workflow that can tell the right story for the prospect. Most
+demos do not need frontend changes. Start with content, branding, and space
+configuration first, then move to custom frontend work only when the existing
+components cannot express the scenario clearly.
+
+For example, if a customer needs a demo with their own logo, fonts, colors, and
+a few marketing pages built from components that already exist in the Base Demo,
+create a new Base Demo space and configure the content there. In that case, the
+work belongs in Storyblok: update `site-config`, upload brand assets, adjust
+navigation, create the pages, and compose them with the existing components.
+
+If the customer story requires a component or interaction that does not exist
+yet, first ask whether that component helps the customer understand the value of
+Storyblok or the platform more clearly. If the answer is no, keep the demo
+focused and use existing blocks. If the answer is yes, build it locally for that
+specific demo space.
+
+Before the component becomes part of the shared Base Demo, ask one more
+question: can this prospect-specific component be made flexible and generic
+enough to help other customers in the same segment, industry, or business
+scenario? If yes, propose it as a reusable Base Demo component. If no, keep it
+as local demo work for that prospect only.
+
 ## Create a new Base Demo space
 
 You do not need to clone, install, or deploy this repository to create a new SE
@@ -50,6 +73,18 @@ only, for example:
 - configuring custom workflows;
 - uploading assets;
 - changing content, folders, datasources, languages, or Visual Editor settings.
+
+Typical use cases:
+
+- a retail prospect wants the demo to use their logo, campaign colors, web font,
+  navigation labels, and product imagery;
+- a SaaS prospect needs a few campaign landing pages using existing hero, card,
+  teaser, grid, and call-to-action components;
+- an enterprise prospect wants to see approval workflows, roles, permissions,
+  localization, or Visual Editor configuration in a space that feels like their
+  organization;
+- the demo needs different content structure, folders, datasources, or example
+  entries, but the frontend rendering can stay the same.
 
 If you need to set or repair the Visual Editor preview URL manually, use:
 
@@ -85,69 +120,54 @@ that does not exist in the shared Base Demo yet. In this case, create the demo
 space first, then run this frontend locally while building and testing the
 custom component.
 
+Use this path only when existing components cannot support the story you need
+to tell. Good examples are:
+
+- a financial-services prospect needs a rate-comparison table with editor-
+  controlled rows, disclosures, and responsive behavior;
+- a travel prospect needs an interactive itinerary component where editors can
+  manage days, stops, images, and calls to action;
+- a B2B prospect needs a complex product configurator or pricing section that
+  shows how structured content drives a more advanced frontend experience;
+- the demo requires a custom integration mock, visualization, or interaction
+  pattern that is central to the sales conversation.
+
+Avoid custom frontend work when the requirement is only brand expression,
+content changes, page composition, navigation, permissions, workflows, or other
+space-level configuration. Those changes should stay in the demo space.
+
 ## Run locally
 
-To run the demo locally, follow these steps:
+Run the frontend locally when you need to build, test, or preview custom code
+against a specific Storyblok demo space. This is usually needed for
+prospect-specific components, reusable component proposals, or frontend changes
+that cannot be validated through content and space configuration alone.
 
-1. Clone the repository and install dependencies:
-
-```bash
-npm install
-```
-
-2. Create an `.env` file with your preview access token (find it under `Settings > Access Tokens` in your Storyblok space):
-
-```bash
-STORYBLOK_TOKEN=your-preview-access-token
-```
-
-3. Next, run the development server:
-
-```bash
-npm run dev
-```
-
-To run the development server with HTTPS (required for Storyblok Visual Editor):
-
-1. Install `mkcert` if you haven't already:
-   ```bash
-   brew install mkcert
-   ```
-
-2. Install the local CA certificate in your system trust store:
-   ```bash
-   mkcert -install
-   ```
-
-3. Generate SSL certificates for localhost:
-   ```bash
-   mkcert localhost
-   ```
-   This creates two files in your project root:
-   - `localhost.pem` (certificate)
-   - `localhost-key.pem` (private key)
-
-4. Run the development server with HTTPS:
-   ```bash
-   npm run devs
-   ```
-
-The HTTPS configuration is set up in `nuxt.config.ts` using the generated certificate files. The server will be available at `https://localhost:3000`.
-
-> Note: if you want to use Bun or some other runtime/packagemanager you can replace `npm` with the proper command, for example `bun install` and `bun run devs`
-
-In your Storyblok space, go to `Settings` > `Visual Editor > Location` or use
-**Add Preview URLs**, then set `https://localhost:3000/?token=YOURSPACEPREVIEWTOKEN&path=`.
-Replace `YOURSPACEPREVIEWTOKEN` with your Space Preview access token.
-Next go to `Settings` > `Maintenance Mode` and disable `Example Mode`. This will ensure that the preview URL you just set can be used in the visual editor.
-
-Finally, open your **Home** story and see the demo space running locally.
+For the technical setup steps, see [Run locally](docs/run-locally.md).
 
 ## Propose a reusable Base Demo component
 
 If a custom component would be useful beyond one prospect demo, do not add it
 directly without alignment. Open a GitHub issue first and discuss the use case
 with the other SEs.
+
+Use these questions before proposing a reusable component:
+
+- Does this component help a prospect understand Storyblok's value better than
+  the existing components?
+- Is the need likely to appear again for other customers in the same segment,
+  industry, or business model?
+- Can the component be configured through Storyblok fields instead of hard-coded
+  for one brand, campaign, layout, or dataset?
+- Can the naming, schema, design, and responsive behavior be generic enough for
+  other SEs to reuse without rewriting it?
+- Does it keep the Base Demo focused, or would it add complexity that most demos
+  will not need?
+
+For example, a one-off customer-branded campaign banner should usually remain
+local demo work. A configurable comparison table, editorial product highlight,
+industry landing-page section, or reusable integration mock may be a good
+candidate if it can serve multiple future demos.
 
 The issue should describe:
 
