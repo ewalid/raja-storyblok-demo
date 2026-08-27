@@ -72,4 +72,8 @@ Tailwind stack while preserving the existing Storyblok demo behavior.
   runtime design-token system.
 - Updated the README with Solution Engineers demo setup instructions, local
   HTTPS preview guidance, and current Nuxt 4 paths.
+- Restructured the README around the SE decision points: when to use the shared
+  Base Demo as-is, when not to clone or deploy the frontend, when to run it
+  locally, when to customize, and when to contribute back.
+- Moved the local development instructions into `docs/run-locally.md`.
 - Added migration follow-up notes in `TODO.md`.
