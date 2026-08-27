@@ -38,6 +38,24 @@ Tailwind stack while preserving the existing Storyblok demo behavior.
   Tailwind 4 utilities such as `bg-(--sb-bg)` and `text-(--sb-text)`.
 - Removed the need to safelist every possible Storyblok color class in Tailwind.
 
+### Component Fixes
+
+- Fixed Grid Card background image rendering, including overlay and content
+  behavior on top of the image.
+- Fixed vertical alignment in the Grid Card layout.
+- Fixed Image Card background color so it covers the full card surface instead of
+  the image area only.
+- Improved Image Card image handling: Storyblok focal point cropping through a
+  fixed crop size, a responsive aspect-ratio image box for wide images, and
+  vertical centering for image-only cards.
+
+### Hosting And Preview URLs
+
+- Added Vercel as a second hosted frontend for the Base Demo, alongside Netlify,
+  so a generated demo space can point its Visual Editor at either deployment.
+- Documented both hosted preview URLs for setting or repairing the Visual Editor
+  preview URL manually.
+
 ### Tooling And Runtime
 
 - Committed `package-lock.json` as the single lockfile used by CI.
