@@ -86,10 +86,15 @@ Typical use cases:
 - the demo needs different content structure, folders, datasources, or example
   entries, but the frontend rendering can stay the same.
 
-If you need to set or repair the Visual Editor preview URL manually, use:
+If you need to set or repair the Visual Editor preview URL manually, use one of
+the hosted Base Demo frontends:
 
 ```text
 https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
+```
+
+```text
+https://se-demo-base.vercel.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
 ```
 
 Replace `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access token
