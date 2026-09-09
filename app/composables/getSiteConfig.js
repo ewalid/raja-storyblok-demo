@@ -15,6 +15,7 @@ export default async function () {
 
   const slug = await getSlug();
   const language = await getLanguage(slug);
+  const processedSlug = await getProcessedSlug();
   const folderPath = await getFolderPath();
   const releaseId = await getReleaseId();
   const storyblokApi = useStoryblokApi();
@@ -29,6 +30,28 @@ export default async function () {
     cached.value = story;
     return ref(story);
   };
+
+  const isSiteConfigStory = (storyPath) => {
+    const storySlug = storyPath?.split('/').pop();
+    return storySlug?.startsWith('site-config');
+  };
+
+  /**
+   * When editing site-config itself, or an A/B test variant whose slug starts
+   * with site-config, use the current story as the resolved config.
+   */
+  if (isSiteConfigStory(processedSlug)) {
+    try {
+      const { data } = await storyblokApi.get(
+        `cdn/stories/${processedSlug}`,
+        apiParams,
+      );
+      return resolve(data.story);
+    }
+    catch {
+      // Fall back to the nearest ancestor/root config below.
+    }
+  }
 
   /**
    * Walk up the folder path, trying each level for a site-config, so a story
@@ -55,7 +78,6 @@ export default async function () {
    * Startpages (e.g. /uk): folderPath is empty but the slug itself is the
    * folder that may hold a site-config.
    */
-  const processedSlug = await getProcessedSlug();
   if (processedSlug && processedSlug !== 'home') {
     try {
       const { data } = await storyblokApi.get(
