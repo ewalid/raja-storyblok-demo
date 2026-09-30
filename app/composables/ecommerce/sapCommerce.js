@@ -78,17 +78,49 @@ const assignSapProductData = (fetchedProduct) => {
   };
 };
 
-export const fetchSapProduct = async (code) => {
+// Languages enabled on the base site, requested once per page load.
+let sapLanguagesRequest;
+const fetchSapLanguages = () => {
+  if (!sapLanguagesRequest) {
+    const { occUrl } = getSapConfig();
+    sapLanguagesRequest = $fetch(`${occUrl}/languages`)
+      .then(response => (response.languages || []).map(language => language.isocode))
+      .catch(() => {
+        sapLanguagesRequest = undefined;
+        return [];
+      });
+  }
+  return sapLanguagesRequest;
+};
+
+/**
+ * Maps a Storyblok language code to a language the SAP base site supports:
+ * an exact match first (`de_CH` for `de-ch`), then the base language (`de` for
+ * `de-ch`). Returns undefined when there is no match, so OCC falls back to the
+ * base site's default language.
+ */
+export const getSapLanguage = async (storyblokLanguage) => {
+  if (!storyblokLanguage) {
+    return undefined;
+  }
+  const sapLanguages = await fetchSapLanguages();
+  const normalize = code => code.toLowerCase().replace('-', '_');
+  const wanted = normalize(storyblokLanguage);
+  return sapLanguages.find(code => normalize(code) === wanted)
+    || sapLanguages.find(code => normalize(code) === wanted.split('_')[0]);
+};
+
+export const fetchSapProduct = async (code, lang) => {
   const { occUrl } = getSapConfig();
   const product = await $fetch(`${occUrl}/products/${encodeURIComponent(code)}`, {
-    query: { fields: 'FULL' },
+    query: { fields: 'FULL', lang },
   });
   return assignSapProductData(product);
 };
 
 // Skips products that fail to load (deleted, unapproved) instead of failing the list.
-export const fetchSapProducts = async (codes) => {
-  const results = await Promise.allSettled(codes.filter(Boolean).map(code => fetchSapProduct(code)));
+export const fetchSapProducts = async (codes, lang) => {
+  const results = await Promise.allSettled(codes.filter(Boolean).map(code => fetchSapProduct(code, lang)));
   return results.filter(result => result.status === 'fulfilled').map(result => result.value);
 };
 

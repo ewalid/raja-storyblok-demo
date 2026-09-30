@@ -7,21 +7,28 @@
  * the OCC API (see `composables/ecommerce/sapCommerce.js`). While loading, or if
  * SAP is unreachable, the page falls back to the name and image stored by the
  * plugin. `body` renders any additional Storyblok blocks below the product.
+ *
+ * Product data is requested in the page language (`lang`) when the SAP base
+ * site supports it, otherwise in the base site's default language.
  */
 const props = defineProps({ blok: Object });
 
 const productCodes = computed(() => getSapProductCodes(props.blok.product).slice(0, 1));
 const relatedCodes = computed(() => getSapProductCodes(props.blok.related_products));
 
+// Product data in the page language, when the SAP base site supports it.
+// Started during setup, since `getSlug()` reads the route.
+const sapLanguageRequest = getSlug().then(getLanguage).then(getSapLanguage).catch(() => undefined);
+
 const { data: product, status } = useAsyncData(
   `sap-pdp-${props.blok._uid}`,
-  async () => (await fetchSapProducts(productCodes.value))[0] || null,
+  async () => (await fetchSapProducts(productCodes.value, await sapLanguageRequest))[0] || null,
   { watch: [productCodes] },
 );
 
 const { data: relatedProducts } = useAsyncData(
   `sap-pdp-related-${props.blok._uid}`,
-  () => fetchSapProducts(relatedCodes.value),
+  async () => fetchSapProducts(relatedCodes.value, await sapLanguageRequest),
   { watch: [relatedCodes], default: () => [] },
 );
 
