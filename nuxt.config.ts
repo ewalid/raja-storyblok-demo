@@ -56,6 +56,10 @@ export default defineNuxtConfig({
       customParent: process.env.STORYBLOK_CUSTOM_PARENT,
       shopifyDomain: process.env.SHOPIFY_DOMAIN,
       shopifyToken: process.env.SHOPIFY_TOKEN,
+      // Public OCC API, no credentials needed. Defaults point at the SAP demo store.
+      sapCommerceBaseUrl: process.env.SAP_COMMERCE_BASE_URL
+        || 'https://api.c1jvi8hu9a-vsfspzooa1-d1-public.model-t.cc.commerce.ondemand.com',
+      sapCommerceBaseSite: process.env.SAP_COMMERCE_BASE_SITE || 'apparel-uk',
     },
   },
 
