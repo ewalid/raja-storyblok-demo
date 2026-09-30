@@ -72,7 +72,7 @@ new component in the Default Demo:
    Default Demo. The pull request triggers a Netlify/Vercel deploy on a
    dedicated hostname. The deploy link is available in the pull request.
 5. Use that deploy URL as the Visual Editor preview URL of the customer demo
-   space (see [Use Showcase with a demo space](#use-showcase-with-a-demo-space)).
+   space (see [Point a Default Demo space at the Showcase frontend](#point-a-default-demo-space-at-the-showcase-frontend)).
 
 The pull request stays open while you use it for the demo. It is merged into
 the Default Demo only if the component is evaluated as reusable, as described
@@ -114,21 +114,26 @@ If the answer is yes:
    Demo, add or update the related Storyblok schema and configuration, test it
    locally against a demo space, and open a pull request.
 
-## Use Showcase with a demo space
+## Access the Showcase demo space
 
-1. Create a new SE demo space at
-   <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>, selecting
-   **Solutions Theme** (`Solutions Demo Environment`).
-2. For **Do you want to assign the space to your organization?** choose
-   **Yes (visible to everyone in the organization)**. This puts the space in
-   the Storyblok demo Organization, which is on the **Elite plan**, and lets
-   colleagues open and reuse it.
-3. Click **Explore Demo Space**.
+For now, the Showcase demo is a single shared Storyblok space, not a template.
+Open it, or request access if you do not have it yet:
 
-![Creating a new Solutions demo space in Storyblok](docs/create-demo-space.png)
+<https://app.storyblok.com/#/me/spaces/295576087731079/dashboard>
 
-The generated space points at the Default Demo frontend. To use the Showcase
-frontend instead:
+This space already contains the Showcase components, schemas, and content, and
+points at the Showcase frontend.
+
+In the near future, the Showcase demo will be available as a template, like the
+Default Demo, so you can generate your own Showcase space from
+<https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>.
+
+### Point a Default Demo space at the Showcase frontend
+
+Until the template is available, you can also point a Default Demo space at the
+Showcase frontend. Create the space as described in the
+[Default Demo repository](https://github.com/storyblok/storyblok-demo-default-se),
+then:
 
 1. Disable the default demo option in
    `Settings > Maintenance Mode > Enable example mode`.
@@ -144,7 +149,7 @@ local URL, and `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access
 token from `Settings > Access Tokens`.
 
 Showcase features that need extra components or fields also need the matching
-Storyblok schema in the space.
+Storyblok schema in the space. A Default Demo space does not include them.
 
 ## Run locally
 
