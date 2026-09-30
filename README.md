@@ -114,24 +114,53 @@ If the answer is yes:
    Demo, add or update the related Storyblok schema and configuration, test it
    locally against a demo space, and open a pull request.
 
-## Access the Showcase demo space
+## Create an SE Showcase demo space
 
-For now, the Showcase demo is a single shared Storyblok space, not a template.
-Open it, or request access if you do not have it yet:
+The **SE Showcase Demo** space is the template for Showcase demos. It contains
+the Showcase components, schemas, and content, and points at the Showcase
+frontend. Do not build your demo directly in it: duplicate it and work in your
+copy.
 
+If you cannot see the template, request access to it:
 <https://app.storyblok.com/#/me/spaces/295576087731079/dashboard>
 
-This space already contains the Showcase components, schemas, and content, and
-points at the Showcase frontend.
+1. Open your [Spaces list](https://app.storyblok.com/#/me/spaces) and search for
+   `SE Showcase Demo`. It is listed under **Organization**.
+2. Open the **...** menu on the **SE Showcase Demo** card and click
+   **Duplicate**.
 
-In the near future, the Showcase demo will be available as a template, like the
-Default Demo, so you can generate your own Showcase space from
-<https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>.
+   ![Duplicate option on the SE Showcase Demo space](docs/duplicate-se-showcase-demo-01.png)
+
+3. Enter the **Name of the new space**. Name it after the feature or scenario
+   you want to show, not after the customer, for example
+   `SE Showcase - SAP Connector`.
+4. For **Do you want to assign the space to your organization?** choose
+   **Yes (visible to everyone in the organization)**. This puts the space in
+   the Storyblok demo Organization, which is on the **Elite plan**, and lets
+   colleagues open and reuse it. Picking **No** creates a private space outside
+   that organization, without the Elite plan.
+5. Click **Duplicate space**.
+
+   ![Duplicate SE Showcase Demo dialog](docs/duplicate-se-showcase-demo-02.png)
+
+Only content stories and blocks are copied to the new space. Assets and users
+are not copied: assets stay referenced from the original SE Showcase Demo space,
+so do not delete them there.
+
+After duplicating, set the Visual Editor location of the new space in
+`Settings > Visual Editor > Location`:
+
+```text
+https://storyblok-demo-showcase-se.vercel.app/?token=<your-preview-space-access-token>&path=
+```
+
+Replace `<your-preview-space-access-token>` with the **new** space's Preview
+access token from `Settings > Access Tokens`, not the template's token.
 
 ### Point a Default Demo space at the Showcase frontend
 
-Until the template is available, you can also point a Default Demo space at the
-Showcase frontend. Create the space as described in the
+You can also point an existing Default Demo space at the Showcase frontend.
+Create the space as described in the
 [Default Demo repository](https://github.com/storyblok/storyblok-demo-default-se),
 then:
 
@@ -141,11 +170,11 @@ then:
    through **Add Preview URLs**:
 
 ```text
-https://YOUR-SHOWCASE-FRONTEND-URL/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
+https://storyblok-demo-showcase-se.vercel.app/?token=<your-preview-space-access-token>&path=
 ```
 
-Replace `YOUR-SHOWCASE-FRONTEND-URL` with the deployed Showcase frontend or your
-local URL, and `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access
+To use a local or branch frontend, replace the host with that URL. Replace
+`<your-preview-space-access-token>` with the space's Preview access
 token from `Settings > Access Tokens`.
 
 Showcase features that need extra components or fields also need the matching
