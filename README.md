@@ -1,190 +1,157 @@
-# Storyblok Solution Engineers Demo
+# Storyblok Showcase Demo (Solution Engineers)
 
-This frontend is used when you [create a new demo space (for **Solution Engineers**) in Storyblok](https://app.storyblok.com/#/me/spaces/new?tab=experience-demo). It is built using [Nuxt 4](https://nuxt.com/) and [TailwindCSS](https://tailwindcss.com/).
+This repository is the **Showcase** frontend for Storyblok Solution Engineers.
+It is the place for experimental, edge-case, and specialized demo features that
+are not (yet) part of the standard SE demo. It is built using
+[Nuxt 4](https://nuxt.com/) and [TailwindCSS](https://tailwindcss.com/).
 
-> The repository is <https://github.com/storyblok/storyblok-demo-default-se> . It is a forked repository from the JoyFul Demo <https://github.com/storyblok/storyblok-demo-default-v2>
+> The repository is <https://github.com/storyblok/storyblok-demo-showcase-se>.
+> It is forked from the Default SE Demo
+> <https://github.com/storyblok/storyblok-demo-default-se>, which in turn is
+> forked from the Joyful Demo <https://github.com/storyblok/storyblok-demo-default-v2>.
 
-Feel free to explore and reuse the code, but please be aware of the [demo-specific implementation practices](#demo-specific-implementation-notes), which deviate from the most common implementation practices.
+Feel free to explore and reuse the code, but please be aware of the
+[demo-specific implementation practices](#demo-specific-implementation-notes),
+which deviate from the most common implementation practices.
 
-## Choose the right demo workflow
+## Default Demo vs Showcase
 
-There are three common workflows for this Base Demo:
+The SE demo work is split across two repositories:
 
-- Create a new Base Demo space when you only need to customize content and
-  Storyblok space configuration.
-- Create a new Base Demo space and run this frontend locally when you need
-  prospect-specific custom components.
-- Propose a new reusable component for the shared Base Demo so other developers
-  and SEs can use it in future spaces.
+| | Default Demo (`storyblok-demo-default-se`) | Showcase (this repository) |
+| --- | --- | --- |
+| Purpose | Stable baseline for standard and custom demos | Playground for experimental, advanced, or specialized features |
+| Used by | Every new SE demo space by default | Demos that need a feature not available in the Default Demo |
+| Stability | Stable. Pull requests need at least two reviewers or testers | Experimental. Features are validated here before promotion |
+| Content | Generic components for most prospects | Edge cases, industry-specific components, integrations, mock data |
 
-Use the smallest workflow that can tell the right story for the prospect. Most
-demos do not need frontend changes. Start with content, branding, and space
-configuration first, then move to custom frontend work only when the existing
-components cannot express the scenario clearly.
+Start from the **Default Demo** unless the work involves significant custom
+component development or a feature that already lives in Showcase.
 
-For example, if a customer needs a demo with their own logo, fonts, colors, and
-a few marketing pages built from components that already exist in the Base Demo,
-create a new Base Demo space and configure the content there. In that case, the
-work belongs in Storyblok: update `site-config`, upload brand assets, adjust
-navigation, create the pages, and compose them with the existing components.
+Features in Showcase can be **promoted to the Default Demo** when, after team
+review, they are stable and broadly relevant.
 
-If the customer story requires a component or interaction that does not exist
-yet, first ask whether that component helps the customer understand the value of
-Storyblok or the platform more clearly. If the answer is no, keep the demo
-focused and use existing blocks. If the answer is yes, build it locally for that
-specific demo space.
+### Not sure where a feature belongs?
 
-Before the component becomes part of the shared Base Demo, ask one more
-question: can this prospect-specific component be made flexible and generic
-enough to help other customers in the same segment, industry, or business
-scenario? If yes, propose it as a reusable Base Demo component. If no, keep it
-as local demo work for that prospect only.
+Do not overthink it. Open an issue in the
+[Default Demo repository](https://github.com/storyblok/storyblok-demo-default-se/issues)
+first. The team evaluates together whether the feature belongs in the Default
+Demo or in Showcase, based on how broadly it applies.
 
-## Create a new Base Demo space
+## What belongs in Showcase
 
-You do not need to clone, install, or deploy this repository to create a new SE
-demo instance. Storyblok creates a new demo space with demo content and points
-it at the shared deployed frontend.
+Good candidates for this repository:
 
-1. Go to <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>
+- advanced or alternative implementations of existing features, for example
+  the FAQ section by reference;
+- integrations and connectors under development, for example the SAP connector;
+- A/B testing and experimentation scenarios;
+- dynamic branding and theme-switching scenarios, for example multi-brand
+  setups where colors, prices, or content change based on brand or location;
+- industry- or segment-specific components, for example sport components that
+  load player data from an external source;
+- mock data used to demo external data integrations;
+- specific content models, for example an internal user portal.
 
-2. Under **Choose your demo theme**, select **Solutions Theme** (`Solutions Demo Environment`).
+Keep in the Default Demo anything that most demos need: brand expression,
+generic page sections, navigation, and common content types.
 
-3. Fill in the **Space name**, for example `My Demo`.
+## Workflow for custom development
 
-4. For **Do you want to assign the space to your organization?** choose **Yes (visible to everyone in the organization)**. This is the important one: it puts the space in the Storyblok demo Organization, which is on the **Elite plan**, so the space gets all Elite features. It also means colleagues can open and reuse it. Picking **No** creates a private space outside that organization, without the Elite plan.
+### Customer-specific work
 
-5. Click **Explore Demo Space**.
+For an immediate customer requirement, keep the fast workflow and implement the
+new component in the Default Demo:
 
-The filled-in form looks like this:
+1. Clone the [Default Demo repository](https://github.com/storyblok/storyblok-demo-default-se).
+2. Create a branch named `feat/<your-change>`, for example
+   `feat/rate-comparison-table`. Name it after the feature, not the customer.
+3. Build what the demo needs and test it locally against the demo space (see
+   [Run locally](docs/run-locally.md)).
+4. Push the branch and open a pull request against the `main` branch of the
+   Default Demo. The pull request triggers a Netlify/Vercel deploy on a
+   dedicated hostname. The deploy link is available in the pull request.
+5. Use that deploy URL as the Visual Editor preview URL of the customer demo
+   space (see [Use Showcase with a demo space](#use-showcase-with-a-demo-space)).
 
-![Creating a new Solutions demo space in Storyblok](docs/create-demo-space.png)
+The pull request stays open while you use it for the demo. It is merged into
+the Default Demo only if the component is evaluated as reusable, as described
+below.
 
-The space is created with demo content already in place and pointing at the
-deployed frontend, so there is nothing else to configure for the default demo
-flow. Open the generated space and start from the **Home** story.
+### Bring your implementation into Showcase
 
-Use this workflow when you need to customize content and space configuration
-only, for example:
+If you want your implementation to live in Showcase instead, open a pull request
+on the [Showcase repository](https://github.com/storyblok/storyblok-demo-showcase-se).
+After review, it is merged into Showcase.
 
-- changing colors, fonts, header navigation, footer content, and other global
-  options in the `site-config` story;
-- creating roles and permissions;
-- configuring custom workflows;
-- uploading assets;
-- changing content, folders, datasources, languages, or Visual Editor settings.
+### After the demo: evaluate for reuse
 
-Typical use cases:
-
-- a retail prospect wants the demo to use their logo, campaign colors, web font,
-  navigation labels, and product imagery;
-- a SaaS prospect needs a few campaign landing pages using existing hero, card,
-  teaser, grid, and call-to-action components;
-- an enterprise prospect wants to see approval workflows, roles, permissions,
-  localization, or Visual Editor configuration in a space that feels like their
-  organization;
-- the demo needs different content structure, folders, datasources, or example
-  entries, but the frontend rendering can stay the same.
-
-If you need to set or repair the Visual Editor preview URL manually, use one of
-the hosted Base Demo frontends:
-
-```text
-https://storyblok-demo-default-se.netlify.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
-```
-
-```text
-https://se-demo-base.vercel.app/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
-```
-
-Replace `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access token
-from `Settings > Access Tokens`, then add the URL in
-`Settings > Visual Editor > Location` or through **Add Preview URLs**.
-
-### Use a custom preview URL
-
-A small variation of the default workflow is creating a Base Demo space but
-pointing the Visual Editor at a different frontend URL. In that case, remove the
-default demo option from `Settings > Maintenance Mode > Enable example mode`
-and configure a new preview URL in `Settings > Visual Editor > Location` or
-through **Add Preview URLs**.
-
-Use the same query-parameter pattern:
-
-```text
-https://YOUR-FRONTEND-URL/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
-```
-
-Replace `YOUR-FRONTEND-URL` with your deployed or local frontend URL, and
-replace `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access token.
-
-## Create a Base Demo with custom components
-
-Use this workflow when a prospect demo needs frontend behavior or presentation
-that does not exist in the shared Base Demo yet. In this case, create the demo
-space first, then run this frontend locally while building and testing the
-custom component.
-
-Use this path only when existing components cannot support the story you need
-to tell. Good examples are:
-
-- a financial-services prospect needs a rate-comparison table with editor-
-  controlled rows, disclosures, and responsive behavior;
-- a travel prospect needs an interactive itinerary component where editors can
-  manage days, stops, images, and calls to action;
-- a B2B prospect needs a complex product configurator or pricing section that
-  shows how structured content drives a more advanced frontend experience;
-- the demo requires a custom integration mock, visualization, or interaction
-  pattern that is central to the sales conversation.
-
-Avoid custom frontend work when the requirement is only brand expression,
-content changes, page composition, navigation, permissions, workflows, or other
-space-level configuration. Those changes should stay in the demo space.
-
-## Run locally
-
-Run the frontend locally when you need to build, test, or preview custom code
-against a specific Storyblok demo space. This is usually needed for
-prospect-specific components, reusable component proposals, or frontend changes
-that cannot be validated through content and space configuration alone.
-
-For the technical setup steps, see [Run locally](docs/run-locally.md).
-
-## Propose a reusable Base Demo component
-
-If a custom component would be useful beyond one prospect demo, do not add it
-directly without alignment. Open a GitHub issue first and discuss the use case
-with the other SEs.
-
-Use these questions before proposing a reusable component:
+Custom code built for one customer is usually thrown away after the demo. Before
+you discard it, ask:
 
 - Does this component help a prospect understand Storyblok's value better than
   the existing components?
 - Is the need likely to appear again for other customers in the same segment,
   industry, or business model?
-- Can the component be configured through Storyblok fields instead of hard-coded
-  for one brand, campaign, layout, or dataset?
+- Can it be configured through Storyblok fields instead of being hard-coded for
+  one brand, campaign, layout, or dataset?
 - Can the naming, schema, design, and responsive behavior be generic enough for
   other SEs to reuse without rewriting it?
-- Does it keep the Base Demo focused, or would it add complexity that most demos
-  will not need?
 
-For example, a one-off customer-branded campaign banner should usually remain
-local demo work. A configurable comparison table, editorial product highlight,
-industry landing-page section, or reusable integration mock may be a good
-candidate if it can serve multiple future demos.
+If the answer is yes:
 
-The issue should describe:
+1. Announce the component in the team channel to gauge interest.
+2. Clean up hardcoded values and customer-specific content.
+3. Open an issue (see [Not sure where a feature belongs?](#not-sure-where-a-feature-belongs))
+   describing:
+   - the demo scenario it solves;
+   - the expected Storyblok component schema and fields;
+   - how content editors will use it;
+   - design-token, responsive, and Visual Editor requirements;
+   - whether it depends on external services, mock data, or demo-space
+     configuration.
+4. After the approach is agreed, implement it in Showcase or in the Default
+   Demo, add or update the related Storyblok schema and configuration, test it
+   locally against a demo space, and open a pull request.
 
-- the prospect or demo scenario it solves;
-- the expected Storyblok component schema and fields;
-- how content editors will use it;
-- design-token, responsive, and Visual Editor requirements;
-- whether it depends on external services or demo-space configuration.
+## Use Showcase with a demo space
 
-After the approach is agreed, implement the component in this repository, add or
-update the related Storyblok schema/configuration, test it locally with a demo
-space, and open a pull request so it can become part of the shared Base Demo.
+1. Create a new SE demo space at
+   <https://app.storyblok.com/#/me/spaces/new?tab=experience-demo>, selecting
+   **Solutions Theme** (`Solutions Demo Environment`).
+2. For **Do you want to assign the space to your organization?** choose
+   **Yes (visible to everyone in the organization)**. This puts the space in
+   the Storyblok demo Organization, which is on the **Elite plan**, and lets
+   colleagues open and reuse it.
+3. Click **Explore Demo Space**.
+
+![Creating a new Solutions demo space in Storyblok](docs/create-demo-space.png)
+
+The generated space points at the Default Demo frontend. To use the Showcase
+frontend instead:
+
+1. Disable the default demo option in
+   `Settings > Maintenance Mode > Enable example mode`.
+2. Add the Showcase frontend URL in `Settings > Visual Editor > Location` or
+   through **Add Preview URLs**:
+
+```text
+https://YOUR-SHOWCASE-FRONTEND-URL/?token=YOURSPACEPREVIEWACCESSTOKEN&path=
+```
+
+Replace `YOUR-SHOWCASE-FRONTEND-URL` with the deployed Showcase frontend or your
+local URL, and `YOURSPACEPREVIEWACCESSTOKEN` with the space's Preview access
+token from `Settings > Access Tokens`.
+
+Showcase features that need extra components or fields also need the matching
+Storyblok schema in the space.
+
+## Run locally
+
+Run the frontend locally when you need to build, test, or preview code against a
+specific Storyblok demo space.
+
+For the technical setup steps, see [Run locally](docs/run-locally.md).
 
 ## Demo-Specific implementation notes
 
