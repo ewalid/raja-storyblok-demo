@@ -47,7 +47,10 @@ export default async function (slug) {
   }
   const rest = codes.includes(parts[0]) && sites.includes(parts[1]) ? parts.slice(1) : parts;
   const site = sites.includes(rest[0]) ? rest[0] : DEFAULT_SITE;
-  if (!language && q !== 'default') {
+  // A site folder with its own language (`mondoffice-it`) always renders in it, including
+  // the Visual Editor's default tab: its default fields already hold Italian copy, and
+  // referenced group blocks then show their Italian version, exactly as on the live site.
+  if (!language) {
     language = siteLanguage(site);
   }
   useState('site', () => '').value = site;
