@@ -177,8 +177,8 @@ onBeforeUnmount(() => clearInterval(timer));
         <div
           v-for="c in cells"
           :key="c.tile._uid"
-          class="min-w-0"
-          :class="[c.cls, slides.length ? 'h-[150px] sm:h-[177px] lg:h-auto' : 'h-[150px] sm:h-[177px]']"
+          class="flex min-w-0"
+          :class="[c.cls, slides.length ? 'min-h-[150px] sm:h-[177px] lg:h-auto' : 'min-h-[150px] sm:h-[177px]']"
         >
           <RjPromoTile :blok="c.tile" :size="c.size" />
         </div>
