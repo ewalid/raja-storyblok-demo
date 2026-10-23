@@ -33,7 +33,7 @@ GENERAL = {
     "products": bloks("3 · Produits (Intershop)", ["rj-product-carousel", "rj-category-grid"], minimum=1, maximum=3, required=True,
                       description="Au moins un carrousel produits : les prix et le stock viennent d'Intershop."),
     "content": bloks("4 · Contenu éditorial", ["rj-split", "rj-promo-duo", "rj-card-slider", "rj-text", "rj-free-section",
-                                               "rj-faq", "rj-reviews", "rj-shared-ref", "rj-selection-band"], maximum=6,
+                                               "rj-faq", "rj-reviews", "rj-shared-ref", "rj-selection-band", "rj-showcase-band"], maximum=6,
                      description="Optionnel : jusqu'à 6 sections éditoriales."),
     "closing": bloks("5 · Appel à l'action final", ["rj-cta-band"], maximum=1, description="Optionnel."),
 }

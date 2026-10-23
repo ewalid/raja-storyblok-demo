@@ -1,18 +1,17 @@
 <script setup>
+// FAQ accordion: title, optional intro, questions in one bordered list.
 const props = defineProps({ blok: { type: Object, required: true } });
 const items = computed(() => rjVisible(props.blok.items));
-const open = ref(0);
+const group = computed(() => (props.blok.single_open === false ? '' : `faq-${props.blok._uid}`));
 </script>
 
 <template>
-  <RjShell :blok="blok">
-    <div class="mx-auto max-w-3xl">
-      <h2 class="rj-title mb-10 text-center">{{ blok.title }}</h2>
-      <div v-for="(q, i) in items" :key="q._uid" v-editable="q" class="border-b border-[var(--rj-line)]">
-        <button class="flex w-full items-center justify-between gap-6 py-5 text-left text-lg font-bold" :aria-expanded="open === i" @click="open = open === i ? -1 : i">
-          {{ q.question }}<span class="text-2xl text-[var(--rj-teal-700)]">{{ open === i ? '–' : '+' }}</span>
-        </button>
-        <RjRich v-show="open === i" :doc="q.answer" class="pb-6 leading-relaxed opacity-85" />
+  <RjShell :blok="blok" :defaults="{ spacing: 'md' }">
+    <div class="mx-auto max-w-[880px]">
+      <h2 v-if="blok.title" class="rj-title">{{ blok.title }}</h2>
+      <RjRich :doc="blok.intro" class="rj-lead mt-2" />
+      <div v-if="items.length" class="rj-card mt-5 divide-y divide-[var(--rj-line)] overflow-hidden rounded-[var(--rj-radius)] border border-[var(--rj-line)] bg-white text-left">
+        <StoryblokComponent v-for="(q, i) in items" :key="q._uid" :blok="q" :group="group" :open="i === 0 && blok.open_first !== false" />
       </div>
     </div>
   </RjShell>
