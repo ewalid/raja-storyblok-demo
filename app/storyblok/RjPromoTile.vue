@@ -23,7 +23,7 @@ const bg = computed(() => (mode.value === 'background' && hasImage.value ? 'imag
 const BG = {
   brand: { background: 'var(--rj-brand-bg)', light: true },
   promo: { background: 'linear-gradient(90deg, var(--rj-red), var(--rj-red-2))', light: true },
-  orange: { background: 'var(--rj-orange)', light: true, inkBtn: true },
+  orange: { background: 'var(--rj-orange)', light: false, inkBtn: true }, // white on #FE9601 fails AA
   dark: { background: 'var(--rj-dark)', light: true },
   soft: { background: 'var(--rj-soft-brand)', light: false },
   cream: { background: 'var(--rj-hl)', light: false },
@@ -37,9 +37,9 @@ const vars = computed(() => {
     'background': l.background,
     'color': l.light ? '#fff' : 'var(--rj-ink)',
     '--rj-strong': l.light ? '#fff' : 'var(--rj-ink)',
-    '--rj-sub': l.light ? 'rgb(255 255 255 / 0.9)' : 'var(--rj-muted)',
-    '--rj-accent': l.light ? '#fff' : 'var(--rj-primary)',
-    '--rj-btn-bg': l.light ? '#fff' : 'var(--rj-cta-bg)',
+    '--rj-sub': l.light ? 'rgb(255 255 255 / 0.9)' : (l.inkBtn ? 'var(--rj-ink)' : 'var(--rj-muted)'),
+    '--rj-accent': l.light ? '#fff' : (l.inkBtn ? 'var(--rj-ink)' : 'var(--rj-primary)'),
+    '--rj-btn-bg': l.light ? '#fff' : (l.inkBtn ? 'var(--rj-ink)' : 'var(--rj-cta-bg)'),
     '--rj-btn-fg': l.light ? (l.inkBtn ? 'var(--rj-ink)' : 'var(--rj-primary)') : '#fff',
   };
 });

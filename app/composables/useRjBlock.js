@@ -10,7 +10,7 @@ const THEME = {
   band: ['var(--rj-band-bg)', true],
   dark: ['var(--rj-dark)', true],
   promo: ['linear-gradient(90deg, var(--rj-red), var(--rj-red-2))', true],
-  orange: ['var(--rj-orange)', true],
+  orange: ['var(--rj-orange)', false], // white text fails AA on #FE9601: dark text instead
 };
 const PAD = { none: '0px', xs: '12px', sm: '24px', md: '40px', lg: '64px', xl: '96px' };
 const TITLE = { sm: '20px', md: '24px', lg: 'clamp(26px, 2.6vw, 34px)', xl: 'clamp(30px, 3.6vw, 46px)' };

@@ -69,6 +69,9 @@ body.rj-body {
   margin-block: var(--bs-margin, 0);
   text-align: var(--bs-align, left);
 }
+.bs:not([data-light='true']) {
+  --rj-eyebrow: var(--rj-primary-ink); /* 12px caps: the brand blue/red alone is under AA on light greys */
+}
 .bs[data-light='true'] {
   --rj-strong: #fff;
   --rj-accent: #fff;
@@ -79,12 +82,20 @@ body.rj-body {
 .bs[data-theme='dark'] {
   --rj-accent: var(--rj-primary-2);
 }
-.bs[data-theme='promo'],
-.bs[data-theme='orange'] {
+.bs[data-theme='promo'] {
   --rj-btn-fg: var(--rj-ink);
+}
+/* Orange (#FE9601) only passes AA with dark text: ink copy, dark button. */
+.bs[data-theme='orange'] {
+  --rj-strong: var(--rj-ink);
+  --rj-accent: var(--rj-ink);
+  --rj-sub: var(--rj-ink);
+  --rj-btn-bg: var(--rj-ink);
+  --rj-btn-fg: #fff;
 }
 .bs[data-theme='cream'] {
   --rj-accent: var(--rj-primary-ink);
+  --rj-sub: #4a5263;
 }
 .bs--rounded {
   border-radius: 8px;
@@ -133,7 +144,7 @@ body.rj-body {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--rj-accent);
+  color: var(--rj-eyebrow, var(--rj-accent));
   margin-bottom: 8px;
 }
 .rj-lead {
