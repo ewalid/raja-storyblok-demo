@@ -26,7 +26,7 @@ def _rv(q, a, d, s="5"):
 
 preset("rj-review", _rv("Commande rapide, livraison rapide. Toujours très professionnel.", "Anonyme", "22/10/2026"))
 preset("rj-reviews", b("rj-reviews", title="Ce que nos clients en disent", rating="4,6/5", count="619 avis",
-    source_logo=img("raja-avis-verifies-logo"), source_label="Avis certifiés par Avis Vérifiés",
+    source_logo=img("raja-avis-verifies"), source_label="Avis certifiés par Avis Vérifiés",
     cta_label="Voir tous les avis", cta_link=url("https://www.raja.fr"), reviews=[
         _rv("RAS, tout est OK.", "Anonyme", "22/10/2026"),
         _rv("Commande rapide, livraison rapide. Toujours très professionnel.", "Anonyme", "22/10/2026"),

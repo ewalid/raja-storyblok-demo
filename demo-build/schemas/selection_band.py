@@ -28,5 +28,5 @@ preset("rj-selection-band", b("rj-selection-band",
     text=doc(Pb("Emballages, équipements et fournitures choisis pour ", ("b", "votre métier"), ".")),
     links=[_lk("E-commerce"), _lk("Logistique"), _lk("Commerces de détail"), _lk("Commerces alimentaires"), _lk("Nettoyage et entretien")],
     cta_label="Voir toutes les boutiques", cta_link=url("https://www.raja.fr"),
-    images=[a for a in (img("raja-sector-warehouse"), img("raja-sector-ecommerce"), img("raja-sector-boutique")) if a["filename"]],
+    images=[a for a in (img("raja-corner-handling-storage"), img("raja-corner-ecommerce"), img("raja-corner-pack-protect-ship")) if a["filename"]],
     theme="band"))

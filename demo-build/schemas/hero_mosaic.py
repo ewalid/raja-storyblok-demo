@@ -42,21 +42,21 @@ def tile(**k):
 
 SLIDES = [
     tile(badge="BEST PRICE", title="Moins d'effort, plus d'efficacité", text=doc(Pb("Transpalettes et chariots ", ("b", "au meilleur prix"), " toute l'année.")),
-         cta_label="JE DÉCOUVRE", cta_link=url("https://www.raja.fr"), image=img("raja-slide-transpalette"),
+         cta_label="JE DÉCOUVRE", cta_link=url("https://www.raja.fr"), image=img("raja-hero-warehouse-scanner"),
          image_mode="cutout", background="brand"),
     tile(badge="-20 %", badge_color="orange", eyebrow="Offre de bienvenue", title="-20 % sur votre 1ère commande",
          text=doc(Pb("Avec le code ", ("b", "WBIENVENUE"), ", sans minimum d'achat.")), cta_label="J'EN PROFITE",
-         cta_link=url("https://www.raja.fr"), image=img("raja-slide-bienvenue"), image_mode="cutout", background="dark"),
+         cta_link=url("https://www.raja.fr"), image=img("raja-hero-packaging"), image_mode="cutout", background="dark"),
     tile(title="Bientôt les fêtes de fin d'année, anticipez votre pic d'activité !", text=doc(P("Emballages, calage et étiquetage livrés en 24h.")),
-         cta_label="JE DÉCOUVRE", cta_link=url("https://www.raja.fr"), image=img("raja-slide-noel"), image_mode="background"),
+         cta_label="JE DÉCOUVRE", cta_link=url("https://www.raja.fr"), image=img("raja-hero-boutique"), image_mode="background"),
 ]
 TILES = [
     tile(badge="CADEAU", badge_color="orange", title="Halloween approche…", text=doc(Pb("Un seau de bonbons offert dès ", ("b", "250 € HT"), " d'achat*.")),
-         cta_label="J'EN PROFITE", cta_link=url("https://www.raja.fr"), image=img("raja-tile-halloween"), image_mode="cutout", background="promo"),
+         cta_label="J'EN PROFITE", cta_link=url("https://www.raja.fr"), image=img("raja-boutique-shopping-bag"), image_mode="cutout", background="promo"),
     tile(title="La marque engagée pour vous simplifier la vie", cta_label="NOS ENGAGEMENTS", cta_link=url("https://www.raja.fr"),
-         image=img("raja-tile-engagements"), image_mode="cutout", background="soft"),
+         image=img("raja-hero-eco-globe"), image_mode="cutout", background="soft"),
     tile(title="Emballez et gardez au chaud", cta_label="JE DÉCOUVRE", cta_link=url("https://www.raja.fr"),
-         image=img("raja-tile-food-chaud"), image_mode="cutout", background="cream"),
+         image=img("raja-cat-emballages-alimentaires"), image_mode="cutout", background="cream"),
 ]
 preset("rj-promo-tile", SLIDES[0])
 preset("rj-hero-mosaic", b("rj-hero-mosaic", layout="raja", slides=SLIDES, tiles=TILES, autoplay="6"))

@@ -13,4 +13,4 @@ comp("rj-box-finder", "Recherche de cartons", schema({
 
 preset("rj-box-finder", b("rj-box-finder", title=doc(Pb("Je trouve ", ("b", "mes formats"))), subtitle="Plus de 1200 formats en stock !",
        helper="Entrer les dimensions intérieures en cm (Longueur x largeur x Hauteur) :", cta_label="Trouver mon carton",
-       image=img("raja-box-finder-carton"), theme="soft"))
+       image=img("raja-box-finder"), theme="soft"))

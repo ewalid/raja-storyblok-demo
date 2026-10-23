@@ -22,5 +22,5 @@ preset("rj-showcase-band", b("rj-showcase-band", title="Découvrez nos vitrines"
     _sc("Tout pour l'expédition", "mo-vetrina-packaging"),
     _sc("Sécurité 360°", "mo-vetrina-dpi"),
     _sc("La technologie utile", "mo-vetrina-tech"),
-    _sc("Sélection mobilier de bureau", "mo-vetrina-marreda"),
+    _sc("Sélection mobilier de bureau", "mo-vetrina-arredo"),
 ]))

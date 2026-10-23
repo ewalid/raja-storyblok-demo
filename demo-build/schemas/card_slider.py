@@ -25,11 +25,11 @@ comp("rj-card-slider", "Carrousel de cartes", schema({
 def _card(title, text, key):
     return b("rj-card", title=title, text=doc(P(text)), image=img(key), link=url("https://www.raja.fr"), link_label="")
 
-preset("rj-card", _card("E-commerce", "Cartons, pochettes et calage pour expédier vos commandes en toute sécurité.", "raja-sector-ecommerce"))
+preset("rj-card", _card("E-commerce", "Cartons, pochettes et calage pour expédier vos commandes en toute sécurité.", "raja-corner-ecommerce"))
 preset("rj-card-slider", b("rj-card-slider", title="Des solutions pour chaque secteur", variant="cards", per_view="4", link_label="Découvrir", cards=[
-    _card("Toutes les activités", "Des produits professionnels et des solutions pensées pour les besoins de chaque secteur.", "raja-sector-overview"),
-    _card("Nettoyage et entretien", "Détergents, EPI et consommables pour l'entretien des bureaux, hôtels et locaux professionnels.", "raja-sector-cleaning"),
-    _card("E-commerce", "Emballages d'expédition, calage, étiquetage et équipement d'entrepôt pour préparer vos commandes.", "raja-sector-ecommerce"),
-    _card("Bureaux et professions libérales", "Mobilier, fournitures, impression et archivage pour équiper tout le cabinet.", "raja-sector-office"),
-    _card("Commerces de détail", "Sacs, emballages boutique et présentoirs pour valoriser vos produits en magasin.", "raja-sector-boutique"),
+    _card("Toutes les activités", "Des produits professionnels et des solutions pensées pour les besoins de chaque secteur.", "group-warehouse-managers"),
+    _card("Nettoyage et entretien", "Détergents, EPI et consommables pour l'entretien des bureaux, hôtels et locaux professionnels.", "group-hygiene-cleaning"),
+    _card("E-commerce", "Emballages d'expédition, calage, étiquetage et équipement d'entrepôt pour préparer vos commandes.", "raja-corner-ecommerce"),
+    _card("Bureaux et professions libérales", "Mobilier, fournitures, impression et archivage pour équiper tout le cabinet.", "group-office-open-space"),
+    _card("Commerces de détail", "Sacs, emballages boutique et présentoirs pour valoriser vos produits en magasin.", "raja-corner-pack-protect-ship"),
 ]))

@@ -14,5 +14,5 @@ comp("rj-promo-banner", "Bandeau promo", schema({
     description="Bandeau horizontal pour une offre : titre, code promo, compte à rebours, bouton.")
 
 preset("rj-promo-banner", b("rj-promo-banner", badge="BEST PRICE", title="Plus de 600 best-sellers au meilleur prix !",
-       text=doc(P("RAJA s'engage pour protéger votre budget.")), image=img("raja-best-prices"),
+       text=doc(P("RAJA s'engage pour protéger votre budget.")), image=img("raja-caisse-double-cannelure"),
        cta_label="Je commande !", cta_link=url("https://www.raja.fr"), theme="promo"))

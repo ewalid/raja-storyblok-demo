@@ -40,5 +40,5 @@ comp("rj-atom-button", "Bouton", atom({
 
 preset("rj-atom-heading", b("rj-atom-heading", text="Emballez et gardez au chaud", level="h2", size="md", align="left", accent=False))
 preset("rj-atom-text", b("rj-atom-text", size="normal", align="left", text=doc(Pb("Boîtes isothermes, sacs kraft et contenants pour la vente à emporter, ", ("b", "livrés en 24h"), "."))))
-preset("rj-atom-image", b("rj-atom-image", image=img("raja-food-keep-warm"), ratio="classic", rounded=True, caption="", link=url("")))
+preset("rj-atom-image", b("rj-atom-image", image=img("raja-cat-emballages-alimentaires"), ratio="classic", rounded=True, caption="", link=url("")))
 preset("rj-atom-button", b("rj-atom-button", label="Je découvre", link=url("https://www.raja.fr"), variant="primary", align="left"))

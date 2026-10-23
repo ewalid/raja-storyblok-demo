@@ -24,4 +24,4 @@ preset("rj-hero", b("rj-hero", layout="split", eyebrow="Rentrée logistique",
        subline=doc(Pb("Plus de ", ("b", "1 200 formats de caisses"), " en stock, livrés en 24h partout en France.")),
        primary_label="Je découvre", primary_link=url("https://www.raja.fr/caisses-cartons-boites_C11.html"),
        secondary_label="Nos conseils", secondary_link=url("https://www.raja.fr"),
-       proof="4,6/5 sur 619 avis vérifiés", image=img("raja-hero-entrepot"), theme="soft"))
+       proof="4,6/5 sur 619 avis vérifiés", image=img("raja-hero-warehouse-scanner"), theme="soft"))
