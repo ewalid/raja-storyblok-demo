@@ -1,0 +1,788 @@
+{
+  "site": {
+    "id": "mondoffice-it",
+    "name": "Mondoffice Italia",
+    "locale": "it-IT",
+    "currency": "EUR",
+    "taxLabel": "IVA escl.",
+    "icmSite": "RAJA-MONDOFFICE-Site",
+    "baseUrl": "https://www.mondoffice.com"
+  },
+  "categories": [
+    {
+      "id": "C03",
+      "name": "Arredo e Complementi",
+      "slug": "arredo-complementi",
+      "url": "https://www.mondoffice.com/arredo-e-complementi_C03.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/arredo-complementi.jpg"
+    },
+    {
+      "id": "cms_000121",
+      "name": "Arredo - Linee Mobili",
+      "slug": "arredo-linee-mobili",
+      "url": "https://www.mondoffice.com/Arredo_cms_000121.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Arredo_103953.jpg"
+    },
+    {
+      "id": "C0604",
+      "name": "Scrittura",
+      "slug": "scrittura",
+      "url": "https://www.mondoffice.com/scrittura_C0604.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/scrittura.jpg"
+    },
+    {
+      "id": "C1401",
+      "name": "Sedie e Poltrone",
+      "slug": "sedie-poltrone",
+      "url": "https://www.mondoffice.com/sedie-e-poltrone-per-ufficio_C1401.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/sedie_2804.jpg"
+    },
+    {
+      "id": "C01",
+      "name": "Archivio",
+      "slug": "archivio",
+      "url": "https://www.mondoffice.com/archivio_C01.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Archivio_37790.jpg"
+    },
+    {
+      "id": "C05",
+      "name": "Cancelleria e Scuola",
+      "slug": "cancelleria-scuola",
+      "url": "https://www.mondoffice.com/cancelleria-e-scuola_C05.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/cancelleria-scuola.jpg"
+    },
+    {
+      "id": "C06",
+      "name": "Carta e Scrittura",
+      "slug": "carta-scrittura",
+      "url": "https://www.mondoffice.com/carta-e-scrittura_C06.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Carta_806961.jpg"
+    },
+    {
+      "id": "C19",
+      "name": "Cartucce e Toner",
+      "slug": "cartucce-toner",
+      "url": "https://www.mondoffice.com/cartucce-e-toner_C19.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Cartucce_Toner_28626.jpg"
+    },
+    {
+      "id": "C09",
+      "name": "Tecnologia e Informatica",
+      "slug": "tecnologia-informatica",
+      "url": "https://www.mondoffice.com/tecnologia-e-informatica_C09.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/tecnologia-informatica.jpg"
+    },
+    {
+      "id": "C0904",
+      "name": "Stampanti",
+      "slug": "stampanti",
+      "url": "https://www.mondoffice.com/stampanti_C0904.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/stampanti_127438.jpg"
+    },
+    {
+      "id": "C0702",
+      "name": "Piatti Posate e Bicchieri Monouso",
+      "slug": "monouso-tavola",
+      "url": "https://www.mondoffice.com/ho-re-ca-forniture-e-attrezzature_C0702.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/prodotti-monouso-per-tavola.jpg"
+    },
+    {
+      "id": "C0701",
+      "name": "Bevande e Alimenti",
+      "slug": "bevande-alimenti",
+      "url": "https://www.mondoffice.com/bevande-e-alimenti_C0701.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/bevande-alimenti.jpg"
+    },
+    {
+      "id": "C08",
+      "name": "Igiene e Pulizia",
+      "slug": "igiene-pulizia",
+      "url": "https://www.mondoffice.com/igiene-e-pulizia_C08.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Igiene_125845.jpg"
+    },
+    {
+      "id": "C1602",
+      "name": "Sicurezza e DPI",
+      "slug": "sicurezza-dpi",
+      "url": "https://www.mondoffice.com/sicurezza-e-protezione-individuale_C1602.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/sicurezza-dpi.jpg"
+    },
+    {
+      "id": "C18",
+      "name": "Spedizioni e Imballo",
+      "slug": "spedizioni-imballo",
+      "url": "https://www.mondoffice.com/spedizioni-e-imballo_C18.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/imballaggio_109022.jpg"
+    },
+    {
+      "id": "C1608",
+      "name": "Infermeria aziendale",
+      "slug": "infermeria-aziendale",
+      "url": "https://www.mondoffice.com/infermeria-aziendale_C1608.html",
+      "image": "https://www.mondoffice.com/INTERSHOP/static/WFS/RAJA-MONDOFFICE-Site/-/RAJA-MONDOFFICE/it_IT/categorie/Infermeria_734653.jpg"
+    }
+  ],
+  "products": [
+    {
+      "sku": "83361",
+      "name": "MONDOFFICE Busta a foratura universale, 22 x 30 cm (A4), PPL, Spessore Medio, Finitura Liscia, Trasparente (confezione 50 pezzi)",
+      "shortDescription": "Queste buste a foratura universale MONDOFFICE, leggere e resistenti, sono adatte a contenere in modo pratico e sicuro ogni tipo di documento che non possa essere…",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/buste-a-foratura-universale_sku83361.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit2306067BA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 6.29,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "confezione 50 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "90717",
+      "name": "MONDOFFICE Cucitrice a pinza, Capacità 10 fogli, Blu",
+      "shortDescription": "Robusta cucitrice in metallo ideale per uso quotidiano, indispensabile a casa e in ufficio.",
+      "brand": "MONDOFFICE",
+      "category": "cancelleria-scuola",
+      "categoryName": "Cancelleria e Scuola",
+      "url": "https://www.mondoffice.com/cucitrici_sku90717.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit5010784AA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": {
+        "value": 6.99,
+        "currency": "EUR"
+      },
+      "salePrice": {
+        "value": 4.79,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": null,
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": 31,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "73667",
+      "name": "MONDOFFICE Carta igienica Standard in rotolo, 2 veli, 350 strappi, Finitura goffrata, Bianco (confezione 24 rotoli)",
+      "shortDescription": "Il rotolo di carta igienica a 2 veli MONDOFFICE offre una carta resistente adatta per l'uso quotidiano in tutti i bagni pubblici.",
+      "brand": "MONDOFFICE",
+      "category": "igiene-pulizia",
+      "categoryName": "Igiene e Pulizia",
+      "url": "https://www.mondoffice.com/carta-igienica_sku73667.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit2315672AC?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 15.49,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "confezione 24 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "73675",
+      "name": "MONDOFFICE Asciugamani di carta piegati, 2 veli, 210 fogli, Intercalati a V, Finitura goffrata, Bianco (15 pacchi da 210 asciugamani)",
+      "shortDescription": "Questi asciugamani a 2 veli piegati a V MONDOFFICE vengono erogati uno alla volta per ridurre il consumo nei bagni caratterizzati da frequenza media.",
+      "brand": "MONDOFFICE",
+      "category": "igiene-pulizia",
+      "categoryName": "Igiene e Pulizia",
+      "url": "https://www.mondoffice.com/bobine-e-carta-asciugamani_sku73675.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/ofr2132347AB?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 27.99,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "confezione 3.150 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "37789",
+      "name": "MONDOFFICE Registratore archivio Classic, Formato Protocollo, Dorso 8 cm, Cartone finitura liscia, Blu",
+      "shortDescription": "A casa o in ufficio conserva e proteggi i tuoi documenti con il registratore archivio MONDOFFICE, fornito di pratica custodia.",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/registratori-archivio_sku37789.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit5879637AB?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.59,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "73669",
+      "name": "MONDOFFICE Bobina di carta multiuso, 2 veli, 500 strappi, Finitura goffrata, Bianco",
+      "shortDescription": "La carta multiuso a 2 veli MONDOFFICE è ideale per un utilizzo pratico e di lunga durata in bagni con grande affluenza e cucine.",
+      "brand": "MONDOFFICE",
+      "category": "igiene-pulizia",
+      "categoryName": "Igiene e Pulizia",
+      "url": "https://www.mondoffice.com/bobine-e-carta-asciugamani_sku73669.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/ofr2429203AC?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": {
+        "value": 11.99,
+        "currency": "EUR"
+      },
+      "salePrice": {
+        "value": 8.19,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": null,
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": 31,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "83362",
+      "name": "MONDOFFICE Busta a foratura universale, 22 x 30 cm (A4), PPL, Spessore Medio Alto, Finitura Liscia, Trasparente (confezione 50 pezzi)",
+      "shortDescription": "Queste buste a foratura universale MONDOFFICE, leggere e resistenti, sono adatte a contenere in modo pratico e sicuro ogni tipo di documento che non possa essere…",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/buste-a-foratura-universale_sku83362.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit2306067BA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 7.29,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "confezione 50 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "38559",
+      "name": "MONDOFFICE Busta a foratura universale, 22 x 30 cm, PPL, Spessore Medio Alto, Finitura Ruvida, Trasparente (confezione 100 pezzi)",
+      "shortDescription": "Queste buste a foratura universale MONDOFFICE, leggere e resistenti, sono adatte a contenere in modo pratico e sicuro ogni tipo di documento che non possa essere…",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/buste-a-foratura-universale_sku38559.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit2306067BA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 12.49,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "confezione 100 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "37790",
+      "name": "MONDOFFICE Registratore archivio Classic, Formato Protocollo, Dorso 8 cm, Cartone finitura liscia, Rosso",
+      "shortDescription": "A casa o in ufficio conserva e proteggi i tuoi documenti con il registratore archivio MONDOFFICE, fornito di pratica custodia.",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/registratori-archivio_sku37790.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit6698055AB?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.59,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "37782",
+      "name": "MONDOFFICE Registratore archivio Classic, Formato Commerciale, Dorso 8 cm, Cartone finitura liscia, Blu",
+      "shortDescription": "A casa o in ufficio conserva e proteggi i tuoi documenti con il registratore archivio MONDOFFICE, fornito di pratica custodia.",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/registratori-archivio_sku37782.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit4098650AB?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.59,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "1007643",
+      "name": "MONDOFFICE Carta igienica Standard in rotolo, 2 veli, 180 strappi, Finitura goffrata, Bianco (confezione 48 rotoli)",
+      "shortDescription": "Il rotolo di carta igienica a 2 veli MONDOFFICE offre una carta resistente adatta per l'uso quotidiano in tutti i bagni pubblici.",
+      "brand": "MONDOFFICE",
+      "category": "igiene-pulizia",
+      "categoryName": "Igiene e Pulizia",
+      "url": "https://www.mondoffice.com/carta-igienica_sku1007643.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit8475562AA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": {
+        "value": 16.99,
+        "currency": "EUR"
+      },
+      "salePrice": {
+        "value": 13.49,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": null,
+        "unit": "confezione 48 pezzi",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": 20,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "37792",
+      "name": "MONDOFFICE Registratore archivio Classic, Formato Protocollo, Dorso 8 cm, Cartone finitura liscia, Verde",
+      "shortDescription": "A casa o in ufficio conserva e proteggi i tuoi documenti con il registratore archivio MONDOFFICE, fornito di pratica custodia.",
+      "brand": "MONDOFFICE",
+      "category": "archivio",
+      "categoryName": "Archivio",
+      "url": "https://www.mondoffice.com/registratori-archivio_sku37792.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oit5368213AB?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.59,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": null
+    },
+    {
+      "sku": "1005128",
+      "name": "RAJA Scatola in cartone, 15 x 15 x 15 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005128.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD49ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.53,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 15,
+        "widthCm": 15,
+        "heightCm": 15
+      }
+    },
+    {
+      "sku": "1005130",
+      "name": "RAJA Scatola in cartone, 25 x 25 x 25 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005130.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD02ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.54,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 25,
+        "widthCm": 25,
+        "heightCm": 25
+      }
+    },
+    {
+      "sku": "1005134",
+      "name": "RAJA Scatola in cartone, 28 x 18 x 17 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005134.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD03ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.12,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 28,
+        "widthCm": 18,
+        "heightCm": 17
+      }
+    },
+    {
+      "sku": "1005135",
+      "name": "RAJA Scatola in cartone, 30 x 20 x 20 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005135.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD04ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.42,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 30,
+        "widthCm": 20,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "1005131",
+      "name": "RAJA Scatola in cartone, 30 x 30 x 30 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005131.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD05ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.92,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 30,
+        "widthCm": 30,
+        "heightCm": 30
+      }
+    },
+    {
+      "sku": "1005138",
+      "name": "RAJA Scatola in cartone, 40 x 30 x 27 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005138.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD53ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.19,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 40,
+        "widthCm": 30,
+        "heightCm": 27
+      }
+    },
+    {
+      "sku": "1005139",
+      "name": "RAJA Scatola in cartone, 40 x 40 x 30 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005139.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD12AITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.59,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 40,
+        "widthCm": 40,
+        "heightCm": 30
+      }
+    },
+    {
+      "sku": "1005143",
+      "name": "RAJA Scatola in cartone, 65 x 45 x 40 cm, Onda doppia, Avana",
+      "shortDescription": "Realizzate in cartone avana a doppia onda, queste scatole sono progettate per garantire la massima protezione anche durante trasporti impegnativi.",
+      "brand": "RAJA",
+      "category": "spedizioni-imballo",
+      "categoryName": "Spedizioni e Imballo",
+      "url": "https://www.mondoffice.com/scatole-tipo-americano_sku1005143.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/oitCAD31ITAA?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 3.79,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "A partire da",
+        "unit": "pezzo",
+        "taxLabel": "IVA escl."
+      },
+      "discountPercent": null,
+      "badges": [],
+      "rating": null,
+      "availability": "IN_STOCK",
+      "deliveryTime": "24/48h",
+      "dimensions": {
+        "lengthCm": 65,
+        "widthCm": 45,
+        "heightCm": 40
+      }
+    }
+  ]
+}

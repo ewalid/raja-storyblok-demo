@@ -1,0 +1,957 @@
+{
+  "site": {
+    "id": "raja-fr",
+    "name": "RAJA France",
+    "locale": "fr-FR",
+    "currency": "EUR",
+    "taxLabel": "HT",
+    "icmSite": "RAJA-FR-Site",
+    "baseUrl": "https://www.raja.fr"
+  },
+  "categories": [
+    {
+      "id": "C11",
+      "name": "Caisses carton, boîtes",
+      "slug": "caisses-carton-boites",
+      "url": "https://www.raja.fr/caisses-cartons-boites_C11.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-01?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C15",
+      "name": "Adhésifs, cerclage, collage",
+      "slug": "adhesifs-cerclage-collage",
+      "url": "https://www.raja.fr/adhesifs-cerclage-collage_C15.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-02?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C12",
+      "name": "Enveloppes, pochettes",
+      "slug": "enveloppes-pochettes",
+      "url": "https://www.raja.fr/enveloppes-pochettes-tubes_C12.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-03?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C13",
+      "name": "Sacherie, conditionnement",
+      "slug": "sacherie-conditionnement",
+      "url": "https://www.raja.fr/sacherie-conditionnement_C13.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-04?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C14",
+      "name": "Calage, protection",
+      "slug": "calage-protection",
+      "url": "https://www.raja.fr/calage-protection_C14.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-05?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C16",
+      "name": "Etiquetage, signalisation",
+      "slug": "etiquetage-signalisation",
+      "url": "https://www.raja.fr/etiquetage-et-signalisation_C16.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-06?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C17",
+      "name": "Film, palettisation",
+      "slug": "film-palettisation",
+      "url": "https://www.raja.fr/films-palettisation_C17.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-07?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C18",
+      "name": "Machines d'emballage",
+      "slug": "machines-emballage",
+      "url": "https://www.raja.fr/machines-emballage_C18.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-09?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C90",
+      "name": "Stockage",
+      "slug": "stockage",
+      "url": "https://www.raja.fr/stockage_C90.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-10?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C1910",
+      "name": "Manutention",
+      "slug": "manutention",
+      "url": "https://www.raja.fr/stockage-manutention-securite/manutention-et-transport-de-charge_C1910.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-11?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C92",
+      "name": "Équipements et sécurité",
+      "slug": "equipements-securite",
+      "url": "https://www.raja.fr/equipements-et-securite_C92.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-13?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C21",
+      "name": "Fournitures et mobilier de bureau",
+      "slug": "fournitures-bureau",
+      "url": "https://www.raja.fr/fourniture-de-bureau_C21.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-12?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C20",
+      "name": "Entretien, hygiène",
+      "slug": "entretien-hygiene",
+      "url": "https://www.raja.fr/entretien-hygiene_C20.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-14?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C24",
+      "name": "Protection individuelle",
+      "slug": "protection-individuelle",
+      "url": "https://www.raja.fr/protection-individuelle_C24.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-16?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C22",
+      "name": "Emballages alimentaires",
+      "slug": "emballages-alimentaires",
+      "url": "https://www.raja.fr/emballages-alimentaires_C22.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-15?wid=180&fmt=png-alpha"
+    },
+    {
+      "id": "C23",
+      "name": "Emballages boutiques",
+      "slug": "emballages-boutiques",
+      "url": "https://www.raja.fr/emballages-boutiques_C23.html",
+      "image": "https://raja.scene7.com/is/image/Raja/ALL-cat-C-08?wid=180&fmt=png-alpha"
+    }
+  ],
+  "products": [
+    {
+      "sku": "OFF_FR_875",
+      "name": "Caisse carton standard double cannelure RAJA",
+      "shortDescription": "Conçue pour offrir une protection maximale, la caisse carton brune double cannelure RAJA est idéale pour l’expédition, la manutention et le stockage de produits lourds…",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-cartons-boites/caisses-produits-lourds-fragiles/caisse-standard_OFF_FR_875.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAD_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.84,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [
+        "BEST PRICE"
+      ],
+      "rating": {
+        "value": 4.7,
+        "count": 2834
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "OFF_FR_798",
+      "name": "Caisse carton brune simple cannelure RAJA",
+      "shortDescription": "La caisse carton cannelure RAJA est idéale pour l’emballage en carton, la protection et l’expédition de produits fragiles et légers.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-cartons-boites/caisses-produits-legers/caisses-standard_OFF_FR_798.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.42,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3448
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "OFF_FR_297",
+      "name": "Boîte carton d'expédition simple cannelure brune RAJAPOST",
+      "shortDescription": "Vous avez besoin de boîtes postales adaptées aux produits que vous envoyez à vos clients ? Facilitez vos expéditions d’objets avec des boîtes qui allient protection et…",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/boites-postales-etuis-et-tubes/boites-postales-en-carton/boite-postale-en-carton-brune-RAJA_OFF_FR_297.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_RPT07B_R_A_075_F?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.39,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la boîte",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3738
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT02198",
+      "name": "Pochette matelassée bulles Éco blanche RAJA",
+      "shortDescription": "Esthétique, la couverture extérieure en papier de qualité 75 g/m² certifié FSC® garantit une présentation soignée de vos expéditions.",
+      "brand": "RAJA",
+      "category": "enveloppes-pochettes",
+      "categoryName": "Enveloppes, pochettes",
+      "url": "https://www.raja.fr/enveloppes-pochettes/pochettes-matelassees/enveloppes-et-pochettes-a-bulles/pochette-matelassee-de-bulles-rajabul-eco_PDT02198.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_PMBL0C_PACKSHOT_05?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 20.2,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "le paquet de 100",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 1166
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT01547",
+      "name": "Ruban adhésif polypropylène silencieux résistant 35 microns RAJA",
+      "shortDescription": "Le ruban adhésif RAJA polypropylène silencieux est fiable et solide. Adapté pour vos boîtes et caisses en carton à couverture kraft.",
+      "brand": "RAJA",
+      "category": "adhesifs-cerclage-collage",
+      "categoryName": "Adhésifs, cerclage, collage",
+      "url": "https://www.raja.fr/adhesifs-cerclage-collage/adhesifs-emballage/rubans-adhesifs-polypropylene-silencieux/ruban-adhesif-polypropylene-silencieux-rajatape-resistant-35-microns_PDT01547.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_ADP26_ADV291_CAD_FR?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.32,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "le rouleau",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.6,
+        "count": 1086
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT12578",
+      "name": "Caisse carton brune simple cannelure à montage instantané et fermeture adhésive RAJA",
+      "shortDescription": "Fermeture rapide : la bande adhésive garantit une fermeture aisée et efficace. Ouverture facile et sûre grâce à la bande d'arrachage.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-a-format-specifique/caisses-carton-pour-produits-plats/caisse-carton-brune-pour-produits-plats_PDT12578.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_PF_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.81,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 823
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "OFF_FR_1572",
+      "name": "Caisse carton plate brune simple cannelure RAJA",
+      "shortDescription": "Résistante, la caisse en carton pour produit plat est idéale pour emballer, protéger, et expédier tous vos produits d'une hauteur de 5,5 à 30 cm.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-cartons-boites/caisses-pour-format-long-plat-hauteur-variable-paletissable/caisses-carton-pour-produit-plat/caisse-plate-brune-simple-cannelure-RAJA_OFF_FR_1572.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS34A_D_A3_072_F?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.57,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 400
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT02454",
+      "name": "Film étirable manuel cast transparent RAJA",
+      "shortDescription": "La solution idéale pour vos besoins standards de palettisation : le film étirable manuel cast transparent est parfaitement adapté au conditionnement.",
+      "brand": "RAJA",
+      "category": "film-palettisation",
+      "categoryName": "Film, palettisation",
+      "url": "https://www.raja.fr/films-palettisation/films-etirables/films-etirables-manuels/film-etirable-manuel-transparent-cast-rajastretch_PDT02454.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_FEB13_FED201_CAD_01_FR?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 13.9,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la bobine",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 35,
+      "badges": [],
+      "rating": {
+        "value": 4.6,
+        "count": 784
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT02420",
+      "name": "Dévidoir adhésif de sécurité RAJA",
+      "shortDescription": "Sécurité : lame rétractable apparaissant au moment de couper le ruban, lorsqu’on exerce une pression sur la languette.",
+      "brand": "RAJA",
+      "category": "adhesifs-cerclage-collage",
+      "categoryName": "Adhésifs, cerclage, collage",
+      "url": "https://www.raja.fr/adhesifs-cerclage-collage/devidoirs-adhesifs-et-scelleuses/devidoirs/devidoir-de-securite-raja_PDT02420.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_ADV291_D_A4_066_F?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 14.95,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "le dévidoir",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 20,
+      "badges": [],
+      "rating": {
+        "value": 4.6,
+        "count": 318
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "PDT01831",
+      "name": "Caisse carton Galia double cannelure",
+      "shortDescription": "La caisse carton double cannelure résistante et économique ! Les cartons double cannelure Galia sont des solutions à moindre coût pour tous les secteurs.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-galia/caisse-carton-galia-double-cannelure-avec-rabats_PDT01831.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_GALIA_A_DW_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.64,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 145
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "OFF_FR_1676",
+      "name": "Caisse carton brune simple cannelure à montage instantané RAJA",
+      "shortDescription": "Gain de temps : le fond se bloque automatiquement par simple pression sur les côtés.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-carton-simple-cannelure-fond-automatique_OFF_FR_1676.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CFA_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.58,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 20,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 409
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "OFF_FR_414",
+      "name": "Film bulles 50% recyclé Ø 10 mm sans prédécoupe RAJA",
+      "shortDescription": "Le film bulles de protection permet d'envelopper et de protéger les produits légers et fragiles pour toute expédition de colis.",
+      "brand": "RAJA",
+      "category": "calage-protection",
+      "categoryName": "Calage, protection",
+      "url": "https://www.raja.fr/calage-protection/protection-bulle/rouleaux-et-films-bulle-diametre-10-mm/rouleau-de-film-bulles-largeur-50cm-diam-10mm_OFF_FR_414.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_MCB50A_G_FR?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 26.65,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "le rouleau",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.6,
+        "count": 817
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": null
+    },
+    {
+      "sku": "CAS03B",
+      "name": "Caisse carton brune simple cannelure RAJA 21,5x15x10,5 cm",
+      "shortDescription": "Une caisse carton spécialement conçue pour protéger et expédier vos produits légers et peu fragiles.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-simple-cannelure-brune-21-5x15x10-5_skuCAS03B.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS03B_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.63,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3448
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 21.5,
+        "widthCm": 15,
+        "heightCm": 10.5
+      }
+    },
+    {
+      "sku": "RPT11B",
+      "name": "Boîte carton brune d’expédition RAJA 21,5x15,5x10 cm",
+      "shortDescription": "La boîte carton d’expédition brune RAJA 21,5x15,5x10 cm est conçue pour offrir une protection optimale à vos produits lors de leur envoi.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/boites-postales-etuis-et-tubes/boites-postales-en-carton/boite-RAJA-brune-a5_skuRPT11B.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_RPT11B_215x155x100?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 0.89,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la boîte",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3739
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 21.5,
+        "widthCm": 15.5,
+        "heightCm": 10
+      }
+    },
+    {
+      "sku": "CAS36",
+      "name": "Caisse carton brune simple cannelure RAJA 41x31x24 cm",
+      "shortDescription": "Caisse carton brune simple cannelure 41 x 31 x 24 cm conçue pour emballer, stocker et expédier des produits légers.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-simple-cannelure-brune-41x31x24_skuCAS36.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS36_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.84,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3448
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 41,
+        "widthCm": 31,
+        "heightCm": 24
+      }
+    },
+    {
+      "sku": "PF70",
+      "name": "Caisse carton brune simple cannelure montage instantané fermeture adhésive RAJA 43x31x20 cm",
+      "shortDescription": "Gagnez du temps dès la préparation de vos colis : son fond automatique se bloque en un geste.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-a-format-specifique/caisses-carton-pour-produits-plats/caisse-carton-brune-pour-produits-plats-fermeture-adhesive_skuPF70.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_PF_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.73,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 823
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 43,
+        "widthCm": 31,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAS38",
+      "name": "Caisse carton brune simple cannelure RAJA 43x35x20 cm",
+      "shortDescription": "La caisse carton brune simple cannelure RAJA 43 x 35 x 20 cm facilite l’expédition de documents et d’articles légers.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-simple-cannelure-brune-43x35x20_skuCAS38.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS38_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.96,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3438
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 43,
+        "widthCm": 35,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAS39A",
+      "name": "Caisse carton brune simple cannelure RAJA 45x30x20 cm",
+      "shortDescription": "La caisse carton brune simple cannelure 45 x 30 x 20 cm RAJA est conçue pour emballer, protéger et expédier des produits légers.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-carton-RAJA-brune-simple-cannelure-40-50cm-long_skuCAS39A.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS39A_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 1.8,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3448
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 45,
+        "widthCm": 30,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAD17A",
+      "name": "Caisse carton brune double cannelure RAJA 50x30x20 cm",
+      "shortDescription": "La caisse carton brune double cannelure RAJA 50x30x20 cm est conçue pour répondre aux exigences des entreprises.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-double-cannelure/caisse-double-cannelure-50x30x20cm_skuCAD17A.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAD17A_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 3.1,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 2835
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 50,
+        "widthCm": 30,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAS34A",
+      "name": "Caisse carton brune simple cannelure RAJA 40x40x20 cm",
+      "shortDescription": "La caisse carton brune simple cannelure RAJA est conçue pour faciliter l’emballage, la protection et l’expédition de vos produits.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-simple-cannelure-brune-40x40x20_skuCAS34A.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS34A_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.44,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 25,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 3438
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 40,
+        "widthCm": 40,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAD27",
+      "name": "Caisse carton brune double cannelure RAJA 60x40x20 cm",
+      "shortDescription": "La caisse carton brune double cannelure RAJA 60x40x20 cm est conçue pour offrir une protection optimale à vos produits.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-double-cannelure/caisse-double-cannelure-60x40x20cm_skuCAD27.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAD27_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 3.78,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 2834
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 60,
+        "widthCm": 40,
+        "heightCm": 20
+      }
+    },
+    {
+      "sku": "CAS60",
+      "name": "Caisse carton brune simple cannelure RAJA 60x40x40 cm",
+      "shortDescription": "La caisse carton brune simple cannelure RAJA 60x40x40 cm : la solution idéale pour vos besoins d’emballage.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-simple-cannelure/caisse-simple-cannelure-brune-59x39x28_skuCAS60.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAS60_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 2.68,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 10,
+      "badges": [
+        "BEST PRICE"
+      ],
+      "rating": {
+        "value": 4.7,
+        "count": 3448
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 60,
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    },
+    {
+      "sku": "CAD35",
+      "name": "Caisse carton brune double cannelure RAJA 70x40x40 cm",
+      "shortDescription": "Une caisse carton double cannelure pour une protection renforcée lors de l’expédition et du stockage de produits lourds, fragiles et volumineux.",
+      "brand": "RAJA",
+      "category": "caisses-carton-boites",
+      "categoryName": "Caisses carton, boîtes",
+      "url": "https://www.raja.fr/caisses-boites-tubes/caisses-carton-caisses-americaines/caisses-carton-double-cannelure/caisse-double-cannelure-70x40x40cm_skuCAD35.html",
+      "images": [
+        {
+          "url": "https://raja.scene7.com/is/image/Raja/M_CAD35_WEB_ACCESSORY_01?wid=600",
+          "type": "packshot"
+        }
+      ],
+      "listPrice": null,
+      "salePrice": {
+        "value": 5.58,
+        "currency": "EUR"
+      },
+      "priceDisplay": {
+        "prefix": "À partir de",
+        "unit": "la caisse",
+        "taxLabel": "HT"
+      },
+      "discountPercent": 30,
+      "badges": [],
+      "rating": {
+        "value": 4.7,
+        "count": 2835
+      },
+      "availability": "IN_STOCK",
+      "deliveryTime": "24h",
+      "dimensions": {
+        "lengthCm": 70,
+        "widthCm": 40,
+        "heightCm": 40
+      }
+    }
+  ]
+}
