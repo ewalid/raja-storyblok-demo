@@ -3,10 +3,24 @@ flexible default-page restricted to the RAJA sections."""
 from .common import *
 
 SECTIONS = ["RAJA · Sections"]
+# Pages also accept nested blocks and atoms on their own (rendered by RjStandalone.vue).
+PAGE_GROUPS = ["RAJA · Sections", "RAJA · Éléments", "RAJA · Atomes"]
 
 # ---------- flexible page (homes, free pages) ----------
-patch("default-page", "body", restrict_components=True, restrict_type="groups", component_group_whitelist_names=SECTIONS,
-      display_name="Contenu de la page", description="Toutes les sections RAJA. Glissez-déposez pour réordonner.")
+patch("default-page", "body", restrict_components=True, restrict_type="groups", component_group_whitelist_names=PAGE_GROUPS,
+      display_name="Contenu de la page", description="Sections RAJA, plus les éléments (tuile, carte, avis…) et les atomes seuls. Glissez-déposez pour réordonner.")
+
+# SEO tab on the flexible page: the frontend already reads these fields, the starter schema never declared them
+_seo = {
+    "meta_title": text("Titre SEO", max_length=60, description="Affiché dans Google. 60 caractères max."),
+    "meta_description": area("Meta description", max_length=160, description="Résumé affiché dans Google. 160 caractères max."),
+    "og_image": image("Image de partage", description="Image utilisée sur LinkedIn / réseaux sociaux. 1200×630 conseillé."),
+    "noindex": boolean("Ne pas indexer (noindex)", description="À cocher pour une page privée (ex. bibliothèque de composants)."),
+}
+for _i, (_k, _v) in enumerate(_seo.items()):
+    patch("default-page", _k, **{**_v, "pos": 100 + _i})
+patch("default-page", f"tab-{uuid.uuid5(uuid.NAMESPACE_DNS, 'rj-default-page-SEO')}", type="tab", display_name="SEO",
+      keys=list(_seo), pos=110)
 
 # ---------- locked campaign template ----------
 SEO = {
@@ -70,7 +84,7 @@ comp("rj-nav-item", "Lien de navigation", {
     "link": link("Lien", pos=1, description="Page Storyblok ou URL Intershop."),
     "highlight": boolean("Mettre en avant", pos=2, description="Fond légèrement plus clair, pour un temps fort (ex. Black Friday)."),
     "dropdown": boolean("Afficher la flèche ▾", pos=3, description="Comme sur le site live pour les entrées qui ouvrent un sous-menu."),
-}, GROUP_ITEM, preview="label", icon="block-arrow-pointer")
+}, GROUP_CONFIG, preview="label", icon="block-arrow-pointer")
 ICONS = [("truck", "Livraison"), ("box", "Colis / stock"), ("gift", "Cadeau"), ("mail", "Newsletter"), ("tag", "Promo"),
          ("star", "Avis"), ("shield", "Garantie"), ("return", "Retour"), ("euro", "Prix"), ("leaf", "Éco-responsable"),
          ("headset", "Service client"), ("clock", "Délai")]
@@ -78,11 +92,11 @@ comp("rj-topbar-item", "Message de la barre supérieure", {
     "icon": dict(opt("Icône", ICONS, "truck", description="Pictogramme affiché avant le texte."), pos=0),
     "text": text("Texte", required=True, max_length=50, pos=1, description="Court : la barre fait une ligne."),
     "link": link("Lien (optionnel)", pos=2, description="Vide = texte non cliquable."),
-}, GROUP_ITEM, preview="text", icon="block-text-c")
+}, GROUP_CONFIG, preview="text", icon="block-text-c")
 comp("rj-footer-column", "Colonne du pied de page", {
     "title": text("Titre", required=True, max_length=40, pos=0, description="Titre de la colonne (couleur de la marque)."),
     "links": bloks("Liens", ["rj-nav-item"], maximum=12, pos=1, description="Jusqu'à 12 liens."),
-}, GROUP_ITEM, preview="title", icon="block-table-2")
+}, GROUP_CONFIG, preview="title", icon="block-table-2")
 
 HEADER = {
     "brand": opt("Marque (thème)", [("raja", "RAJA (bleu / violet)"), ("mondoffice", "Mondoffice (rouge)")], "raja", required=True,

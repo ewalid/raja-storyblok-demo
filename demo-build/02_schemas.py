@@ -46,7 +46,7 @@ for name, fields in PATCHES.items():
         changes = dict(changes)
         if "component_group_whitelist_names" in changes:
             changes["component_group_whitelist"] = [group(n) for n in changes.pop("component_group_whitelist_names")]
-        c["schema"][fld].update(changes)
+        c["schema"].setdefault(fld, {}).update(changes)  # also adds fields the starter never declared
     sb._req(f"/components/{c['id']}", "PUT", {"component": {"name": name, "schema": c["schema"]}})
     print("patched", name)
 

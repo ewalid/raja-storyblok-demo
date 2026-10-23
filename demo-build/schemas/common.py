@@ -110,6 +110,7 @@ def schema(general, style=True, mobile=True, planning=True, sites=True, extra_ta
 COMPONENTS = []   # component specs
 PRESETS = {}      # component name -> preset content (blok dict)
 GROUP_SECT, GROUP_ITEM, GROUP_ATOM, GROUP_PAGE = "RAJA · Sections", "RAJA · Éléments", "RAJA · Atomes", "RAJA · Pages"
+GROUP_CONFIG = "RAJA · Configuration du site"  # header/footer items: never offered on pages
 
 def comp(name, display, sch, group, nestable=True, root=False, icon=None, color=None, preview=None, description=""):
     COMPONENTS.append({"name": name, "display_name": display, "schema": sch, "is_nestable": nestable, "is_root": root,
