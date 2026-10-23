@@ -17,7 +17,7 @@ const fill = computed(() => {
   <RjShell :blok="blok" :defaults="{ spacing: 'md' }">
     <h2 v-if="blok.title" class="rj-title mb-4">{{ blok.title }}</h2>
     <div class="grid gap-5 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8">
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 lg:flex-col lg:items-start lg:justify-center">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 rounded-[6px] bg-[var(--rj-dark)] p-5 text-white [--rj-strong:#fff] [--rj-sub:rgb(255_255_255/0.82)] [--rj-accent:#fff] lg:flex-col lg:items-start lg:justify-center">
         <div v-if="blok.rating" class="flex items-baseline gap-3">
           <p class="font-[var(--rj-display)] text-[32px] leading-none font-black text-[var(--rj-strong)]">{{ blok.rating }}</p>
           <span v-if="fill !== null" class="relative inline-flex text-[var(--rj-orange)]" role="img" :aria-label="`Note ${blok.rating}`">

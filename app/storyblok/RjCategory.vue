@@ -34,7 +34,7 @@ const editable = computed(() => (props.blok?._uid ? props.blok : {}));
     v-editable="editable"
     v-bind="attrs"
     class="group flex h-full flex-col items-center text-center"
-    :class="imageStyle === 'photo' ? 'rj-card-base overflow-hidden rounded-[4px] bg-white' : 'gap-2 px-1'"
+    :class="imageStyle === 'photo' ? 'gap-2 overflow-hidden' : 'gap-2 px-1'"
   >
     <template v-if="imageStyle === 'photo'">
       <div class="aspect-[4/3] w-full overflow-hidden bg-[var(--rj-soft)]">

@@ -108,7 +108,7 @@ onBeforeUnmount(() => clearInterval(timer));
       <!-- slider -->
       <div
         v-if="slides.length"
-        class="relative min-w-0 overflow-hidden rounded-[4px]"
+        class="relative min-w-0 overflow-hidden rounded-[4px] max-md:-mx-4 max-md:rounded-none"
         :class="withTiles ? 'h-[280px] sm:h-[320px] lg:h-full' : 'h-[280px] sm:h-[320px] lg:h-[370px]'"
         role="region"
         aria-roledescription="carrousel"
@@ -173,6 +173,7 @@ onBeforeUnmount(() => clearInterval(timer));
       <div
         v-if="withTiles"
         class="grid min-w-0 grid-cols-2 gap-3 md:gap-4 lg:grid-cols-6 lg:grid-rows-2"
+        :class="blok.tiles_on_mobile ? '' : 'max-md:hidden'"
       >
         <div
           v-for="c in cells"

@@ -10,6 +10,14 @@ const site = computed(() => useState('site', () => '').value);
 const open = ref(false);
 const megaOpen = ref(false);
 const categories = ref([]);
+// Like the live storefronts, the header compacts once the page scrolls: the top bar goes.
+const scrolled = ref(false);
+function onScroll() {
+  scrolled.value = window.scrollY > 120;
+}
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }));
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll));
+const GUTTER = 'w-full px-4 md:px-6';
 
 async function loadCategories() {
   if (categories.value.length || !site.value) {
@@ -39,8 +47,15 @@ const home = computed(() => (site.value ? localePath(`/${site.value}`) : '/'));
 
 <template>
   <div class="sticky top-0 z-50">
-    <div v-if="c.topbar?.length" class="hidden bg-[var(--rj-dark)] text-white md:block">
-      <div class="rj-container flex h-10 items-center gap-8 text-[13px] font-semibold">
+    <!-- mobile info bar (phone + rating), as on both live sites -->
+    <div v-if="c.phone || c.rating_value" class="bg-[var(--rj-dark)] text-white md:hidden">
+      <div class="flex h-8 items-center justify-between text-[12px] font-semibold" :class="GUTTER">
+        <a v-if="c.phone" :href="`tel:${c.phone.replace(/\s|\./g, '')}`" class="flex items-center gap-1.5"><RjIcon name="phone" class="size-3.5" />{{ c.phone }}</a>
+        <span v-if="c.rating_value" class="flex items-center gap-1"><RjIcon name="star" class="size-3.5 fill-[#ffc400] text-[#ffc400]" />{{ c.rating_value }} {{ c.rating_label }}</span>
+      </div>
+    </div>
+    <div v-if="c.topbar?.length" v-show="!scrolled" class="hidden bg-[var(--rj-dark)] text-white md:block">
+      <div class="flex h-10 items-center gap-8 text-[13px] font-semibold" :class="GUTTER">
         <component
           :is="item.link?.cached_url || item.link?.url ? resolveComponent('NuxtLink') : 'span'"
           v-for="item in c.topbar"
@@ -58,19 +73,19 @@ const home = computed(() => (site.value ? localePath(`/${site.value}`) : '/'));
     </div>
 
     <header class="text-white" style="background: var(--rj-brand-bg)">
-      <div class="rj-container flex items-center gap-5 pt-3 pb-2 max-md:flex-wrap max-md:gap-3">
+      <div class="flex items-center gap-5 pt-3 pb-2 max-md:flex-wrap max-md:gap-3" :class="GUTTER">
         <button class="md:hidden" aria-label="Menu" @click="open = !open">
           <RjIcon name="menu" class="size-7" />
         </button>
         <NuxtLink :to="home" class="shrink-0" :aria-label="c.logo?.alt || 'Accueil'">
-          <img v-if="c.logo?.filename" :src="c.logo.filename" :alt="c.logo.alt || ''" class="h-[30px] w-auto max-w-[170px]" />
+          <img v-if="c.logo?.filename" :src="c.logo.filename" :alt="c.logo.alt || ''" class="h-[20px] w-auto max-w-[110px] md:h-[30px] md:max-w-[170px]" />
           <span v-else class="font-[var(--rj-display)] text-2xl font-black">{{ c.site_name || 'RAJA' }}</span>
         </NuxtLink>
-        <div v-if="c.phone" class="hidden shrink-0 leading-tight lg:block">
+        <div v-if="c.phone" class="rj-hdr-phone hidden shrink-0 leading-tight lg:block">
           <div class="flex items-center gap-1.5 text-base font-bold"><RjIcon name="phone" class="size-4" />{{ c.phone }}</div>
           <div class="text-xs opacity-90">{{ c.phone_hours }}</div>
         </div>
-        <div v-if="c.rating_value" class="hidden shrink-0 leading-tight xl:block">
+        <div v-if="c.rating_value" class="rj-hdr-rating hidden shrink-0 leading-tight xl:block">
           <div class="flex items-center gap-1 text-base font-bold"><RjIcon name="star" class="size-4 fill-[#ffc400] text-[#ffc400]" />{{ c.rating_value }}</div>
           <div class="text-xs opacity-90">{{ c.rating_label }}</div>
         </div>
@@ -81,13 +96,13 @@ const home = computed(() => (site.value ? localePath(`/${site.value}`) : '/'));
         </label>
         <div class="ml-auto flex shrink-0 items-center gap-5 text-[13px] font-semibold md:ml-0">
           <span v-if="c.quick_order_label" class="hidden items-center gap-1.5 xl:flex"><RjIcon name="bolt" class="size-5" />{{ c.quick_order_label }}</span>
-          <span class="flex items-center gap-1.5"><RjIcon name="user" class="size-6" /><span class="hidden lg:inline">{{ c.account_label || 'Mon compte' }}</span></span>
+          <span class="flex items-center gap-0.5"><RjIcon name="user" class="size-6" /><span class="sr-only">{{ c.account_label || 'Mon compte' }}</span><RjIcon name="chevron" class="hidden size-3.5 rotate-90 lg:block" /></span>
           <span class="relative"><RjIcon name="cart" class="size-6" /><span class="absolute -top-1.5 -right-2 grid size-4 place-items-center rounded-full bg-white text-[10px] font-bold text-[var(--rj-primary)]">0</span></span>
         </div>
       </div>
 
-      <nav class="rj-container hidden items-center gap-1 pb-2.5 md:flex" aria-label="Navigation principale">
-        <button class="mr-2 flex items-center gap-2 rounded-[4px] bg-white px-3 py-1 text-[15px] font-semibold text-[var(--rj-primary)]" :aria-expanded="megaOpen" @click="toggleMega">
+      <nav class="flex items-center gap-1 overflow-x-auto pb-2.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" :class="GUTTER" aria-label="Navigation principale">
+        <button class="mr-2 flex shrink-0 items-center gap-2 rounded-[4px] bg-white px-3 py-1 text-[15px] font-semibold text-[var(--rj-primary)]" :aria-expanded="megaOpen" @click="toggleMega">
           <RjIcon name="menu" class="size-4" />{{ c.products_label || 'Nos produits' }}
         </button>
         <NuxtLink
@@ -95,17 +110,17 @@ const home = computed(() => (site.value ? localePath(`/${site.value}`) : '/'));
           :key="item._uid"
           v-editable="item"
           :to="resolveLink(item.link) || home"
-          class="rounded-[4px] px-2 py-0.5 text-sm font-semibold whitespace-nowrap hover:bg-white/15"
+          class="flex shrink-0 items-center gap-0.5 rounded-[4px] px-2 py-0.5 text-sm font-semibold whitespace-nowrap hover:bg-white/15"
           :class="item.highlight ? 'bg-white/15' : ''"
         >
-          {{ item.label }}
+          {{ item.label }}<RjIcon v-if="item.dropdown" name="chevron" class="size-3.5 rotate-90" />
         </NuxtLink>
       </nav>
     </header>
 
     <!-- Mega menu: catalogue categories served by Intershop (mock API) -->
     <div v-if="megaOpen" class="absolute inset-x-0 border-t border-[var(--rj-line)] bg-white shadow-[0_6px_10px_rgba(0,0,0,.22)]">
-      <div class="rj-container py-6">
+      <div class="py-6" :class="GUTTER">
         <div class="mb-4 flex items-center justify-between">
           <p class="rj-title text-lg">{{ c.products_label || 'Nos produits' }}</p>
           <span class="rounded-full bg-[#ede7ff] px-3 py-1 text-[11px] font-bold text-[#4b2a9b]">Catalogue servi par Intershop (simulé)</span>

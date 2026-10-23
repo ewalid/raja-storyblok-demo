@@ -29,7 +29,7 @@ const lines = computed(() => {
 
 <template>
   <RjShell v-if="lines.length || editor" :blok="blok" :defaults="{ theme: 'white', spacing: 'sm', align: 'center' }">
-    <component :is="level" class="rj-h1 mx-auto max-w-[980px] text-balance" :class="size">
+    <component :is="level" class="rj-h1 mx-auto max-w-[1280px] text-balance" :class="size">
       <template v-if="lines.length">
         <template v-for="(line, li) in lines" :key="li">
           <br v-if="li > 0" />

@@ -69,6 +69,7 @@ comp("rj-nav-item", "Lien de navigation", {
     "label": text("Libellé", required=True, max_length=40, pos=0, description="Texte du lien."),
     "link": link("Lien", pos=1, description="Page Storyblok ou URL Intershop."),
     "highlight": boolean("Mettre en avant", pos=2, description="Fond légèrement plus clair, pour un temps fort (ex. Black Friday)."),
+    "dropdown": boolean("Afficher la flèche ▾", pos=3, description="Comme sur le site live pour les entrées qui ouvrent un sous-menu."),
 }, GROUP_ITEM, preview="label", icon="block-arrow-pointer")
 ICONS = [("truck", "Livraison"), ("box", "Colis / stock"), ("gift", "Cadeau"), ("mail", "Newsletter"), ("tag", "Promo"),
          ("star", "Avis"), ("shield", "Garantie"), ("return", "Retour"), ("euro", "Prix"), ("leaf", "Éco-responsable"),

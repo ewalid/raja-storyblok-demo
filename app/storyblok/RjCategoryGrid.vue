@@ -67,16 +67,16 @@ const show = computed(() => editor || count.value > 0 || loading.value);
 
     <ul
       v-else
-      class="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:gap-4 md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden"
+      class="grid grid-cols-3 gap-x-2 gap-y-4 sm:grid-cols-4 md:gap-4"
       :class="[cols, style === 'cutout' ? 'md:gap-y-6' : '']"
     >
       <template v-if="source === 'intershop'">
-        <li v-for="c in remote" :key="c.id || c.slug" class="shrink-0 snap-start md:w-auto" :class="style === 'photo' ? 'w-[136px]' : 'w-[104px]'">
+        <li v-for="c in remote" :key="c.id || c.slug" class="min-w-0">
           <RjCategory :item="c" :image-style="style" />
         </li>
       </template>
       <template v-else>
-        <li v-for="item in items" :key="item._uid" class="shrink-0 snap-start md:w-auto" :class="style === 'photo' ? 'w-[136px]' : 'w-[104px]'">
+        <li v-for="item in items" :key="item._uid" class="min-w-0">
           <RjCategory :blok="item" :image-style="style" />
         </li>
       </template>

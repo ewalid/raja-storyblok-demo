@@ -12,7 +12,7 @@ const sent = ref(false);
     <div v-if="c.newsletter_title || c.catalogue_title" class="border-t border-[var(--rj-line)] bg-white">
       <div class="rj-container grid gap-10 py-10 md:grid-cols-2">
         <div v-if="c.newsletter_title">
-          <p class="rj-title text-2xl">{{ c.newsletter_title }}</p>
+          <p class="rj-title rj-title--display text-2xl">{{ c.newsletter_title }}</p>
           <RjRich :doc="c.newsletter_text" class="mt-2 text-[var(--rj-muted)]" />
           <form class="mt-4 flex max-w-md gap-2" @submit.prevent="sent = true">
             <label class="sr-only" for="rj-nl">Email</label>
@@ -23,7 +23,7 @@ const sent = ref(false);
         </div>
         <div v-if="c.catalogue_title" class="flex items-center gap-6">
           <div class="min-w-0 flex-1">
-            <p class="rj-title text-2xl">{{ c.catalogue_title }}</p>
+            <p class="rj-title rj-title--display text-2xl">{{ c.catalogue_title }}</p>
             <p v-if="c.catalogue_subtitle" class="mt-1 font-bold">{{ c.catalogue_subtitle }}</p>
             <RjRich :doc="c.catalogue_text" class="mt-2 text-[var(--rj-muted)]" />
             <div class="mt-4" style="--rj-btn-bg: var(--rj-cta-bg); --rj-btn-fg: #fff">
@@ -43,7 +43,7 @@ const sent = ref(false);
         </div>
         <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-[repeat(auto-fit,minmax(170px,1fr))]">
           <div v-for="col in c.footer_columns" :key="col._uid" v-editable="col">
-            <p class="mb-3 font-[var(--rj-display)] text-base font-black text-[var(--rj-primary)]" :style="{ color: 'var(--rj-footer-heading, var(--rj-primary))' }">{{ col.title }}</p>
+            <p class="rj-footer-heading mb-3 font-[var(--rj-display)] text-base font-black text-[var(--rj-primary)]" :style="{ color: 'var(--rj-footer-heading, var(--rj-primary))' }">{{ col.title }}</p>
             <ul class="space-y-1.5">
               <li v-for="item in col.links" :key="item._uid" v-editable="item">
                 <NuxtLink :to="resolveLink(item.link) || '#'" class="text-sm text-white/90 hover:text-white hover:underline">{{ item.label }}</NuxtLink>

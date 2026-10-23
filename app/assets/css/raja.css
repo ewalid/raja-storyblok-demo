@@ -26,6 +26,9 @@
   --rj-band-bg: linear-gradient(90deg, #276ef1, #649afd);
   --rj-cta-bg: linear-gradient(90deg, #6121f5, #276ef1);
   --rj-soft-brand: #f1f4f9;
+  --rj-title-font: var(--rj-display);
+  --rj-title-weight: 900;
+  --rj-footer-case: none;
 }
 [data-brand='mondoffice'] {
   --rj-primary: #ed1c24;
@@ -35,6 +38,10 @@
   --rj-band-bg: #ed1c24;
   --rj-cta-bg: #ed1c24;
   --rj-soft-brand: #ebebeb;
+  /* mondoffice.com section titles are Open Sans 700; footer column titles uppercase */
+  --rj-title-font: var(--rj-font);
+  --rj-title-weight: 700;
+  --rj-footer-case: uppercase;
 }
 
 body.rj-body {
@@ -125,12 +132,23 @@ body.rj-body {
 
 /* ---- typography ---- */
 .rj-title {
-  font-family: var(--rj-display);
-  font-weight: 900;
+  font-family: var(--rj-title-font);
+  font-weight: var(--rj-title-weight);
   line-height: 1.15;
   letter-spacing: -0.005em;
   color: var(--rj-strong);
   text-wrap: balance;
+}
+/* newsletter / catalogue titles stay Raleway 900 on both brands, as live */
+.rj-title--display {
+  font-family: var(--rj-display);
+  font-weight: 900;
+}
+.rj-footer-heading {
+  text-transform: var(--rj-footer-case);
+}
+[data-brand='mondoffice'] .rj-hdr-rating {
+  order: -1;
 }
 .rj-h1 {
   font-family: var(--rj-font);

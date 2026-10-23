@@ -32,6 +32,8 @@ comp("rj-hero-mosaic", "Mosaïque d'accueil", schema({
                     description="1 à 6 diapositives. Chacune peut avoir ses dates (onglet Planning de la diapositive) : idéal pour une promo."),
     "tiles": bloks("Tuiles à droite", ["rj-promo-tile"], maximum=4,
                    description="0 à 4 tuiles. RAJA : 3 (1 moyenne + 2 petites). Mondoffice : 4. Ignorées en mode « Diaporama seul »."),
+    "tiles_on_mobile": boolean("Afficher les tuiles sur mobile",
+                               description="Décoché (par défaut, comme sur les sites live) : sur mobile, seul le diaporama s'affiche, bord à bord."),
     "autoplay": num("Défilement automatique (secondes)", default_value="6",
                     description="0 = pas de défilement automatique. S'arrête au survol, dans l'éditeur visuel et si l'utilisateur a réduit les animations."),
 }), GROUP_SECT, icon="block-carousel", color="#276ef1", preview="layout",
