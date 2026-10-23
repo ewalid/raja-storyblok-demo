@@ -1,7 +1,7 @@
 <script setup>
 const defaultFontFamilies = {
-  '--font-family-display': 'ABCMarfa, sans-serif',
-  '--font-family-body': 'ABCMarfa, sans-serif',
+  '--font-family-display': 'Raleway, sans-serif',
+  '--font-family-body': '"Open Sans", sans-serif',
 };
 
 const defaultColors = {
@@ -114,12 +114,11 @@ const cssVariables = computed(() => {
   return `:root {\n${formattedVariables}\n}`;
 });
 
-const viewingSiteConfig = useState('viewingSiteConfig');
 const { customParent } = useRuntimeConfig().public;
 
 onMounted(() => {
   useStoryblokBridge(
-    siteConfig.value.id,
+    siteConfig.value?.id,
     evStory => (siteConfig.value = evStory),
     {
       preventClicks: true,
@@ -133,7 +132,11 @@ const headConfig = computed(() => ({
     cssVariables.value,
   ],
   htmlAttrs: {
-    lang: 'en',
+    lang: useState('contentLang', () => '').value || 'fr',
+  },
+  bodyAttrs: {
+    'class': 'rj-body',
+    'data-brand': siteConfig.value?.content?.brand || 'raja',
   },
 }));
 
@@ -163,79 +166,9 @@ watch(route, () => {
 
 <template>
   <main>
-    <Header
-      :logo="siteConfig.content.header_logo"
-      :nav="siteConfig.content.header_nav"
-      :buttons="siteConfig.content.header_buttons"
-      :light="siteConfig.content.header_light"
-      :enable-cart="siteConfig.content.enable_cart"
-      @toggle-mobile-nav="mobileNavOpen = !mobileNavOpen"
-    />
-    <MobileNav
-      :mobile-nav="siteConfig.content.header_nav"
-      :mobile-nav-open="mobileNavOpen"
-      :enable-cart="siteConfig.content.enable_cart"
-    />
-    <div
-      v-if="viewingSiteConfig && siteConfig.content.use_custom_colors"
-      class="container py-12"
-    >
-      <h2 class="mb-8 text-4xl font-black text-(--headline-color)">Color Preview</h2>
-      <div
-        class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-      >
-        <ColorPreview color="primary-highlight" />
-        <ColorPreview color="highlight-1" />
-        <ColorPreview color="highlight-2" />
-        <ColorPreview color="highlight-3" />
-        <ColorPreview color="primary-background" />
-        <ColorPreview color="background-1" />
-        <ColorPreview color="background-2" />
-        <ColorPreview color="background-3" />
-        <ColorPreview color="background-4" />
-        <ColorPreview color="background-5" />
-        <ColorPreview color="background-6" />
-        <ColorPreview color="background-7" />
-        <ColorPreview color="background-8" />
-        <ColorPreview color="background-9" />
-        <ColorPreview color="background-10" />
-        <ColorPreview color="primary-dark" />
-      </div>
-    </div>
-    <div
-      v-if="viewingSiteConfig && siteConfig.content.use_custom_fonts"
-      class="container py-12 text-primary-dark"
-    >
-      <h2 class="mb-4 text-4xl font-black text-(--headline-color)">Typography Preview</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-    </div>
+    <RjHeader :config="siteConfig?.content" />
     <slot></slot>
-    <Footer
-      :headline="siteConfig.content.footer_headline"
-      :text-color="siteConfig.content.footer_text_color"
-      :footer-light="siteConfig.content.footer_light"
-      :decoration="siteConfig.content.footer_decoration"
-      :logo="siteConfig.content.footer_logo"
-      :about="siteConfig.content.footer_about"
-      :nav-1-headline="siteConfig.content.footer_nav_1_headline"
-      :nav-2-headline="siteConfig.content.footer_nav_2_headline"
-      :nav-3-headline="siteConfig.content.footer_nav_3_headline"
-      :nav-1="siteConfig.content.footer_nav_1"
-      :nav-2="siteConfig.content.footer_nav_2"
-      :nav-3="siteConfig.content.footer_nav_3"
-      :x="siteConfig.content.x"
-      :instagram="siteConfig.content.instagram"
-      :youtube="siteConfig.content.youtube"
-      :facebook="siteConfig.content.facebook"
-    />
+    <RjFooter :config="siteConfig?.content" />
   </main>
 </template>
 

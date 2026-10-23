@@ -1,0 +1,350 @@
+/* RAJA Group design system ("rajanext", shared by raja.fr and mondoffice.it).
+   Shared tokens on :root, brand deltas on [data-brand], colour roles per Style theme
+   on .bs[data-theme], so every rj-* block stays readable on every theme and brand. */
+
+:root {
+  --rj-ink: #222831;
+  --rj-muted: #656f84;
+  --rj-line: #e0e4ea;
+  --rj-soft: #f1f4f9;
+  --rj-review: #f8faff;
+  --rj-orange: #fe9601;
+  --rj-red: #df091d;
+  --rj-red-2: #f6504c;
+  --rj-hl: #fcedc7;
+  --rj-dark: #222831;
+  --rj-darker: #12161c;
+  --rj-font: 'Open Sans', system-ui, sans-serif;
+  --rj-display: 'Raleway', 'Open Sans', system-ui, sans-serif;
+  --rj-radius: 4px;
+
+  /* brand defaults = RAJA */
+  --rj-primary: #276ef1;
+  --rj-primary-2: #649afd;
+  --rj-primary-ink: #1a4fb0;
+  --rj-brand-bg: linear-gradient(90deg, #6121f5, #276ef1);
+  --rj-band-bg: linear-gradient(90deg, #276ef1, #649afd);
+  --rj-cta-bg: linear-gradient(90deg, #6121f5, #276ef1);
+  --rj-soft-brand: #f1f4f9;
+}
+[data-brand='mondoffice'] {
+  --rj-primary: #ed1c24;
+  --rj-primary-2: #f6504c;
+  --rj-primary-ink: #b8141a;
+  --rj-brand-bg: #ed1c24;
+  --rj-band-bg: #ed1c24;
+  --rj-cta-bg: #ed1c24;
+  --rj-soft-brand: #ebebeb;
+}
+
+body.rj-body {
+  font-family: var(--rj-font);
+  font-size: 14px;
+  color: var(--rj-ink);
+  background: #fff;
+  padding-top: 0 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rj-container {
+  width: 100%;
+  max-width: 1312px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* ---- section shell + colour roles ----
+   strong  = headings          accent = highlighted words / links
+   btn-bg / btn-fg = primary button on this background */
+.bs {
+  --rj-strong: var(--rj-ink);
+  --rj-accent: var(--rj-primary);
+  --rj-btn-bg: var(--rj-cta-bg);
+  --rj-btn-fg: #fff;
+  --rj-sub: var(--rj-muted);
+  position: relative;
+  background: var(--bs-bg, transparent);
+  color: var(--bs-fg, var(--rj-ink));
+  padding-block: var(--bs-pad, 40px);
+  margin-block: var(--bs-margin, 0);
+  text-align: var(--bs-align, left);
+}
+.bs[data-light='true'] {
+  --rj-strong: #fff;
+  --rj-accent: #fff;
+  --rj-btn-bg: #fff;
+  --rj-btn-fg: var(--rj-primary);
+  --rj-sub: rgb(255 255 255 / 0.88);
+}
+.bs[data-theme='dark'] {
+  --rj-accent: var(--rj-primary-2);
+}
+.bs[data-theme='promo'],
+.bs[data-theme='orange'] {
+  --rj-btn-fg: var(--rj-ink);
+}
+.bs[data-theme='cream'] {
+  --rj-accent: var(--rj-primary-ink);
+}
+.bs--rounded {
+  border-radius: 8px;
+  margin-inline: max(16px, calc((100vw - 1280px) / 2));
+}
+.bs .rj-title {
+  font-size: var(--bs-title, 24px);
+}
+.bs--hide-d {
+  display: none;
+}
+@media (max-width: 767px) {
+  .bs {
+    padding-block: var(--bs-pad-m, calc(var(--bs-pad, 40px) * 0.7));
+    text-align: var(--bs-align-m, var(--bs-align, left));
+  }
+  .bs .rj-title {
+    font-size: var(--bs-title-m, 21px);
+  }
+  .bs--hide-m {
+    display: none;
+  }
+  .bs--hide-d {
+    display: block;
+  }
+}
+
+/* ---- typography ---- */
+.rj-title {
+  font-family: var(--rj-display);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--rj-strong);
+  text-wrap: balance;
+}
+.rj-h1 {
+  font-family: var(--rj-font);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--rj-strong);
+}
+.rj-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rj-accent);
+  margin-bottom: 8px;
+}
+.rj-lead {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--rj-sub);
+}
+.rj-accent {
+  color: var(--rj-accent);
+}
+/* Bold words in rich text take the brand colour ("+ de 12 000 produits"). */
+.rj-rich--accent strong {
+  color: var(--rj-accent);
+  font-weight: 700;
+}
+
+@layer components {
+  .rj-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 22px;
+    border-radius: 30px;
+    background: var(--rj-btn-bg);
+    color: var(--rj-btn-fg);
+    font: 700 14px/1 var(--rj-font);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition:
+      filter 0.15s ease,
+      transform 0.15s ease;
+  }
+  .rj-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+  .rj-btn--ghost {
+    background: transparent;
+    color: currentColor;
+    box-shadow: inset 0 0 0 1.5px currentColor;
+  }
+  .rj-btn--square {
+    border-radius: var(--rj-radius);
+    text-transform: none;
+  }
+  .rj-btn--link {
+    background: none;
+    color: var(--rj-accent);
+    padding: 0;
+    min-height: 0;
+    text-transform: none;
+    font-size: 14px;
+  }
+  .rj-btn--link:hover {
+    text-decoration: underline;
+    transform: none;
+  }
+  .rj-card-base {
+    border: 1px solid var(--rj-line);
+    border-radius: var(--rj-radius);
+    background: #fff;
+  }
+}
+
+/* editor only: a button with no link (hidden on the live site) */
+.rj-btn--nolink {
+  outline: 2px dashed #e0a100;
+  outline-offset: 3px;
+}
+
+/* badges as on the live sites: square, 10px uppercase */
+.rj-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  font: 700 10px/1.5 var(--rj-font);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--rj-red);
+}
+.rj-tag--orange {
+  background: var(--rj-orange);
+}
+.rj-tag--brand {
+  background: var(--rj-primary);
+}
+.rj-tag--dark {
+  background: var(--rj-ink);
+}
+.rj-price {
+  font-weight: 800;
+  color: var(--rj-ink);
+  background: linear-gradient(transparent 40%, var(--rj-hl) 40%);
+  padding-inline: 2px;
+}
+
+/* ---- editor-only badges ---- */
+.rj-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
+  font: 700 11px/1 var(--rj-font);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #fff4cc;
+  color: #6b4d00;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 15%);
+}
+.rj-badge--market {
+  left: auto;
+  right: 8px;
+  background: #e3ecff;
+  color: #1d3c8f;
+}
+.rj-badge--data {
+  left: auto;
+  right: 8px;
+  top: auto;
+  bottom: 8px;
+  background: #ede7ff;
+  color: #4b2a9b;
+}
+
+/* ---- rich text ---- */
+.rj-rich > * + * {
+  margin-top: 0.7em;
+}
+.rj-rich a {
+  color: var(--rj-accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.rj-rich strong {
+  font-weight: 700;
+}
+.rj-rich ul {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+.rj-rich ul > li {
+  position: relative;
+  padding-left: 26px;
+}
+.rj-rich ul > li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.35em;
+  width: 14px;
+  height: 8px;
+  border-left: 2.5px solid var(--rj-accent);
+  border-bottom: 2.5px solid var(--rj-accent);
+  transform: rotate(-45deg);
+}
+.rj-rich ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.rj-rich li > p {
+  margin: 0;
+}
+
+/* A white card inside a coloured section: reset the roles to the light palette. */
+.bs .rj-card {
+  --rj-strong: var(--rj-ink);
+  --rj-accent: var(--rj-primary);
+  --rj-btn-bg: var(--rj-cta-bg);
+  --rj-btn-fg: #fff;
+  --rj-sub: var(--rj-muted);
+  color: var(--rj-ink);
+}
+
+/* horizontal scrollers (carousels) without visible scrollbars */
+.rj-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.rj-scroller::-webkit-scrollbar {
+  display: none;
+}
+.rj-scroller > * {
+  scroll-snap-align: start;
+}
+.rj-arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rj-ink);
+  box-shadow: 0 1px 6px rgb(0 0 0 / 0.18);
+}
+.rj-arrow:disabled {
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rj-btn,
+  .rj-btn:hover {
+    transition: none;
+    transform: none;
+  }
+}

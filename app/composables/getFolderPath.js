@@ -1,21 +1,6 @@
+// Folder of the current story inside its market folder (e.g. `fr/landing-pages`),
+// so getSiteConfig finds `<market>/site-config` by walking up.
 export default async function () {
-  let slug = await getSlug();
-  let folderPath = '';
-
-  if (slug) {
-    const language = await getLanguage(slug);
-    /**
-     * If a specific language is requested, the first part of the slug (the language code) needs to be removed
-     */
-    if (language) {
-      slug = slug.slice(1);
-    }
-    /**
-     * Additionally, the story slug has to be removed to return only the folder path
-     */
-    slug.pop();
-    folderPath = slug.join('/');
-  }
-
-  return folderPath;
+  const processed = await getProcessedSlug();
+  return processed.split('/').slice(0, -1).join('/');
 }

@@ -23,3 +23,5 @@ install-key.pem
 install.pem
 .storyblok/
 .mcp.json
+demo-build/assets/src/
+.env*

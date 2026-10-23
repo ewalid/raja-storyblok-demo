@@ -91,9 +91,11 @@ export default async function () {
     }
   }
 
-  // Final fallback: root site-config.
+  // Final fallback (e.g. group/ masters): the site that speaks the current
+  // language (`it` → mondoffice-it), else the default site.
+  const themed = siteFolders().find(f => language && siteLanguage(f) === language) || DEFAULT_SITE;
   try {
-    const { data } = await storyblokApi.get('cdn/stories/site-config', apiParams);
+    const { data } = await storyblokApi.get(`cdn/stories/${themed}/site-config`, apiParams);
     return resolve(data.story);
   }
   catch {

@@ -11,6 +11,7 @@ const resolveRelations = [
   'article-page.call_to_action',
   'testimonials-section.testimonials',
   'form-reference.forms',
+  'rj-shared-ref.reference',
 ];
 const story = ref(null);
 const storyblokApi = useStoryblokApi();
@@ -83,8 +84,19 @@ try {
   }
   catch (error) {
     if (error.status === 404) {
-      const { data } = await storyblokApi.get('cdn/stories/error-404', apiParams);
-      story.value = data.story;
+      // Root stories outside the market folders (e.g. `component-library`), then
+      // the market's own 404, then the default market's.
+      const site = processedSlug.split('/')[0];
+      for (const path of [...new Set([`${site}/error-404`, `${DEFAULT_SITE}/error-404`])]) {
+        try {
+          const { data } = await storyblokApi.get(`cdn/stories/${path}`, apiParams);
+          story.value = data.story;
+          break;
+        }
+        catch {
+          // try the next fallback
+        }
+      }
     }
   }
 
@@ -116,19 +128,26 @@ catch (error) {
 }
 
 const viewingSiteConfig = ref(
-  story.value?.content?.component === 'site-config',
+  ['site-config', 'rj-site-config'].includes(story.value?.content?.component),
 );
 const _viewingSiteConfigState = useState(
   'viewingSiteConfig',
   () => viewingSiteConfig.value,
 );
 
-const headConfig = {
-  title: story.value?.content?.meta_title ?? 'Brand New Day',
-  meta: [
-    { name: 'description', content: story.value?.content?.meta_title ?? 'A Demo Day for Your New Storyblok Project.' },
-  ],
-};
+// SEO / social sharing from the template's SEO tab.
+const seo = story.value?.content ?? {};
+const seoTitle = seo.meta_title || story.value?.name || 'RAJA';
+const seoOgImage = seo.og_image?.filename || '';
+useSeoMeta({
+  title: seoTitle,
+  description: seo.meta_description || undefined,
+  ogTitle: seoTitle,
+  ogDescription: seo.meta_description || undefined,
+  ogImage: seoOgImage || undefined,
+  robots: seo.noindex ? 'noindex, nofollow' : undefined,
+});
+const headConfig = {};
 
 if (story.value?.content?.component === 'article-page') {
   const articleSchema = {

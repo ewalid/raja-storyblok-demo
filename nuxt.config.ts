@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   ssr: false,
 
   // tailwind.css must come first; the old module injected it ahead of the rest.
-  css: ['~/assets/css/tailwind.css', '@/assets/css/fonts.css'],
+  css: ['~/assets/css/tailwind.css', '@/assets/css/fonts.css', '@/assets/css/raja.css'],
 
   imports: {
     dirs: ['composables/ecommerce'],
@@ -39,6 +39,9 @@ export default defineNuxtConfig({
     head: {
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap' },
       ],
     },
   },
