@@ -1,8 +1,8 @@
-"""Editor-side check: every block in the brand folders matches its schema
+"""Editor-side check: every block in the site folders (group, raja-fr, mondoffice-it) matches its schema
 (component exists, fields declared, max_length, required, bloks whitelists)."""
 import os
 from sb_mapi import SB
-sb = SB(295704400531259, env_path=os.path.expanduser("~/dev/darwin/storyblok.env"))
+sb = SB(296080873997343, env_path=os.path.expanduser("~/dev/darwin/storyblok.env"))
 comps = {c["name"]: c for c in sb._req("/components?per_page=200")["components"]}
 groups = {}
 for c in comps.values():
@@ -25,6 +25,8 @@ def check(b, path):
             problems.append(f"{path}.{k}: field not declared on {c['name']}")
             continue
         d = s[k]
+        if d.get("type") == "option" and d.get("options") and v not in ("", None) and v not in {o["value"] for o in d["options"]}:
+            problems.append(f"{path}.{k}: '{v}' is not one of the options")
         if d.get("max_length") and isinstance(v, str) and len(v) > int(d["max_length"]):
             problems.append(f"{path}.{k}: {len(v)} > max {d['max_length']}")
         if d.get("type") == "bloks" and isinstance(v, list):
@@ -47,9 +49,7 @@ def check(b, path):
         if d.get("required") and not b.get(k):
             problems.append(f"{path}.{k}: required but empty")
 n = 0
-home = sb._req(f"/stories/{sb.find_story('fr/home')['id']}")["story"]
-check(home["content"], "home"); n += 1
-for root in ["fr/landing-pages"]:
+for root in ["group", "raja-fr", "mondoffice-it"]:
     fid = sb.find_story(root)["id"]
     stack = [fid]
     while stack:

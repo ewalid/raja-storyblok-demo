@@ -2,7 +2,7 @@
 from .common import *
 
 comp("rj-text", "Texte", schema({
-    "title": text("Titre", max_length=90, description="Optionnel."),
+    "title": text("Titre", max_length=100, description="Optionnel."),
     "body": rich("Texte", toolbar=["bold", "italic", "link", "list", "olist", "h2", "h3"],
                  description="Le contenu. Intertitres H2/H3, listes et liens possibles. Le gras prend la couleur de la marque."),
     "max_width": opt("Largeur du texte", [("narrow", "Étroite (lecture confortable)"), ("normal", "Normale"), ("wide", "Toute la largeur")], default="normal",
