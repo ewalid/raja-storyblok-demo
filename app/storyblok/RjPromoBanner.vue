@@ -28,8 +28,10 @@ const countdown = computed(() => {
   const d = Math.floor(left / 86400000);
   const h = Math.floor((left % 86400000) / 3600000);
   const m = Math.floor((left % 3600000) / 60000);
-  const prefix = lang.value === 'it' ? 'Ancora' : 'Plus que';
-  return d > 0 ? `${prefix} ${d} j ${String(h).padStart(2, '0')} h` : `${prefix} ${h} h ${String(m).padStart(2, '0')} min`;
+  const it = lang.value === 'it';
+  const prefix = it ? 'Ancora' : 'Plus que';
+  const day = it ? 'g' : 'j';
+  return d > 0 ? `${prefix} ${d} ${day} ${String(h).padStart(2, '0')} h` : `${prefix} ${h} h ${String(m).padStart(2, '0')} min`;
 });
 </script>
 

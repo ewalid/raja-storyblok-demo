@@ -54,7 +54,13 @@ const T = {
 };
 const t = computed(() => T[props.size] || T.medium);
 const showCta = computed(() => !!props.blok?.cta_label && (!!href.value || editor));
-const copyWidth = computed(() => (hasImage.value && mode.value !== 'background' ? t.value.copy : 'max-w-[88%]'));
+// Photo mode: the photo takes the right half, so the copy keeps strictly to the left half.
+const copyWidth = computed(() => {
+  if (!hasImage.value || mode.value === 'background') {
+    return 'max-w-[88%]';
+  }
+  return mode.value === 'photo' ? 'max-w-[52%]' : t.value.copy;
+});
 const tag = computed(() => (href.value ? (external.value ? 'a' : resolveComponent('NuxtLink')) : 'div'));
 const linkAttrs = computed(() => {
   if (!href.value) {
@@ -85,7 +91,7 @@ const linkAttrs = computed(() => {
         v-else-if="mode === 'photo'"
         :asset="blok.image"
         :width="900"
-        class="absolute inset-y-0 right-0 -z-10 h-full w-1/2 object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+        class="absolute inset-y-0 right-0 -z-10 h-full w-[46%] object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
       />
       <RjMedia
         v-else
